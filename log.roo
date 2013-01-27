@@ -2,3 +2,5 @@
 project --topLevelPackage com.pace.sfl
 quit
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-26 20:16:32
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-01-26 20:19:32
+mongo setup --databaseName sfl --host 127.0.0.1 --port 27017
