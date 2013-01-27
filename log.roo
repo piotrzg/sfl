@@ -23,3 +23,7 @@ quit
 web mvc all --package ~.web
 quit
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-26 20:39:42
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-01-26 20:41:38
+web flow --flowName rejestracja
+quit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-26 20:41:59

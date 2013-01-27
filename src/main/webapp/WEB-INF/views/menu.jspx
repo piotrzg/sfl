@@ -11,5 +11,8 @@
             <menu:item id="i_userprofile_new" messageCode="global_menu_new" url="/userprofiles?form" z="RYXZPbBQnd8xC3sX9BmwGEMjG7I="/>
             <menu:item id="i_userprofile_list" messageCode="global_menu_list" url="/userprofiles?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9erJNttMn6QObSrmM4/XDGz4+1Y="/>
         </menu:category>
+        <menu:category id="c_flows" z="5igpkb/e+HPIN8iUErvmM38Eqqk=">
+            <menu:item id="i_flows_rejestracja" messageCode="webflow_menu_enter" url="/rejestracja" z="x+ZgVgFtXTTXCtSfmOd2NefJsgw="/>
+        </menu:category>
     </menu:menu>
 </div>
