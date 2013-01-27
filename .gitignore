@@ -3,6 +3,7 @@
 #################
 
 target/
+.idea/
 
 *.pydevproject
 .project
