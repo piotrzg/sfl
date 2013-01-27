@@ -1,0 +1,22 @@
+<div xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+     xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8" />
+    <jsp:output omit-xml-declaration="yes" />
+        <h1>${fn:escapeXml(title)}</h1>
+        <p>
+Nazwa Druzyny:
+        </p>
+
+    <form action="saveTeamName" method="POST">
+        <input type="text" id="teamName" name="teamName"></input>
+        <br/>
+        <spring:message var="cancel" code="button_cancel" htmlEscape="false" />
+        <spring:message var="save" code="button_save" htmlEscape="false" />
+
+        <input type="submit" id="success" name="_eventId_success" value="${fn:escapeXml(save)}" />
+        <input type="submit" id="cancel" name="_eventId_cancel" value="${fn:escapeXml(cancel)}" />
+    </form>
+</div>

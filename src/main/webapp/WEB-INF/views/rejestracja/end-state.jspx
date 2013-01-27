@@ -7,6 +7,7 @@
     <h1>${fn:escapeXml(title)}</h1>
     <p>
       <spring:message code="webflow_endstate_message" />
+        Konto stworzone. Kliknij tutaj aby zaczac budowac swoja druzyne!
     </p>
   </util:panel>
 </div>
