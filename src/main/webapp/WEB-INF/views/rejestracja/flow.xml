@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<flow xmlns="http://www.springframework.org/schema/webflow" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="  http://www.springframework.org/schema/webflow
+                            http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <on-start>
+        <evaluate expression="new com.pace.sfl.domain.Account()" result="flowScope.account"></evaluate>
+    </on-start>
 
     <!-- A sample view state -->
-    <view-state id="view-state-1" view="rejestracja/view-state-1">
+    <view-state id="view-state-1" view="rejestracja/view-state-1" model="account">
     	<transition on="success" to="view-state-2"/>
     	<transition on="cancel" to="end-state"/>
     </view-state>
@@ -12,6 +19,10 @@
     </view-state>
     
     <!-- A sample end state -->
-    <end-state id="end-state" view="rejestracja/end-state"/>
+    <end-state id="end-state" view="rejestracja/end-state">
+        <on-entry>
+            <evaluate expression="accountService.saveAccount(account)"></evaluate>
+        </on-entry>
+    </end-state>
 	
 </flow>

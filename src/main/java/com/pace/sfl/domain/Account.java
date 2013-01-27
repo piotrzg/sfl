@@ -6,10 +6,12 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.layers.repository.mongo.RooMongoEntity;
 import org.springframework.roo.addon.tostring.RooToString;
 
+import java.io.Serializable;
+
 @RooJavaBean
 @RooToString
 @RooMongoEntity
-public class Account {
+public class Account implements Serializable {
 
     @NotNull
     @Size(min = 6, max = 31)
