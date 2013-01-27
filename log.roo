@@ -20,3 +20,6 @@ service --interface ~.service.AccountService --entity ~.domain.Account
 quit
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-26 20:37:20
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-01-26 20:38:53
+web mvc all --package ~.web
+quit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-26 20:39:42

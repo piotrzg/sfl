@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_pace_sfl_domain_Account" object="${account}" path="/accounts" z="of3de4yUFsrKt9J1oSmnOENtHaU=">
+        <field:display field="username" id="s_com_pace_sfl_domain_Account_username" object="${account}" z="78ZY0nIpH+5GAppSQJC/TI8GYnU="/>
+        <field:display field="email" id="s_com_pace_sfl_domain_Account_email" object="${account}" z="D++gfOTUt0CCNnxiwBjzp6nv5Sk="/>
+        <field:display field="password" id="s_com_pace_sfl_domain_Account_password" object="${account}" z="go+6fK8DY90rYkKcACfLjC3hO0w="/>
+    </page:show>
+</div>
