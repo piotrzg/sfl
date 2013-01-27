@@ -4,3 +4,12 @@ quit
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-26 20:16:32
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-01-26 20:19:32
 mongo setup --databaseName sfl --host 127.0.0.1 --port 27017
+entity mongo --class ~.domain.Account
+field string --fieldName username --notNull --sizeMin 6 --sizeMax 31
+field string --fieldName email --notNull --sizeMin 7 --sizeMax 127
+field string --fieldName password --notNull --sizeMin 8 --sizeMax 127
+entity mongo --class ~.domain.UserProfile
+focus --class ~.domain.UserProfile
+field reference --type ~.domain.Account --fieldName userAccount --notNull --cardinality ONE_TO_ONE 
+field string --fieldName city --sizeMin 2 --sizeMax 127
+repository mongo --interface ~.repository.UserProfileRepository --entity ~.domain.UserProfile
