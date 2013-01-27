@@ -7,6 +7,13 @@
     <file path="/Dummy.txt" changelist="ddd5a9d7-265b-49c0-a87f-2e3613a2d762" time="1359255319211" ignored="false" />
     <file path="/flow.xml" changelist="ddd5a9d7-265b-49c0-a87f-2e3613a2d762" time="1359255414468" ignored="false" />
     <file path="/view-state-1.jspx" changelist="ddd5a9d7-265b-49c0-a87f-2e3613a2d762" time="1359255487342" ignored="false" />
+    <file path="/CustomMongoSecurityService.java" changelist="ddd5a9d7-265b-49c0-a87f-2e3613a2d762" time="1359256957525" ignored="false" />
+    <file path="/UserProfileServiceImpl.java" changelist="ddd5a9d7-265b-49c0-a87f-2e3613a2d762" time="1359257083771" ignored="false" />
+    <file path="/UserProfile.java" changelist="ddd5a9d7-265b-49c0-a87f-2e3613a2d762" time="1359257037001" ignored="false" />
+    <file path="/Role.java" changelist="ddd5a9d7-265b-49c0-a87f-2e3613a2d762" time="1359257335193" ignored="false" />
+    <file path="/Account.java" changelist="ddd5a9d7-265b-49c0-a87f-2e3613a2d762" time="1359257796598" ignored="false" />
+    <file path="$PROJECT_DIR$/src/main/java/com/pace/sfl/service/AccountServiceImpl_Roo_Service.aj" changelist="ddd5a9d7-265b-49c0-a87f-2e3613a2d762" time="1359258670134" ignored="false" />
+    <file path="/AccountServiceImpl.java" changelist="ddd5a9d7-265b-49c0-a87f-2e3613a2d762" time="1359258722962" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,10 +90,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Account.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/domain/Account.java">
+      <file leaf-file-name="AccountServiceImpl.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/service/AccountServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="17" selection-start="635" selection-end="635" vertical-scroll-proportion="0.7048093">
+            <state line="57" column="41" selection-start="1887" selection-end="1887" vertical-scroll-proportion="1.7029877">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,10 +101,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/service/AccountServiceImpl.java">
+      <file leaf-file-name="UserProfile.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/domain/UserProfile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="26" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
+            <state line="22" column="0" selection-start="558" selection-end="558" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Account.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/domain/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="22" selection-start="721" selection-end="721" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Role.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/Role.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="25" selection-start="341" selection-end="341" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomMongoSecurityService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/service/CustomMongoSecurityService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="83" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applicationContext-security.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/spring/applicationContext-security.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="22" selection-start="1517" selection-end="1517" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -123,9 +170,22 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/rejestracja/flow.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/rejestracja/view-state-1.jspx" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pace/sfl/service/AccountServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pace/sfl/service/CustomMongoSecurityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pace/sfl/domain/UserProfile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pace/sfl/service/UserProfileServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pace/sfl/Role.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pace/sfl/domain/Account.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pace/sfl/service/AccountService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/META-INF/spring/applicationContext-security.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pace/sfl/service/AccountServiceImpl.java" />
       </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
     </option>
   </component>
   <component name="ProjectFrameBounds">
@@ -199,12 +259,26 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
+              <option name="myItemId" value="sfl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sfl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -226,89 +300,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rejestracja" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="spring" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -394,7 +390,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
+              <option name="myItemId" value="repository" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -615,9 +611,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/service/AccountService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/domain/Account_Roo_JavaBean.aj">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="178" selection-end="178" vertical-scroll-proportion="0.14096186">
+        <state line="7" column="18" selection-start="252" selection-end="252" vertical-scroll-proportion="0.16915423">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/domain/Account_Roo_Mongo_Entity.aj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="18" selection-start="383" selection-end="383" vertical-scroll-proportion="0.16915423">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/domain/Account_Roo_ToString.aj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="18" selection-start="374" selection-end="374" vertical-scroll-proportion="0.16915423">
           <folding />
         </state>
       </provider>
@@ -629,16 +639,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/service/AccountServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/service/UserProfileServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="26" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
+        <state line="9" column="0" selection-start="228" selection-end="228" vertical-scroll-proportion="0.25373134">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/Role.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="25" selection-start="341" selection-end="341" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/domain/UserProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="558" selection-end="558" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/service/AccountService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="16" selection-start="248" selection-end="248" vertical-scroll-proportion="0.23367697">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/service/CustomMongoSecurityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="83" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/domain/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="17" selection-start="635" selection-end="635" vertical-scroll-proportion="0.7048093">
+        <state line="31" column="22" selection-start="721" selection-end="721" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/repository/AccountRepository_Roo_Mongo_Repository.aj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="18" selection-start="456" selection-end="456" vertical-scroll-proportion="0.17525773">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/service/AccountService_Roo_Service.aj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="40" selection-start="816" selection-end="816" vertical-scroll-proportion="0.4089347">
+          <folding>
+            <element signature="e#0#931#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/spring/applicationContext-security.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="22" selection-start="1517" selection-end="1517" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pace/sfl/service/AccountServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="41" selection-start="1887" selection-end="1887" vertical-scroll-proportion="1.7029877">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

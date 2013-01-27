@@ -27,3 +27,8 @@ quit
 web flow --flowName rejestracja
 quit
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-26 20:41:59
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-01-26 21:11:32
+focus --class ~.domain.UserProfile
+security setup
+quit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-26 21:39:17

@@ -5,6 +5,7 @@
     <form:create id="fc_com_pace_sfl_domain_UserProfile" modelAttribute="userProfile" path="/userprofiles" render="${empty dependencies}" z="pJABBE3unZs2PctPyUUlzPaUuos=">
         <field:select field="userAccount" id="c_com_pace_sfl_domain_UserProfile_userAccount" itemValue="id" items="${accounts}" path="/accounts" required="true" z="MJCKYDkeuNx8/1POBOWZXgsbDBQ="/>
         <field:textarea field="city" id="c_com_pace_sfl_domain_UserProfile_city" z="i4VZXHV5OsAQjTJw9DrMATa1M1M="/>
+        <field:input field="roles" id="c_com_pace_sfl_domain_UserProfile_roles" z="YFuUjgBFreQ1pgGAJ/W+hRYmvcQ="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_pace_sfl_domain_UserProfile" render="${not empty dependencies}" z="Okq6KOGE6K86n8w8XpW06uk5nMs="/>
 </div>

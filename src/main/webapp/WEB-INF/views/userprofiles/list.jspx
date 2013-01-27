@@ -6,6 +6,7 @@
         <table:table data="${userprofiles}" id="l_com_pace_sfl_domain_UserProfile" path="/userprofiles" z="EViIqkUp0XgZgjJsG/2yAcR4NKE=">
             <table:column id="c_com_pace_sfl_domain_UserProfile_userAccount" property="userAccount" z="npSSKoNaSrQ3Fw4HbglannnxtlU="/>
             <table:column id="c_com_pace_sfl_domain_UserProfile_city" property="city" z="Y6koK7e0WPWIhvy0EmIrsLPaSZI="/>
+            <table:column id="c_com_pace_sfl_domain_UserProfile_roles" property="roles" z="DIFq/4/Fsu96pLwCNLvBLqO9CEQ="/>
         </table:table>
     </page:list>
 </div>
