@@ -13,3 +13,10 @@ focus --class ~.domain.UserProfile
 field reference --type ~.domain.Account --fieldName userAccount --notNull --cardinality ONE_TO_ONE 
 field string --fieldName city --sizeMin 2 --sizeMax 127
 repository mongo --interface ~.repository.UserProfileRepository --entity ~.domain.UserProfile
+service --interface ~.service.UserProfileService --entity ~.domain.UserProfile
+web mvc setup
+repository mongo --interface ~.repository.AccountRepository --entity ~.domain.Account
+service --interface ~.service.AccountService --entity ~.domain.Account
+quit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-26 20:37:20
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-01-26 20:38:53
