@@ -36,7 +36,6 @@ public class CreateTeamController {
         String name = auth.getName(); //get logged in username
 
         System.out.println("name: "+name);
-        System.out.println("teamName: "+teamName);
         return "createTeam";
     }
 }
