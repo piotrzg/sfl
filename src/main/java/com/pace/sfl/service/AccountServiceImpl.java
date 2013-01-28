@@ -25,7 +25,7 @@ public class AccountServiceImpl implements AccountService {
 
     public Account findByUsername(String username)
     {
-        Account acc =  mongoTemplate.findOne(Query.query(Criteria.where("username").is(username)), Account.class);
+        Account acc = mongoTemplate.findOne(Query.query(Criteria.where("username").is(username)), Account.class);
         System.out.println(acc);
         return acc;
     }
@@ -35,7 +35,6 @@ public class AccountServiceImpl implements AccountService {
     }
 
     public void saveAccount(Account account) {
-
         List authorities = new ArrayList();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
