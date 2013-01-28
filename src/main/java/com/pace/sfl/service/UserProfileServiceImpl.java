@@ -1,6 +1,7 @@
 package com.pace.sfl.service;
 
 
+import com.pace.sfl.domain.Account;
 import com.pace.sfl.domain.UserProfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -18,9 +19,11 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     public UserProfile findByUsername(String username)
     {
-        UserProfile acc = mongoTemplate.findOne(Query.query(Criteria.where("username").is(username)), UserProfile.class);
-//        System.out.println(acc);
-        return acc;
+        Account acc = mongoTemplate.findOne(Query.query(Criteria.where("username").is(username)), Account.class);
+        System.out.println(acc);
+
+        UserProfile up = mongoTemplate.findOne(Query.query(Criteria.where("userAccount.username").is(acc.getUsername())), UserProfile.class);
+        return up;
     }
 
 }

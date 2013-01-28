@@ -1,6 +1,9 @@
 package com.pace.sfl.web;
 
+import com.pace.sfl.domain.SflDruzyna;
+import com.pace.sfl.domain.UserProfile;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
+import com.pace.sfl.service.UserProfileService;
 import com.pace.sfl.service.ZawodnikZuzlowyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -29,6 +32,9 @@ public class CreateTeamController {
     @Autowired
     ZawodnikZuzlowyService zawodnicy;
 
+    @Autowired
+    UserProfileService ups;
+
     @RequestMapping(value = "/ct", produces = "text/html")
     public String show()
     {
@@ -43,7 +49,9 @@ public class CreateTeamController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
 
+        UserProfile up = ups.findByUsername(name);
         System.out.println("name: "+name);
+        System.out.println("up: "+up);
         return "choosePlayers";
     }
 
