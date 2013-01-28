@@ -1,5 +1,8 @@
 package com.pace.sfl.web;
 
+import com.pace.sfl.domain.ZawodnikZuzlowy;
+import com.pace.sfl.service.ZawodnikZuzlowyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,6 +25,9 @@ import java.security.Principal;
  */
 @Controller
 public class CreateTeamController {
+
+    @Autowired
+    ZawodnikZuzlowyService zawodnicy;
 
     @RequestMapping(value = "/ct", produces = "text/html")
     public String show()
@@ -43,7 +50,25 @@ public class CreateTeamController {
     @RequestMapping(value = "/getAllPlayers", produces = "text/html")
     public @ResponseBody String showPlayers()
     {
-        return "{\"aaData\":[[\"Piotr\", 1984],[\"Adam\", 1985]]}";
+        List<ZawodnikZuzlowy> listaZawodnikow = zawodnicy.findAllZawodnikZuzlowys();
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("{\"aaData\": [");
+        for(int i=0; i<listaZawodnikow.size();i++)
+        {
+            if(i != 0) sb.append(',');
+            sb.append("[");
+            sb.append('"'+listaZawodnikow.get(i).getLname() +" "+ listaZawodnikow.get(i).getFname()+'"');
+            sb.append(',');
+            sb.append(listaZawodnikow.get(i).getKsm());
+            sb.append(',');
+            sb.append("\"<a href='dodajZawodnika?id="+listaZawodnikow.get(i).getId()+"'>Dodaj do skladu</a>\"");
+            sb.append("]");
+        }
+        sb.append("]}");
+//        return "{\"aaData\":[[\"Piotr\", 1984, \"Add Link\"],[\"Adam\", 1985, \"<a href='http://google.com'>Add Link</a>\"]]}";
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 
 }

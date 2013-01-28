@@ -10,11 +10,20 @@
 
     <script type="text/javascript" charset="utf8">
         // <![CDATA[
+
         $(document).ready(function() {
-            $('#example').dataTable( {
+
+
+            var oTable = $('#example').dataTable( {
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [ 2 ] }
+                ],
                 "bProcessing": true,
                 "sAjaxSource": "getAllPlayers"
             } );
+
+
+
         } );
         // ]]>
     </script>
@@ -31,6 +40,7 @@ Zawodnicy:
             <tr>
                 <th>Imie</th>
                 <th>KSM</th>
+                <th>Dodaj</th>
             </tr>
             </thead>
             <tbody>            </tbody>
