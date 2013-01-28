@@ -4,6 +4,7 @@
 package com.pace.sfl.domain;
 
 import com.pace.sfl.domain.Account;
+import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.UserProfile;
 
 privileged aspect UserProfile_Roo_JavaBean {
@@ -22,6 +23,14 @@ privileged aspect UserProfile_Roo_JavaBean {
     
     public void UserProfile.setCity(String city) {
         this.city = city;
+    }
+    
+    public SflDruzyna UserProfile.getSflDruzyna() {
+        return this.sflDruzyna;
+    }
+    
+    public void UserProfile.setSflDruzyna(SflDruzyna sflDruzyna) {
+        this.sflDruzyna = sflDruzyna;
     }
     
 }

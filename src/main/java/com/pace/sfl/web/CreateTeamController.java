@@ -66,7 +66,6 @@ public class CreateTeamController {
             sb.append("]");
         }
         sb.append("]}");
-//        return "{\"aaData\":[[\"Piotr\", 1984, \"Add Link\"],[\"Adam\", 1985, \"<a href='http://google.com'>Add Link</a>\"]]}";
         System.out.println(sb.toString());
         return sb.toString();
     }

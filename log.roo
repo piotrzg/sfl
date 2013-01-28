@@ -42,3 +42,11 @@ service --interface ~.service.ZawodnikZuzlowyService
 web mvc all --package ~.web
 quit
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-27 21:18:07
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-01-27 23:13:03
+entity mongo --class ~.domain.SflDruzyna
+field string --fieldName name --notNull --sizeMax 31
+field set --type ~.domain.ZawodnikZuzlowy --fieldName zawodnicy
+focus --class ~.domain.UserProfile
+field reference --type ~.domain.SflDruzyna --fieldName sflDruzyna
+// [failed] field reference --type ~.domain.SflDruzyna --fieldName sflDruzyna --cardinality ONE_TO_ONE 
+field reference --type ~.domain.SflDruzyna --fieldName sflDruzyna --cardinality ONE_TO_ONE 

@@ -1,7 +1,9 @@
 package com.pace.sfl.domain;
 
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -11,15 +13,12 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 @RooMongoEntity
-public class UserProfile {
+public class SflDruzyna {
 
     @NotNull
-    @OneToOne
-    private Account userAccount;
+    @Size(max = 31)
+    private String name;
 
-    @Size(min = 2, max = 127)
-    private String city;
-
-    @OneToOne
-    private SflDruzyna sflDruzyna;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<ZawodnikZuzlowy> zawodnicy = new HashSet<ZawodnikZuzlowy>();
 }

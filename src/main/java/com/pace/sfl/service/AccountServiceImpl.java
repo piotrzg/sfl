@@ -1,6 +1,7 @@
 package com.pace.sfl.service;
 
 import com.pace.sfl.domain.Account;
+import com.pace.sfl.domain.UserProfile;
 import com.pace.sfl.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -22,6 +23,8 @@ public class AccountServiceImpl implements AccountService {
     MongoTemplate mongoTemplate;
     @Autowired
     AccountRepository accountRepository;
+    @Autowired
+    UserProfileService ups;
 
     public Account findByUsername(String username)
     {
@@ -40,6 +43,9 @@ public class AccountServiceImpl implements AccountService {
 
         account.setRoles(authorities);
         accountRepository.save(account);
+        UserProfile up = new UserProfile();
+        up.setUserAccount(account);
+        ups.saveUserProfile(up);
     }
 
     public List<Account> findAccountEntries(int firstResult, int maxResults) {
