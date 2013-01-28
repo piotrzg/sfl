@@ -5,8 +5,10 @@ package com.pace.sfl.web;
 
 import com.pace.sfl.domain.Account;
 import com.pace.sfl.domain.UserProfile;
+import com.pace.sfl.domain.ZawodnikZuzlowy;
 import com.pace.sfl.service.AccountService;
 import com.pace.sfl.service.UserProfileService;
+import com.pace.sfl.service.ZawodnikZuzlowyService;
 import com.pace.sfl.web.ApplicationConversionServiceFactoryBean;
 import java.math.BigInteger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     
     @Autowired
     UserProfileService ApplicationConversionServiceFactoryBean.userProfileService;
+    
+    @Autowired
+    ZawodnikZuzlowyService ApplicationConversionServiceFactoryBean.zawodnikZuzlowyService;
     
     public Converter<Account, String> ApplicationConversionServiceFactoryBean.getAccountToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.pace.sfl.domain.Account, java.lang.String>() {
@@ -72,6 +77,30 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<ZawodnikZuzlowy, String> ApplicationConversionServiceFactoryBean.getZawodnikZuzlowyToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.pace.sfl.domain.ZawodnikZuzlowy, java.lang.String>() {
+            public String convert(ZawodnikZuzlowy zawodnikZuzlowy) {
+                return new StringBuilder().append(zawodnikZuzlowy.getFname()).append(' ').append(zawodnikZuzlowy.getLname()).append(' ').append(zawodnikZuzlowy.getKsm()).toString();
+            }
+        };
+    }
+    
+    public Converter<BigInteger, ZawodnikZuzlowy> ApplicationConversionServiceFactoryBean.getIdToZawodnikZuzlowyConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.math.BigInteger, com.pace.sfl.domain.ZawodnikZuzlowy>() {
+            public com.pace.sfl.domain.ZawodnikZuzlowy convert(java.math.BigInteger id) {
+                return zawodnikZuzlowyService.findZawodnikZuzlowy(id);
+            }
+        };
+    }
+    
+    public Converter<String, ZawodnikZuzlowy> ApplicationConversionServiceFactoryBean.getStringToZawodnikZuzlowyConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.pace.sfl.domain.ZawodnikZuzlowy>() {
+            public com.pace.sfl.domain.ZawodnikZuzlowy convert(String id) {
+                return getObject().convert(getObject().convert(id, BigInteger.class), ZawodnikZuzlowy.class);
+            }
+        };
+    }
+    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getAccountToStringConverter());
         registry.addConverter(getIdToAccountConverter());
@@ -79,6 +108,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getUserProfileToStringConverter());
         registry.addConverter(getIdToUserProfileConverter());
         registry.addConverter(getStringToUserProfileConverter());
+        registry.addConverter(getZawodnikZuzlowyToStringConverter());
+        registry.addConverter(getIdToZawodnikZuzlowyConverter());
+        registry.addConverter(getStringToZawodnikZuzlowyConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

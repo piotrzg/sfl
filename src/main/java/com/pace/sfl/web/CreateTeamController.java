@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
@@ -36,6 +37,13 @@ public class CreateTeamController {
         String name = auth.getName(); //get logged in username
 
         System.out.println("name: "+name);
-        return "createTeam";
+        return "choosePlayers";
     }
+
+    @RequestMapping(value = "/getAllPlayers", produces = "text/html")
+    public @ResponseBody String showPlayers()
+    {
+        return "{\"aaData\":[[\"Piotr\", 1984],[\"Adam\", 1985]]}";
+    }
+
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_pace_sfl_domain_ZawodnikZuzlowy" modelAttribute="zawodnikZuzlowy" path="/zawodnikzuzlowys" render="${empty dependencies}" z="SUcnwK0ha7JB3SeRH1ZH08G4Ej4=">
+        <field:input field="fname" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_fname" required="true" z="Qba2QLU4uclmYnkSLXF04kpHb0Q="/>
+        <field:input field="lname" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_lname" required="true" z="qOSBNEPPcoWpRyiLBbE+JL5gFTw="/>
+        <field:input field="ksm" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_ksm" z="pID8juQOEYJXX87QtaTGbRVnwIs="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_pace_sfl_domain_ZawodnikZuzlowy" render="${not empty dependencies}" z="AOEhopxi1BpGfGx0Zx+S9aIV9h4="/>
+</div>

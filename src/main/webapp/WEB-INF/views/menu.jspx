@@ -14,5 +14,9 @@
         <menu:category id="c_flows" z="5igpkb/e+HPIN8iUErvmM38Eqqk=">
             <menu:item id="i_flows_rejestracja" messageCode="webflow_menu_enter" url="/rejestracja" z="x+ZgVgFtXTTXCtSfmOd2NefJsgw="/>
         </menu:category>
+        <menu:category id="c_zawodnikzuzlowy" z="00uKKYr2rBy4U1DF0e50mM8z/10=">
+            <menu:item id="i_zawodnikzuzlowy_new" messageCode="global_menu_new" url="/zawodnikzuzlowys?form" z="km/KLrRhx/pc5a3ycBVyexe9xko="/>
+            <menu:item id="i_zawodnikzuzlowy_list" messageCode="global_menu_list" url="/zawodnikzuzlowys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9mKca/ybb3ArLJGFtmLm21xnciI="/>
+        </menu:category>
     </menu:menu>
 </div>

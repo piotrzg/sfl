@@ -25,4 +25,7 @@
     <definition extends="default" name="createTeam">
         <put-attribute name="body" value="/WEB-INF/views/createTeam.jspx"/>
     </definition>
+    <definition extends="default" name="choosePlayers">
+        <put-attribute name="body" value="/WEB-INF/views/choosePlayers.jspx"/>
+    </definition>
 </tiles-definitions>

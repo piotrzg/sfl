@@ -32,3 +32,13 @@ focus --class ~.domain.UserProfile
 security setup
 quit
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-26 21:39:17
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-01-27 21:15:57
+entity mongo --class ~.domain.ZawodnikZuzlowy
+field string --fieldName fname --notNull 
+field string --fieldName lname --notNull 
+field number --type double --fieldName ksm
+repository mongo --interface ~.repository.ZawodnikZuzlowyRepository
+service --interface ~.service.ZawodnikZuzlowyService
+web mvc all --package ~.web
+quit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-27 21:18:07
