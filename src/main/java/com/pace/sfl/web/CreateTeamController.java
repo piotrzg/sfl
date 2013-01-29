@@ -3,6 +3,7 @@ package com.pace.sfl.web;
 import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.UserProfile;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
+import com.pace.sfl.service.SflDruzynaService;
 import com.pace.sfl.service.UserProfileService;
 import com.pace.sfl.service.ZawodnikZuzlowyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigInteger;
 import java.security.Principal;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -34,6 +37,9 @@ public class CreateTeamController {
 
     @Autowired
     UserProfileService ups;
+
+    @Autowired
+    SflDruzynaService sflDruzynaService;
 
     @RequestMapping(value = "/ct", produces = "text/html")
     public String show()
@@ -53,14 +59,30 @@ public class CreateTeamController {
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         if(sflDruzyna == null)
         {
-
+            sflDruzyna = new SflDruzyna();
+            sflDruzyna.setName(teamName);
+            sflDruzynaService.saveSflDruzyna(sflDruzyna);
+            System.out.println("name: "+name);
+            System.out.println("up: "+up);
+            up.setSflDruzyna(sflDruzyna);
+            ups.saveUserProfile(up);
+            return "choosePlayers";
         }
-        System.out.println("name: "+name);
-        System.out.println("up: "+up);
+        else
+        {
+            System.out.println("WTF dude you already have a team!");
+            return "createTeam";
+        }
+
+    }
+
+    @RequestMapping(value = "/choosePlayers")
+    public String justChoosePlayes()
+    {
         return "choosePlayers";
     }
 
-    @RequestMapping(value = "/getAllPlayers", produces = "text/html")
+    @RequestMapping(value = "/getAllPlayers")
     public @ResponseBody String showPlayers()
     {
         List<ZawodnikZuzlowy> listaZawodnikow = zawodnicy.findAllZawodnikZuzlowys();
@@ -79,8 +101,28 @@ public class CreateTeamController {
             sb.append("]");
         }
         sb.append("]}");
-        System.out.println(sb.toString());
+//        System.out.println(sb.toString());
         return sb.toString();
+    }
+
+    @RequestMapping(value = "/dodajZawodnika", produces = "text/html")
+    public String addPlayer(@RequestParam("id") String zawodnikId)
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        UserProfile up = ups.findByUsername(name);
+        SflDruzyna sflDruzyna = up.getSflDruzyna();
+
+        sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
+        BigInteger bint = new BigInteger(zawodnikId);
+        ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowy(bint);
+        HashSet zawodnicySet = (HashSet<ZawodnikZuzlowy>)sflDruzyna.getZawodnicy();
+        System.out.println(zawodnicySet);
+        zawodnicySet.add(zawodnik);
+        sflDruzyna.setZawodnicy(zawodnicySet);
+        sflDruzynaService.saveSflDruzyna(sflDruzyna);
+        return "choosePlayers";
     }
 
 }
