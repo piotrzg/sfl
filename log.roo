@@ -50,3 +50,11 @@ focus --class ~.domain.UserProfile
 field reference --type ~.domain.SflDruzyna --fieldName sflDruzyna
 // [failed] field reference --type ~.domain.SflDruzyna --fieldName sflDruzyna --cardinality ONE_TO_ONE 
 field reference --type ~.domain.SflDruzyna --fieldName sflDruzyna --cardinality ONE_TO_ONE 
+quit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-28 00:02:24
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-01-28 22:03:49
+focus --class ~.domain.SflDruzyna
+repository mongo --interface ~.repository.SflDruzynaRepository
+service --interface ~.service.SflDruzynaService
+quit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-28 22:07:45

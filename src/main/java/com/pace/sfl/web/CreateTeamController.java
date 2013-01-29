@@ -50,6 +50,11 @@ public class CreateTeamController {
         String name = auth.getName(); //get logged in username
 
         UserProfile up = ups.findByUsername(name);
+        SflDruzyna sflDruzyna = up.getSflDruzyna();
+        if(sflDruzyna == null)
+        {
+
+        }
         System.out.println("name: "+name);
         System.out.println("up: "+up);
         return "choosePlayers";
