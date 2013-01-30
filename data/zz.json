@@ -1,1 +1,11 @@
-{ "_id" : { "$oid" : "5108878d04642235c280bf5f" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Piotr", "lname" : "Protasiewicz", "ksm" : 8.18 }
+{ "_id" : { "$oid" : "51088ba904647f3fb9cef5be" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Andreas", "lname" : "Jonsson", "ksm" : 9.109999999999999 }
+{ "_id" : { "$oid" : "51088bcb04647f3fb9cef5bf" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Piotr", "lname" : "Protasiewicz", "ksm" : 8.18 }
+{ "_id" : { "$oid" : "51088be204647f3fb9cef5c0" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Patryk", "lname" : "Dudek", "ksm" : 7.47 }
+{ "_id" : { "$oid" : "51088c0504647f3fb9cef5c1" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Rune", "lname" : "Holta", "ksm" : 6.72 }
+{ "_id" : { "$oid" : "51088c2e04647f3fb9cef5c2" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Aleksandr", "lname" : "Loktajew", "ksm" : 6.28 }
+{ "_id" : { "$oid" : "51088c6604647f3fb9cef5c3" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Adam", "lname" : "Strzelec", "ksm" : 4.26 }
+{ "_id" : { "$oid" : "51088c8804647f3fb9cef5c4" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Jonas", "lname" : "Davidsson", "ksm" : 2.95 }
+{ "_id" : { "$oid" : "51088cb404647f3fb9cef5c5" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Krzysztof", "lname" : "Jabłoński", "ksm" : 2.5 }
+{ "_id" : { "$oid" : "51088cc404647f3fb9cef5c6" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Łukasz", "lname" : "Jankowski", "ksm" : 2.5 }
+{ "_id" : { "$oid" : "51088cd804647f3fb9cef5c7" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Remigiusz", "lname" : "Perzyński", "ksm" : 2.5 }
+{ "_id" : { "$oid" : "51088ce704647f3fb9cef5c8" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Kacper", "lname" : "Rogowski", "ksm" : 2.5 }
