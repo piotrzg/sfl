@@ -1,0 +1,1 @@
+{ "_id" : { "$oid" : "5108878d04642235c280bf5f" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Piotr", "lname" : "Protasiewicz", "ksm" : 8.18 }
