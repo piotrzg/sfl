@@ -38,6 +38,10 @@
 
         <p>
 Zawodnicy:
+        <c:forEach var="zawodnik" items="${druzyna.zawodnicy}">
+            ${zawodnik.fname} ${zawodnik.lname} ${zawodnik.ksm}         <a href="usunZawodnika?id=${zawodnik.id}">Usun</a>
+            <br/>
+        </c:forEach>
         </p>
 
     <form action="saveTeamName" method="POST">

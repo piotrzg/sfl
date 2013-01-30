@@ -29,7 +29,6 @@ public class AccountServiceImpl implements AccountService {
     public Account findByUsername(String username)
     {
         Account acc = mongoTemplate.findOne(Query.query(Criteria.where("username").is(username)), Account.class);
-        System.out.println(acc);
         return acc;
     }
 

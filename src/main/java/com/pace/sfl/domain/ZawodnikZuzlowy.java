@@ -5,6 +5,8 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.layers.repository.mongo.RooMongoEntity;
 import org.springframework.roo.addon.tostring.RooToString;
 
+import java.math.BigInteger;
+
 @RooJavaBean
 @RooToString
 @RooMongoEntity
@@ -17,4 +19,21 @@ public class ZawodnikZuzlowy {
     private String lname;
 
     private double ksm;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ZawodnikZuzlowy that = (ZawodnikZuzlowy) o;
+
+        if (!this.getId().equals(that.getId())) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.getId().hashCode();
+    }
 }

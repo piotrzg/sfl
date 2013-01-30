@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.math.BigInteger;
 import java.security.Principal;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -63,8 +64,6 @@ public class CreateTeamController {
             sflDruzyna = new SflDruzyna();
             sflDruzyna.setName(teamName);
             sflDruzynaService.saveSflDruzyna(sflDruzyna);
-            System.out.println("name: "+name);
-            System.out.println("up: "+up);
             up.setSflDruzyna(sflDruzyna);
             ups.saveUserProfile(up);
             return "choosePlayers";
@@ -118,13 +117,39 @@ public class CreateTeamController {
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
         BigInteger bint = new BigInteger(zawodnikId);
         ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowy(bint);
-        HashSet zawodnicySet = (HashSet<ZawodnikZuzlowy>)sflDruzyna.getZawodnicy();
-        System.out.println(zawodnicySet);
+        HashSet<ZawodnikZuzlowy> zawodnicySet = (HashSet<ZawodnikZuzlowy>)sflDruzyna.getZawodnicy();
+
+        if(zawodnicySet.contains(zawodnik))
+            return "choosePlayers";
+
         zawodnicySet.add(zawodnik);
         sflDruzyna.setZawodnicy(zawodnicySet);
         sflDruzynaService.saveSflDruzyna(sflDruzyna);
 
         uiModel.addAttribute("zawodnikzuzlowy", zawodnik);
+        uiModel.addAttribute("druzyna", sflDruzyna);
+        return "choosePlayers";
+    }
+
+    @RequestMapping(value = "/usunZawodnika", produces = "text/html")
+    public String deletePlayer(@RequestParam("id") String zawodnikId, Model uiModel)
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        UserProfile up = ups.findByUsername(name);
+        SflDruzyna sflDruzyna = up.getSflDruzyna();
+
+        sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
+        BigInteger bint = new BigInteger(zawodnikId);
+        ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowy(bint);
+        HashSet zawodnicySet = (HashSet<ZawodnikZuzlowy>)sflDruzyna.getZawodnicy();
+        boolean isRemoved = zawodnicySet.remove(zawodnik);
+        sflDruzyna.setZawodnicy(zawodnicySet);
+        sflDruzynaService.saveSflDruzyna(sflDruzyna);
+
+        uiModel.addAttribute("zawodnikzuzlowy", zawodnik);
+        uiModel.addAttribute("druzyna", sflDruzyna);
         return "choosePlayers";
     }
 
