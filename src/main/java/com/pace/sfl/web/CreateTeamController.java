@@ -7,6 +7,7 @@ import com.pace.sfl.service.SflDruzynaService;
 import com.pace.sfl.service.UserProfileService;
 import com.pace.sfl.service.ZawodnikZuzlowyService;
 import com.pace.sfl.Constants;
+import com.pace.sfl.Utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -56,11 +57,6 @@ public class CreateTeamController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
 
-        if(name == null)
-        {
-            return "login";
-        }
-
         UserProfile up = ups.findByUsername(name);
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         if(sflDruzyna == null)
@@ -81,8 +77,24 @@ public class CreateTeamController {
     }
 
     @RequestMapping(value = "/choosePlayers")
-    public String justChoosePlayes()
+    public String justChoosePlayers(Model uiModel)
     {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        UserProfile up = ups.findByUsername(name);
+        if(up == null)
+            return "login";
+
+        SflDruzyna sflDruzyna = up.getSflDruzyna();
+        sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
+
+        double totalKSM = Utils.getTotalKSM((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("totalKSM", totalKSM);
+        boolean isValidTeamBasedOnKSM = Utils.isValidBasedOnKSM((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("isValidTeamBasedOnKSM",isValidTeamBasedOnKSM);
+        uiModel.addAttribute("druzyna", sflDruzyna);
+
         return "choosePlayers";
     }
 
@@ -136,17 +148,21 @@ public class CreateTeamController {
         if(zawodnicySet.contains(zawodnik))
         {
             uiModel.addAttribute("msgToUser", zawodnik.getFname() +" " +zawodnik.getLname()+" juz jest w skladzie");
-            uiModel.addAttribute("druzyna", sflDruzyna);
-            return "choosePlayers";
+        }
+        else
+        {
+            zawodnicySet.add(zawodnik);
+            sflDruzyna.setZawodnicy(zawodnicySet);
+            sflDruzynaService.saveSflDruzyna(sflDruzyna);
+
+            uiModel.addAttribute("msgToUser", zawodnik.getFname() +" " +zawodnik.getLname()+" dodany do skladu!") ;
+            uiModel.addAttribute("zawodnikzuzlowy", zawodnik);
         }
 
-
-        zawodnicySet.add(zawodnik);
-        sflDruzyna.setZawodnicy(zawodnicySet);
-        sflDruzynaService.saveSflDruzyna(sflDruzyna);
-
-        uiModel.addAttribute("msgToUser", zawodnik.getFname() +" " +zawodnik.getLname()+" dodany do skladu!") ;
-        uiModel.addAttribute("zawodnikzuzlowy", zawodnik);
+        double totalKSM = Utils.getTotalKSM((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("totalKSM", totalKSM);
+        boolean isValidTeamBasedOnKSM = Utils.isValidBasedOnKSM((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("isValidTeamBasedOnKSM",isValidTeamBasedOnKSM);
         uiModel.addAttribute("druzyna", sflDruzyna);
         return "choosePlayers";
     }
@@ -168,7 +184,8 @@ public class CreateTeamController {
         sflDruzyna.setZawodnicy(zawodnicySet);
         sflDruzynaService.saveSflDruzyna(sflDruzyna);
 
-        uiModel.addAttribute("zawodnikzuzlowy", zawodnik);
+        double totalKSM = Utils.getTotalKSM((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("totalKSM", totalKSM);
         uiModel.addAttribute("druzyna", sflDruzyna);
         return "choosePlayers";
     }

@@ -37,10 +37,15 @@
 
         <p>
 Zawodnicy:
+            <br/>
         <c:forEach var="zawodnik" items="${druzyna.zawodnicy}">
             ${zawodnik.fname} ${zawodnik.lname} ${zawodnik.ksm}         <a href="usunZawodnika?id=${zawodnik.id}">Usun</a>
             <br/>
         </c:forEach>
+            <br/>
+            Suma KSM Druzyny: ${totalKSM}
+            <br/>
+            ${isValidTeamBasedOnKSM}
         </p>
 
     <form action="saveTeamName" method="POST">
