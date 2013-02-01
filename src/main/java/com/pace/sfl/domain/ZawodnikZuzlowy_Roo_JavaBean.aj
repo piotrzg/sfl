@@ -31,4 +31,20 @@ privileged aspect ZawodnikZuzlowy_Roo_JavaBean {
         this.ksm = ksm;
     }
     
+    public boolean ZawodnikZuzlowy.isIsJunior() {
+        return this.isJunior;
+    }
+    
+    public void ZawodnikZuzlowy.setIsJunior(boolean isJunior) {
+        this.isJunior = isJunior;
+    }
+    
+    public boolean ZawodnikZuzlowy.isIsPolish() {
+        return this.isPolish;
+    }
+    
+    public void ZawodnikZuzlowy.setIsPolish(boolean isPolish) {
+        this.isPolish = isPolish;
+    }
+    
 }

@@ -20,6 +20,10 @@ public class ZawodnikZuzlowy {
 
     private double ksm;
 
+    private boolean isJunior;
+
+    private boolean isPolish;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -34,6 +38,6 @@ public class ZawodnikZuzlowy {
 
     @Override
     public int hashCode() {
-        return this.getId().hashCode();
+        return (fname+lname+ksm).hashCode();
     }
 }

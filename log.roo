@@ -58,3 +58,5 @@ repository mongo --interface ~.repository.SflDruzynaRepository
 service --interface ~.service.SflDruzynaService
 quit
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-01-28 22:07:45
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-01-31 21:33:24
+focus --class ~.domain.ZawodnikZuzlowy
