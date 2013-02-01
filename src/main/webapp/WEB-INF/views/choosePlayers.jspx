@@ -45,7 +45,11 @@ Zawodnicy:
             <br/>
             Suma KSM Druzyny: ${totalKSM}
             <br/>
-            ${isValidTeamBasedOnKSM}
+            Dozwolony sklad:${isValidTeamBasedOnKSM}
+            <br/>
+            Liczba juniorow: ${nrJuniors}
+            <br/>
+            Liczba Polakow: ${nrPolish}
         </p>
 
     <form action="saveTeamName" method="POST">

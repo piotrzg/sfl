@@ -9,3 +9,15 @@
 { "_id" : { "$oid" : "51088cc404647f3fb9cef5c6" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Łukasz", "lname" : "Jankowski", "ksm" : 2.5 }
 { "_id" : { "$oid" : "51088cd804647f3fb9cef5c7" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Remigiusz", "lname" : "Perzyński", "ksm" : 2.5 }
 { "_id" : { "$oid" : "51088ce704647f3fb9cef5c8" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Kacper", "lname" : "Rogowski", "ksm" : 2.5 }
+{ "_id" : { "$oid" : "510b497b0464de5b2dee1c8b" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Tomasz", "lname" : "Jędrzejak", "ksm" : 8.310000000000001, "isJunior" : false, "isPolish" : true }
+{ "_id" : { "$oid" : "510b49940464de5b2dee1c8c" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Fredrik", "lname" : "Lindgren", "ksm" : 6.95, "isJunior" : false, "isPolish" : false }
+{ "_id" : { "$oid" : "510b49ab0464de5b2dee1c8d" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Tai", "lname" : "Woffinden", "ksm" : 6.93, "isJunior" : false, "isPolish" : false }
+{ "_id" : { "$oid" : "510b50f70464a3f0af08bb50" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Sebastian", "lname" : "Ułamek", "ksm" : 6.77, "isJunior" : false, "isPolish" : true }
+{ "_id" : { "$oid" : "510b541c04645ce9cf2122de" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Nicolai", "lname" : "Klindt", "ksm" : 6.5, "isJunior" : false, "isPolish" : false }
+{ "_id" : { "$oid" : "510b544404645ce9cf2122df" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Jesper B.", "lname" : "Monberg", "ksm" : 6.5, "isJunior" : false, "isPolish" : false }
+{ "_id" : { "$oid" : "510b546404645ce9cf2122e0" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Tyron", "lname" : "Proctor", "ksm" : 6.5, "isJunior" : false, "isPolish" : false }
+{ "_id" : { "$oid" : "510b548304645ce9cf2122e1" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Dennis", "lname" : "Andersson", "ksm" : 4.54, "isJunior" : false, "isPolish" : false }
+{ "_id" : { "$oid" : "510b555a04645ce9cf2122e2" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Patryk", "lname" : "Malitowski", "ksm" : 2.53, "isJunior" : true, "isPolish" : true }
+{ "_id" : { "$oid" : "510b559604645ce9cf2122e3" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Patryk", "lname" : "Dolny", "ksm" : 2.5, "isJunior" : true, "isPolish" : true }
+{ "_id" : { "$oid" : "510b55b204645ce9cf2122e4" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Mateusz", "lname" : "Gradka", "ksm" : 2.5, "isJunior" : true, "isPolish" : true }
+{ "_id" : { "$oid" : "510b55f204645ce9cf2122e5" }, "_class" : "com.pace.sfl.domain.ZawodnikZuzlowy", "fname" : "Patryk", "lname" : "Kociemba", "ksm" : 2.5, "isJunior" : true, "isPolish" : true }

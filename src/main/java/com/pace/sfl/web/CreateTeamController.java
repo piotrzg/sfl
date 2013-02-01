@@ -163,6 +163,10 @@ public class CreateTeamController {
         uiModel.addAttribute("totalKSM", totalKSM);
         boolean isValidTeamBasedOnKSM = Utils.isValidBasedOnKSM((HashSet)sflDruzyna.getZawodnicy());
         uiModel.addAttribute("isValidTeamBasedOnKSM",isValidTeamBasedOnKSM);
+        int nrJuniors = Utils.howManyJuniors((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("nrJuniors", nrJuniors);
+        int nrPolish = Utils.howManyPolish((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("nrPolish", nrPolish);
         uiModel.addAttribute("druzyna", sflDruzyna);
         return "choosePlayers";
     }
@@ -186,6 +190,12 @@ public class CreateTeamController {
 
         double totalKSM = Utils.getTotalKSM((HashSet)sflDruzyna.getZawodnicy());
         uiModel.addAttribute("totalKSM", totalKSM);
+        boolean isValidTeamBasedOnKSM = Utils.isValidBasedOnKSM((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("isValidTeamBasedOnKSM",isValidTeamBasedOnKSM);
+        int nrJuniors = Utils.howManyJuniors((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("nrJuniors", nrJuniors);
+        int nrPolish = Utils.howManyPolish((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("nrPolish", nrPolish);
         uiModel.addAttribute("druzyna", sflDruzyna);
         return "choosePlayers";
     }

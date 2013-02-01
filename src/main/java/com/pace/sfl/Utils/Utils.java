@@ -51,7 +51,33 @@ public class Utils {
         if(bottom6Ksms > 40.0)
             return false;
 
-
         return true;
+    }
+
+    public static int howManyJuniors(HashSet<ZawodnikZuzlowy> zawodnicy)
+    {
+        Iterator<ZawodnikZuzlowy> zawodnicyIterator = zawodnicy.iterator();
+
+        int nrJuniors = 0;
+        while(zawodnicyIterator.hasNext())
+        {
+            nrJuniors += zawodnicyIterator.next().isIsJunior() ? 1:0;
+        }
+
+        return nrJuniors;
+    }
+
+
+    public static int howManyPolish(HashSet<ZawodnikZuzlowy> zawodnicy)
+    {
+        Iterator<ZawodnikZuzlowy> zawodnicyIterator = zawodnicy.iterator();
+
+        int nrPolish = 0;
+        while(zawodnicyIterator.hasNext())
+        {
+            nrPolish += zawodnicyIterator.next().isIsPolish() ? 1:0;
+        }
+
+        return nrPolish;
     }
 }
