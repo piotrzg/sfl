@@ -6,6 +6,7 @@ import com.pace.sfl.domain.ZawodnikZuzlowy;
 import com.pace.sfl.service.SflDruzynaService;
 import com.pace.sfl.service.UserProfileService;
 import com.pace.sfl.service.ZawodnikZuzlowyService;
+import com.pace.sfl.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,9 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigInteger;
-import java.security.Principal;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -56,6 +55,11 @@ public class CreateTeamController {
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
+
+        if(name == null)
+        {
+            return "login";
+        }
 
         UserProfile up = ups.findByUsername(name);
         SflDruzyna sflDruzyna = up.getSflDruzyna();
@@ -112,20 +116,36 @@ public class CreateTeamController {
         String name = auth.getName(); //get logged in username
 
         UserProfile up = ups.findByUsername(name);
+        if(up == null)
+            return "login";
+
         SflDruzyna sflDruzyna = up.getSflDruzyna();
 
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
-        BigInteger bint = new BigInteger(zawodnikId);
-        ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowy(bint);
         HashSet<ZawodnikZuzlowy> zawodnicySet = (HashSet<ZawodnikZuzlowy>)sflDruzyna.getZawodnicy();
 
-        if(zawodnicySet.contains(zawodnik))
+        if(zawodnicySet.size() >= Constants.MAX_TEAM_PLAYERS)
+        {
+            uiModel.addAttribute("msgToUser", "Sklad druzyny nie moze przekraczac "+Constants.MAX_TEAM_PLAYERS + " zawodnikow.");
+            uiModel.addAttribute("druzyna", sflDruzyna);
             return "choosePlayers";
+        }
+
+        BigInteger bint = new BigInteger(zawodnikId);
+        ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowy(bint);
+        if(zawodnicySet.contains(zawodnik))
+        {
+            uiModel.addAttribute("msgToUser", zawodnik.getFname() +" " +zawodnik.getLname()+" juz jest w skladzie");
+            uiModel.addAttribute("druzyna", sflDruzyna);
+            return "choosePlayers";
+        }
+
 
         zawodnicySet.add(zawodnik);
         sflDruzyna.setZawodnicy(zawodnicySet);
         sflDruzynaService.saveSflDruzyna(sflDruzyna);
 
+        uiModel.addAttribute("msgToUser", zawodnik.getFname() +" " +zawodnik.getLname()+" dodany do skladu!") ;
         uiModel.addAttribute("zawodnikzuzlowy", zawodnik);
         uiModel.addAttribute("druzyna", sflDruzyna);
         return "choosePlayers";

@@ -32,9 +32,8 @@
         <h1>${fn:escapeXml(title)}</h1>
 
     <br/>
-        <c:if test="${not empty zawodnikzuzlowy}">
-            ${zawodnikzuzlowy.fname} ${zawodnikzuzlowy.lname} dodany do skladu!
-        </c:if>
+    ${msgToUser}
+
 
         <p>
 Zawodnicy:
