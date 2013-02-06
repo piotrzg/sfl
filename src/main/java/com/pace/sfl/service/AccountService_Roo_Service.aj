@@ -15,6 +15,6 @@ privileged aspect AccountService_Roo_Service {
     public abstract Account AccountService.findAccount(BigInteger id);    
     public abstract List<Account> AccountService.findAllAccounts();    
     public abstract List<Account> AccountService.findAccountEntries(int firstResult, int maxResults);    
-    public abstract void AccountService.saveAccount(Account account);    
+    public abstract String AccountService.saveAccount(Account account);
     public abstract Account AccountService.updateAccount(Account account);    
 }

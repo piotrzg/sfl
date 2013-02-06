@@ -4,6 +4,8 @@ import com.pace.sfl.Constants;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,6 +15,14 @@ import java.util.*;
  * To change this template use File | Settings | File Templates.
  */
 public class Utils {
+
+    public static String emailPattern = "^[a-zA-Z][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$";
+
+    public static boolean isEmail(String email) {
+        Pattern p = Pattern.compile(emailPattern); // Set the email pattern string
+        Matcher m = p.matcher(email); // Match the given string with the pattern
+        return m.matches();
+    }
 
     public static double getTotalKSM(HashSet<ZawodnikZuzlowy> zawodnicy)
     {

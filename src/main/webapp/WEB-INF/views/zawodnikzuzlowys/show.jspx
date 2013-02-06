@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields"
-     xmlns:jsp="http://java.sun.com/JSP/Page"
-     xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_pace_sfl_domain_ZawodnikZuzlowy" object="${zawodnikzuzlowy}" path="/zawodnikzuzlowys" z="bkMu8C01iIrx0bAXc3CYjLEMzAY=">
         <field:display field="fname" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_fname" object="${zawodnikzuzlowy}" z="9AIIELqW8ZWNOW32c74pTRJ0RnM="/>
         <field:display field="lname" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_lname" object="${zawodnikzuzlowy}" z="rmKb2ESyujjIT2pBzyZnMAuuJHQ="/>
         <field:display field="ksm" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_ksm" object="${zawodnikzuzlowy}" z="6kRAMxgRoZXPcmaDx/86wXZFIwY="/>
-        <field:display field="isJunior" label="Junior" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_isJunior" object="${zawodnikzuzlowy}"/>
-        <field:display field="isPolish" label="Polish" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_isPolish" object="${zawodnikzuzlowy}"/>
+        <field:display field="isJunior" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_isJunior" label="Junior" object="${zawodnikzuzlowy}"/>
+        <field:display field="isPolish" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_isPolish" label="Polish" object="${zawodnikzuzlowy}"/>
+        <field:display field="weeklyResults" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_weeklyResults" object="${zawodnikzuzlowy}" z="bfh8WFbrOZdlYoXKruwtWIGHiHA="/>
     </page:show>
 </div>

@@ -11,16 +11,19 @@
     <p>
       <spring:message code="webflow_state1_message" />
     </p>
+      ${bledy}
       <form:form modelAttribute="account">
       <div class="submit">
           <table>
               <tr><td>Username:</td><td><form:input path="username"></form:input></td></tr>
-              <tr><td>Password:</td><td><form:password path="password"></form:password></td></tr>
+              <tr><td>Email:</td><td><form:input path="email"></form:input></td></tr>
+              <tr><td>Hasło:</td><td><form:password path="password"></form:password></td></tr>
+              <tr><td>Powtórz hasło:</td><td><form:password path="retypePassword"></form:password></td></tr>
           </table>
         <spring:message var="cancel" code="button_cancel" htmlEscape="false" />
         <spring:message var="proceed" code="button_proceed" htmlEscape="false" />
         <input type="submit" id="cancel" name="_eventId_cancel" value="${fn:escapeXml(cancel)}" />
-        <input type="submit" id="success" name="_eventId_success" value="${fn:escapeXml(proceed)}" />
+        <input type="submit" id="success" name="_eventId_success" onClick="foo()" value="${fn:escapeXml(proceed)}" />
       </div>
     </form:form>
   </util:panel>

@@ -3,6 +3,7 @@
 
 package com.pace.sfl.domain;
 
+import com.pace.sfl.IndividualResult;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
 
 privileged aspect ZawodnikZuzlowy_Roo_JavaBean {
@@ -45,6 +46,14 @@ privileged aspect ZawodnikZuzlowy_Roo_JavaBean {
     
     public void ZawodnikZuzlowy.setIsPolish(boolean isPolish) {
         this.isPolish = isPolish;
+    }
+    
+    public IndividualResult ZawodnikZuzlowy.getWeeklyResults() {
+        return this.weeklyResults;
+    }
+    
+    public void ZawodnikZuzlowy.setWeeklyResults(IndividualResult weeklyResults) {
+        this.weeklyResults = weeklyResults;
     }
     
 }

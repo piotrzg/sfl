@@ -1,5 +1,6 @@
 package com.pace.sfl.service;
 
+import com.pace.sfl.Utils.Utils;
 import com.pace.sfl.domain.Account;
 import com.pace.sfl.domain.UserProfile;
 import com.pace.sfl.repository.AccountRepository;
@@ -36,15 +37,32 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.save(account);
     }
 
-    public void saveAccount(Account account) {
+    public String saveAccount(Account account) {
         List authorities = new ArrayList();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-        account.setRoles(authorities);
-        accountRepository.save(account);
-        UserProfile up = new UserProfile();
-        up.setUserAccount(account);
-        ups.saveUserProfile(up);
+        System.out.println("Account: "+account);
+        if(account.getPassword().equals(account.getRetypePassword()))
+        {
+            if(Utils.isEmail(account.getEmail()))
+            {
+                account.setRoles(authorities);
+                accountRepository.save(account);
+
+                UserProfile up = new UserProfile();
+                up.setUserAccount(account);
+                ups.saveUserProfile(up);
+                return "good";
+            }
+            else
+            {
+                return "error_invalid_email";
+            }
+        }
+        else
+        {
+            return "error_hasla";
+        }
     }
 
     public List<Account> findAccountEntries(int firstResult, int maxResults) {

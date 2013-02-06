@@ -1,11 +1,11 @@
 package com.pace.sfl.domain;
 
+import com.pace.sfl.IndividualResult;
+import java.math.BigInteger;
 import javax.validation.constraints.NotNull;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.layers.repository.mongo.RooMongoEntity;
 import org.springframework.roo.addon.tostring.RooToString;
-
-import java.math.BigInteger;
 
 @RooJavaBean
 @RooToString
@@ -24,20 +24,19 @@ public class ZawodnikZuzlowy {
 
     private boolean isPolish;
 
+    private IndividualResult weeklyResults;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         ZawodnikZuzlowy that = (ZawodnikZuzlowy) o;
-
         if (!this.getId().equals(that.getId())) return false;
-
         return true;
     }
 
     @Override
     public int hashCode() {
-        return (fname+lname+ksm).hashCode();
+        return (fname + lname + ksm).hashCode();
     }
 }

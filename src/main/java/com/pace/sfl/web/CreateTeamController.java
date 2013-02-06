@@ -1,5 +1,6 @@
 package com.pace.sfl.web;
 
+import com.pace.sfl.IndividualResult;
 import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.UserProfile;
 import com.pace.sfl.domain.ZawodnikZuzlowy;

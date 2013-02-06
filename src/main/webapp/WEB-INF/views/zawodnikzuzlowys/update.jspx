@@ -2,9 +2,15 @@
 <div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+    <field:display field="fname" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_fname" label="Imie" object="${zawodnikZuzlowy}"/>
+    <field:display field="lname" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_lname" label="Nazwisko" object="${zawodnikZuzlowy}"/>
+    <field:display field="ksm" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_ksm" label="KSM" object="${zawodnikZuzlowy}"/>
     <form:update id="fu_com_pace_sfl_domain_ZawodnikZuzlowy" modelAttribute="zawodnikZuzlowy" path="/zawodnikzuzlowys" versionField="none" z="Z3mtxmfNrWAGLXN29MfdGrnbUEM=">
+        <field:checkbox field="isJunior" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_isJunior" label="Junior"/>
+        <field:checkbox field="isPolish" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_isPolish" label="Polish"/>
         <field:input field="fname" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_fname" required="true" z="Qba2QLU4uclmYnkSLXF04kpHb0Q="/>
         <field:input field="lname" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_lname" required="true" z="qOSBNEPPcoWpRyiLBbE+JL5gFTw="/>
         <field:input field="ksm" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_ksm" z="pID8juQOEYJXX87QtaTGbRVnwIs="/>
+        <field:input field="weeklyResults" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_weeklyResults" z="IVRuWApg/a7FlSVe/mfEh8If8sE="/>
     </form:update>
 </div>

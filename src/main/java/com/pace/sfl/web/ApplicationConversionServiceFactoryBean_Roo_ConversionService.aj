@@ -4,11 +4,9 @@
 package com.pace.sfl.web;
 
 import com.pace.sfl.domain.Account;
-import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.UserProfile;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
 import com.pace.sfl.service.AccountService;
-import com.pace.sfl.service.SflDruzynaService;
 import com.pace.sfl.service.UserProfileService;
 import com.pace.sfl.service.ZawodnikZuzlowyService;
 import com.pace.sfl.web.ApplicationConversionServiceFactoryBean;
@@ -24,9 +22,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     
     @Autowired
     AccountService ApplicationConversionServiceFactoryBean.accountService;
-    
-    @Autowired
-    SflDruzynaService ApplicationConversionServiceFactoryBean.sflDruzynaService;
     
     @Autowired
     UserProfileService ApplicationConversionServiceFactoryBean.userProfileService;
@@ -54,30 +49,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new org.springframework.core.convert.converter.Converter<java.lang.String, com.pace.sfl.domain.Account>() {
             public com.pace.sfl.domain.Account convert(String id) {
                 return getObject().convert(getObject().convert(id, BigInteger.class), Account.class);
-            }
-        };
-    }
-    
-    public Converter<SflDruzyna, String> ApplicationConversionServiceFactoryBean.getSflDruzynaToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.pace.sfl.domain.SflDruzyna, java.lang.String>() {
-            public String convert(SflDruzyna sflDruzyna) {
-                return new StringBuilder().append(sflDruzyna.getName()).toString();
-            }
-        };
-    }
-    
-    public Converter<BigInteger, SflDruzyna> ApplicationConversionServiceFactoryBean.getIdToSflDruzynaConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.math.BigInteger, com.pace.sfl.domain.SflDruzyna>() {
-            public com.pace.sfl.domain.SflDruzyna convert(java.math.BigInteger id) {
-                return sflDruzynaService.findSflDruzyna(id);
-            }
-        };
-    }
-    
-    public Converter<String, SflDruzyna> ApplicationConversionServiceFactoryBean.getStringToSflDruzynaConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.pace.sfl.domain.SflDruzyna>() {
-            public com.pace.sfl.domain.SflDruzyna convert(String id) {
-                return getObject().convert(getObject().convert(id, BigInteger.class), SflDruzyna.class);
             }
         };
     }
@@ -134,9 +105,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getAccountToStringConverter());
         registry.addConverter(getIdToAccountConverter());
         registry.addConverter(getStringToAccountConverter());
-        registry.addConverter(getSflDruzynaToStringConverter());
-        registry.addConverter(getIdToSflDruzynaConverter());
-        registry.addConverter(getStringToSflDruzynaConverter());
         registry.addConverter(getUserProfileToStringConverter());
         registry.addConverter(getIdToUserProfileConverter());
         registry.addConverter(getStringToUserProfileConverter());
