@@ -41,9 +41,7 @@ public class AccountServiceImpl implements AccountService {
 
         if(acc == null)
         {
-            System.out.println("acc0: "+acc);
             acc = mongoTemplate.findOne(Query.query(Criteria.where("email").is(username)), Account.class);
-            System.out.println("acc1: "+acc);
             if(acc == null)
                 return null;
         }

@@ -13,4 +13,7 @@
 <definition extends="default" name="zawodnikzuzlowys/update">
         <put-attribute name="body" value="/WEB-INF/views/zawodnikzuzlowys/update.jspx"/>
     </definition>
+    <definition extends="default" name="zawodnikzuzlowys/zawodnik">
+        <put-attribute name="body" value="/WEB-INF/views/zawodnikzuzlowys/zawodnik.jspx"/>
+    </definition>
 </tiles-definitions>

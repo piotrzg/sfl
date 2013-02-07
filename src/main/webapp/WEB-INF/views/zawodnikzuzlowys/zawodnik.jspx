@@ -1,0 +1,31 @@
+<div xmlns:spring="http://www.springframework.org/tags"
+     xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8" />
+    <jsp:output omit-xml-declaration="yes" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"><jsp:text /></script>
+    <script type="text/javascript" charset="utf8">
+        // <![CDATA[
+
+function foo(zid, round, value)
+{
+    var saveData = {};
+    saveData.zawodnikId = zid;
+    saveData.round = round;
+    saveData.value = value;
+    $.post("saveIndividualResults", saveData,
+            function(data){
+                alert(data.result); // John
+            }, "json");
+}
+        // ]]>
+    </script>
+    <h1>${zawodnik.fname} ${zawodnik.lname}</h1>
+
+    <c:forEach var="ir" items="${zawodnik.weeklyResults}">
+        ${ir.round}: <input type="text" id="${ir.round}" name="${ir.round}" value="" />
+        <a onclick="foo(${zawodnik.id},${ir.round}, document.getElementById(${ir.round}).value)" href="javascript:void(0)">Zapisz</a>
+        <br/>
+    </c:forEach>
+</div>

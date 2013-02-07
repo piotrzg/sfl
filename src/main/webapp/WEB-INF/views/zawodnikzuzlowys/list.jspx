@@ -3,13 +3,12 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_com_pace_sfl_domain_ZawodnikZuzlowy" items="${zawodnikzuzlowys}" z="ZGjh1WM+f/ZF+4iRw/wze6MPPyc=">
-        <table:table data="${zawodnikzuzlowys}" id="l_com_pace_sfl_domain_ZawodnikZuzlowy" path="/zawodnikzuzlowys" z="kwlsUbrbThHothaXDMg13muuIQE=">
+        <table:table data="${zawodnikzuzlowys}" id="l_com_pace_sfl_domain_ZawodnikZuzlowy" path="/zawodnikzuzlowys">
             <table:column id="c_com_pace_sfl_domain_ZawodnikZuzlowy_fname" property="fname" z="Ot9mGyRxVcv+ncAWqDnALbJNE7E="/>
             <table:column id="c_com_pace_sfl_domain_ZawodnikZuzlowy_lname" property="lname" z="qxMErWhKxl/UgB3Kydq3G1+1BzM="/>
             <table:column id="c_com_pace_sfl_domain_ZawodnikZuzlowy_ksm" property="ksm" z="HV426pjsjgTVWsiMWZx5T2sMsQA="/>
             <table:column id="c_com_pace_sfl_domain_ZawodnikZuzlowy_isJunior" label="Junior" property="isJunior"/>
             <table:column id="c_com_pace_sfl_domain_ZawodnikZuzlowy_isPolish" label="Polak" property="isPolish"/>
-            <table:column id="c_com_pace_sfl_domain_ZawodnikZuzlowy_weeklyResults" property="weeklyResults" z="Hbufpss0v8hHjn0yncy751QaC7s="/>
         </table:table>
     </page:list>
 </div>

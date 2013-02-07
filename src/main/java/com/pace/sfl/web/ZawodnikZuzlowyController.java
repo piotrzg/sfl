@@ -8,9 +8,7 @@ import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -27,12 +25,19 @@ public class ZawodnikZuzlowyController {
     ZawodnikZuzlowyService zawodnicy;
 
     @RequestMapping("/zawodnik/{id}")
-    public String showPlayer(@RequestParam("id") String zawodnikId, Model uiModel)
+    public String showPlayer(@PathVariable("id") String zawodnikId, Model uiModel)
     {
         BigInteger bint = new BigInteger(zawodnikId);
         ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowy(bint);
         uiModel.addAttribute("zawodnik", zawodnik);
-        return "zawodnik";
+        return "zawodnikzuzlowys/zawodnik";
+    }
+
+    @RequestMapping(value = "/zawodnik/saveIndividualResults", method = RequestMethod.POST)
+    public @ResponseBody String saveIndResult(@RequestBody String json)
+    {
+        System.out.println("json: "+json);
+        return "{\"result\":\"OK\"}";
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")

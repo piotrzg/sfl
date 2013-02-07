@@ -12,9 +12,17 @@ public class IndividualResult {
     public IndividualResult(int r, double tp)
     {
         this.totalPoints = tp;
-        this.round = r;
+        this.setRound(r);
     }
 
     private double totalPoints;
     private int round;
+
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
 }
