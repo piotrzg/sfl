@@ -104,6 +104,18 @@ public class CreateTeamController {
     {
         List<ZawodnikZuzlowy> listaZawodnikow = zawodnicy.findAllZawodnikZuzlowys();
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        UserProfile up = ups.findByUsername(name);
+        HashSet<ZawodnikZuzlowy> zawodnicySet = null;
+        if(up != null)
+        {
+            SflDruzyna sflDruzyna = up.getSflDruzyna();
+            sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
+            zawodnicySet = (HashSet<ZawodnikZuzlowy>)sflDruzyna.getZawodnicy();
+        }
+
         StringBuilder sb = new StringBuilder();
         sb.append("{\"aaData\": [");
         for(int i=0; i<listaZawodnikow.size();i++)
@@ -113,12 +125,15 @@ public class CreateTeamController {
             sb.append('"'+listaZawodnikow.get(i).getLname() +" "+ listaZawodnikow.get(i).getFname()+'"');
             sb.append(',');
             sb.append(listaZawodnikow.get(i).getKsm());
-            sb.append(',');
-            sb.append("\"<a href='dodajZawodnika?id="+listaZawodnikow.get(i).getId()+"'>Dodaj do skladu</a>\"");
+            if(zawodnicySet == null || !zawodnicySet.contains(listaZawodnikow.get(i))){
+                sb.append(",\"<a href='dodajZawodnika?id="+listaZawodnikow.get(i).getId()+"'>Dodaj do skladu</a>\"");
+            }
+            else{
+                sb.append(",\"W skladzie\"");
+            }
             sb.append("]");
         }
         sb.append("]}");
-//        System.out.println(sb.toString());
         return sb.toString();
     }
 
@@ -133,7 +148,6 @@ public class CreateTeamController {
             return "login";
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
-
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
         HashSet<ZawodnikZuzlowy> zawodnicySet = (HashSet<ZawodnikZuzlowy>)sflDruzyna.getZawodnicy();
 

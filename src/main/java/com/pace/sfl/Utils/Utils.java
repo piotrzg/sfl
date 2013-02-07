@@ -52,12 +52,12 @@ public class Utils {
         Collections.sort(ksms);
 
         double bottom6Ksms = 0.0;
-        for(int i=0; i<6; i++)
+        for(int i=0; i<6 && i<zawodnicy.size(); i++)
         {
             bottom6Ksms += ksms.get(i);
         }
 
-        System.out.println("bottom 6 KSMs: "+bottom6Ksms);
+//        System.out.println("bottom 6 KSMs: "+bottom6Ksms);
         if(bottom6Ksms > 40.0)
             return false;
 
