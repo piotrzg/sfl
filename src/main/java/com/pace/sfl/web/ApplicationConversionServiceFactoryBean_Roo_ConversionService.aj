@@ -32,7 +32,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Account, String> ApplicationConversionServiceFactoryBean.getAccountToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.pace.sfl.domain.Account, java.lang.String>() {
             public String convert(Account account) {
-                return new StringBuilder().append(account.getUsername()).append(' ').append(account.getEmail()).append(' ').append(account.getPassword()).toString();
+                return new StringBuilder().append(account.getRetypePassword()).append(' ').append(account.getUsername()).append(' ').append(account.getEmail()).append(' ').append(account.getPassword()).toString();
             }
         };
     }

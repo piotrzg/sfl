@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.mail.MailException;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,9 +30,24 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     UserProfileService ups;
 
+    @Autowired
+    private MailSender mailSender;
+    @Autowired
+    private SimpleMailMessage templateMessage;
+
     public Account findByUsername(String username)
     {
         Account acc = mongoTemplate.findOne(Query.query(Criteria.where("username").is(username)), Account.class);
+
+        if(acc == null)
+        {
+            System.out.println("acc0: "+acc);
+            acc = mongoTemplate.findOne(Query.query(Criteria.where("email").is(username)), Account.class);
+            System.out.println("acc1: "+acc);
+            if(acc == null)
+                return null;
+        }
+
         return acc;
     }
 
@@ -52,6 +70,19 @@ public class AccountServiceImpl implements AccountService {
                 UserProfile up = new UserProfile();
                 up.setUserAccount(account);
                 ups.saveUserProfile(up);
+
+                // Create a thread safe "copy" of the template message and customize it
+                SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
+                msg.setTo(account.getEmail());
+                msg.setText("Witamy w serwisie Speedway Fantasy!");
+                try{
+                    this.mailSender.send(msg);
+                }
+                catch(MailException ex) {
+                    // simply log it and go on...
+                    System.err.println(ex.getMessage());
+                }
+
                 return "good";
             }
             else

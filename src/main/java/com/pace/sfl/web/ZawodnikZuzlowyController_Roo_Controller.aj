@@ -25,23 +25,6 @@ privileged aspect ZawodnikZuzlowyController_Roo_Controller {
     @Autowired
     ZawodnikZuzlowyService ZawodnikZuzlowyController.zawodnikZuzlowyService;
     
-    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String ZawodnikZuzlowyController.create(@Valid ZawodnikZuzlowy zawodnikZuzlowy, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
-            populateEditForm(uiModel, zawodnikZuzlowy);
-            return "zawodnikzuzlowys/create";
-        }
-        uiModel.asMap().clear();
-        zawodnikZuzlowyService.saveZawodnikZuzlowy(zawodnikZuzlowy);
-        return "redirect:/zawodnikzuzlowys/" + encodeUrlPathSegment(zawodnikZuzlowy.getId().toString(), httpServletRequest);
-    }
-    
-    @RequestMapping(params = "form", produces = "text/html")
-    public String ZawodnikZuzlowyController.createForm(Model uiModel) {
-        populateEditForm(uiModel, new ZawodnikZuzlowy());
-        return "zawodnikzuzlowys/create";
-    }
-    
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String ZawodnikZuzlowyController.show(@PathVariable("id") BigInteger id, Model uiModel) {
         uiModel.addAttribute("zawodnikzuzlowy", zawodnikZuzlowyService.findZawodnikZuzlowy(id));

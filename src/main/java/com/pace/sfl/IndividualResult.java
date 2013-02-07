@@ -9,10 +9,12 @@ public class IndividualResult {
 
     }
 
-    public IndividualResult(double tp)
+    public IndividualResult(int r, double tp)
     {
         this.totalPoints = tp;
+        this.round = r;
     }
 
     private double totalPoints;
+    private int round;
 }

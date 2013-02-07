@@ -37,6 +37,7 @@ public class CustomMongoSecurityService implements UserDetailsService {
 
         try {
 
+            System.out.println("loadUserByUsername: "+username);
             this.user = userService.findByUsername(username);
 
             boolean enabled = true;
@@ -57,6 +58,7 @@ public class CustomMongoSecurityService implements UserDetailsService {
                     );
 
         } catch (Exception e) {
+            System.out.println("e: "+e.getMessage());
             throw new RuntimeException(e);
         }
 

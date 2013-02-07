@@ -2,6 +2,7 @@ package com.pace.sfl.domain;
 
 import com.pace.sfl.IndividualResult;
 import java.math.BigInteger;
+import java.util.List;
 import javax.validation.constraints.NotNull;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.layers.repository.mongo.RooMongoEntity;
@@ -24,7 +25,7 @@ public class ZawodnikZuzlowy {
 
     private boolean isPolish;
 
-    private IndividualResult weeklyResults;
+    private List<IndividualResult> weeklyResults;
 
     @Override
     public boolean equals(Object o) {

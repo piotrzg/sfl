@@ -71,3 +71,6 @@ field other --type ~.IndividualResult --fieldName weeklyResults
 exit
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-02-03 00:23:44
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-02-05 20:15:00
+quit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-02-06 00:11:19
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-02-06 20:11:14
