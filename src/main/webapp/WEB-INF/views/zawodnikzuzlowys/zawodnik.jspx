@@ -13,11 +13,18 @@ function foo(zid, round, value)
     var saveData = {};
     saveData.zawodnikId = zid;
     saveData.round = round;
-    saveData.value = value;
-    $.post("saveIndividualResults", saveData,
-            function(data){
-                alert(data.result); // John
-            }, "json");
+    saveData.biegiStr = value;
+    saveData = JSON.stringify(saveData);
+    jQuery.ajax ({
+        url: "saveIndividualResults/"+zid,
+        type: "POST",
+        data: JSON.stringify({"round": round, "biegiStr":value}),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function(){
+            //
+        }
+    });
 }
         // ]]>
     </script>
@@ -25,7 +32,7 @@ function foo(zid, round, value)
 
     <c:forEach var="ir" items="${zawodnik.weeklyResults}">
         ${ir.round}: <input type="text" id="${ir.round}" name="${ir.round}" value="" />
-        <a onclick="foo(${zawodnik.id},${ir.round}, document.getElementById(${ir.round}).value)" href="javascript:void(0)">Zapisz</a>
+        <a onclick="foo('${zid}',${ir.round}, document.getElementById(${ir.round}).value)" href="javascript:void(0)">Zapisz</a>
         <br/>
     </c:forEach>
 </div>

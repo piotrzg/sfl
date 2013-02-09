@@ -90,4 +90,40 @@ public class Utils {
 
         return nrPolish;
     }
+
+
+    public static double parseBiegiStr(String bStr)
+    {
+        double totalPoints = 0.0;
+        bStr = bStr.trim();
+        String [] biegi  = bStr.split(",");
+
+        Pattern p = Pattern.compile( "([0-9]*)(\\.[0|5])?");
+
+        for(int i=0; i<biegi.length; i++)
+        {
+            String bieg = biegi[i];
+            bieg = bieg.trim();
+            Matcher m = p.matcher(bieg);
+            if(m.matches())
+                totalPoints += Double.valueOf(bieg);
+            else
+            {
+                if(bieg.indexOf('*')>-1)
+                {
+                    String parsedBieg = bieg.substring(0,bieg.indexOf('*'));
+                    m = p.matcher(parsedBieg);
+                    if(m.matches())
+                        totalPoints += Double.valueOf(parsedBieg);
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+
+        return totalPoints;
+    }
+
 }

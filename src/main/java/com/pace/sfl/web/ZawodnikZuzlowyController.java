@@ -1,8 +1,11 @@
 package com.pace.sfl.web;
 
 import com.pace.sfl.IndividualResult;
+import com.pace.sfl.Utils.Utils;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
 import com.pace.sfl.service.ZawodnikZuzlowyService;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.util.JSONWrappedObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +34,31 @@ public class ZawodnikZuzlowyController {
         BigInteger bint = new BigInteger(zawodnikId);
         ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowy(bint);
         uiModel.addAttribute("zawodnik", zawodnik);
+        uiModel.addAttribute("zid", zawodnik.getId().toString());
         return "zawodnikzuzlowys/zawodnik";
     }
 
-    @RequestMapping(value = "/zawodnik/saveIndividualResults", method = RequestMethod.POST)
-    public @ResponseBody String saveIndResult(@RequestBody String json)
+    @RequestMapping(
+            value = "/zawodnik/saveIndividualResults/{zid}", method = RequestMethod.POST)
+    public @ResponseBody String saveIndResult(@RequestBody String json, @PathVariable("zid") String zid)
     {
-        System.out.println("json: "+json);
+        ObjectMapper om = new ObjectMapper();
+        try {
+            IndividualResult ir = om.readValue(json, IndividualResult.class);
+            double tp = Utils.parseBiegiStr(ir.getBiegiStr());
+
+            System.out.println("Total Points: "+tp);
+
+            BigInteger bint = new BigInteger(zid);
+            ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowy(bint);
+            ir.setTotalPoints(tp);
+            zawodnik.getWeeklyResults().set(ir.getRound()+2, ir);
+            zawodnicy.saveZawodnikZuzlowy(zawodnik);
+
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
         return "{\"result\":\"OK\"}";
     }
 
