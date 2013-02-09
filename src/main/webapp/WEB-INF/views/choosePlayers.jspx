@@ -29,7 +29,7 @@
         // ]]>
     </script>
 
-        <h1>${fn:escapeXml(title)}</h1>
+        <h1>Druzyna:  ${druzyna.name}</h1>
 
     <br/>
     ${msgToUser}
@@ -39,7 +39,7 @@
 Zawodnicy:
             <br/>
         <c:forEach var="zawodnik" items="${druzyna.zawodnicy}">
-            ${zawodnik.fname} ${zawodnik.lname} ${zawodnik.ksm}         <a href="usunZawodnika?id=${zawodnik.id}">Usun</a>
+            ${zawodnik.fname} ${zawodnik.lname} ${zawodnik.ksm}  <a href="usunZawodnika?id=${zawodnik.id}">Usun</a>
             <br/>
         </c:forEach>
             <br/>

@@ -47,7 +47,20 @@ public class CreateTeamController {
     @RequestMapping(value = "/ct", produces = "text/html")
     public String show()
     {
-        return "createTeam";
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        UserProfile up = ups.findByUsername(name);
+        if(up == null)
+            return "login";
+
+        SflDruzyna sflDruzyna = up.getSflDruzyna();
+        if(sflDruzyna == null)
+            return "createTeam";
+        else
+        {
+            return "choosePlayers";
+        }
     }
 
 
