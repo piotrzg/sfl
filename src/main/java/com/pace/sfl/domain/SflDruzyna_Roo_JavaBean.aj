@@ -3,8 +3,10 @@
 
 package com.pace.sfl.domain;
 
+import com.pace.sfl.TeamWeekResult;
 import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
+import java.util.List;
 import java.util.Set;
 
 privileged aspect SflDruzyna_Roo_JavaBean {
@@ -23,6 +25,22 @@ privileged aspect SflDruzyna_Roo_JavaBean {
     
     public void SflDruzyna.setZawodnicy(Set<ZawodnikZuzlowy> zawodnicy) {
         this.zawodnicy = zawodnicy;
+    }
+    
+    public boolean SflDruzyna.isLocked() {
+        return this.locked;
+    }
+    
+    public void SflDruzyna.setLocked(boolean locked) {
+        this.locked = locked;
+    }
+    
+    public List<TeamWeekResult> SflDruzyna.getTeamWeekResultList() {
+        return this.teamWeekResultList;
+    }
+    
+    public void SflDruzyna.setTeamWeekResultList(List<TeamWeekResult> teamWeekResultList) {
+        this.teamWeekResultList = teamWeekResultList;
     }
     
 }

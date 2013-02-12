@@ -10,4 +10,5 @@ package com.pace.sfl;
 public class Constants {
 
     public static int MAX_TEAM_PLAYERS = 13;
+    public static int NR_ROUNDS = 22;
 }

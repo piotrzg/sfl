@@ -14,7 +14,6 @@
 
         $(document).ready(function() {
 
-
             var oTable = $('#example').dataTable( {
                 "aoColumnDefs": [
                     { "bSortable": false, "aTargets": [ 2 ] }
@@ -23,17 +22,16 @@
                 "sAjaxSource": "getAllPlayers"
             } );
 
-
-
         } );
         // ]]>
     </script>
 
-        <h1>Druzyna:  ${druzyna.name}</h1>
+    <h1>Druzyna:  ${druzyna.name}</h1>
+    <a href="zglosDruzyne">Zglos ${druzyna.name} do rywalizacji</a>
 
+    <h2>${whyTeamIsInvalidMsg}</h2>
     <br/>
     ${msgToUser}
-
 
         <p>
 Zawodnicy:
@@ -52,7 +50,6 @@ Zawodnicy:
             Liczba Polakow: ${nrPolish}
         </p>
 
-    <form action="saveTeamName" method="POST">
 
         <table id="example">
             <thead>
@@ -64,14 +61,4 @@ Zawodnicy:
             </thead>
             <tbody>            </tbody>
         </table>
-
-
-        <br/>
-
-        <spring:message var="cancel" code="button_cancel" htmlEscape="false" />
-        <spring:message var="save" code="button_save" htmlEscape="false" />
-        <input type="submit" id="success" name="_eventId_success" value="${fn:escapeXml(save)}" />
-        <input type="submit" id="cancel" name="_eventId_cancel" value="${fn:escapeXml(cancel)}" />
-
-    </form>
 </div>

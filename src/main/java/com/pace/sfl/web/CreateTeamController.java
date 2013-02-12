@@ -1,6 +1,7 @@
 package com.pace.sfl.web;
 
 import com.pace.sfl.IndividualResult;
+import com.pace.sfl.TeamWeekResult;
 import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.UserProfile;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
@@ -30,7 +31,6 @@ import java.util.List;
  * User: Piotr
  * Date: 1/26/13
  * Time: 10:13 PM
- * To change this template use File | Settings | File Templates.
  */
 @Controller
 public class CreateTeamController {
@@ -226,6 +226,49 @@ public class CreateTeamController {
         uiModel.addAttribute("nrPolish", nrPolish);
         uiModel.addAttribute("druzyna", sflDruzyna);
         return "choosePlayers";
+    }
+
+    @RequestMapping(value = "/zglosDruzyne", produces = "text/html")
+    public String submitTeam(Model uiModel)
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        UserProfile up = ups.findByUsername(name);
+        SflDruzyna sflDruzyna = up.getSflDruzyna();
+
+        sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
+        HashSet zawodnicySet = (HashSet<ZawodnikZuzlowy>)sflDruzyna.getZawodnicy();
+
+        String invalidTeamMsg = null;
+
+        boolean isValidTeamBasedOnKSM = Utils.isValidBasedOnKSM(zawodnicySet);
+        if(!isValidTeamBasedOnKSM)
+            invalidTeamMsg = "Zadna kombinacja skladu nie spelnia wymogow KSM";
+
+        int nrJuniors = Utils.howManyJuniors(zawodnicySet);
+        if(nrJuniors < 2)
+            invalidTeamMsg = "Sklad nie ma wymaganej liczby juniorow";
+
+        int nrPolish = Utils.howManyPolish(zawodnicySet);
+        if(nrPolish < 4)
+            invalidTeamMsg = "Sklad nie ma wymaganej liczby Polakow";
+
+
+        if(invalidTeamMsg == null)
+        {
+            for(int i=-2; i<Constants.NR_ROUNDS+1; i++)
+            {
+                TeamWeekResult twr = new TeamWeekResult(i);
+            }
+            return "zarzadzajDruzyna";
+        }
+        else
+        {
+            uiModel.addAttribute("druzyna", sflDruzyna);
+            uiModel.addAttribute("whyTeamIsInvalidMsg", invalidTeamMsg);
+            return "choosePlayers";
+        }
     }
 
 }

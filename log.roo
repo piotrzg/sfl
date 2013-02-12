@@ -80,3 +80,8 @@ exit
 exit
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-02-08 00:08:51
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-02-08 21:43:01
+exit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-02-08 23:09:51
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-02-11 21:31:09
+focus --class ~.domain.SflDruzyna
+field boolean --fieldName locked
