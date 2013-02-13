@@ -9,15 +9,15 @@ public class IndividualResult {
 
     }
 
-    public IndividualResult(int r, double tp)
+    public IndividualResult(int r)
     {
-        this.setTotalPoints(tp);
         this.setRound(r);
     }
 
     private double totalPoints;
     private int round;
     private String biegiStr;
+    private boolean locked;
 
     public int getRound() {
         return round;
@@ -41,5 +41,13 @@ public class IndividualResult {
 
     public void setTotalPoints(double totalPoints) {
         this.totalPoints = totalPoints;
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public void setLocked(boolean locked) {
+        this.locked = locked;
     }
 }

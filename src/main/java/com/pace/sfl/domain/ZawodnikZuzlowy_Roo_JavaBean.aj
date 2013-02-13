@@ -57,4 +57,12 @@ privileged aspect ZawodnikZuzlowy_Roo_JavaBean {
         this.weeklyResults = weeklyResults;
     }
     
+    public int ZawodnikZuzlowy.getTid() {
+        return this.tid;
+    }
+    
+    public void ZawodnikZuzlowy.setTid(int tid) {
+        this.tid = tid;
+    }
+    
 }

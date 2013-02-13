@@ -28,4 +28,8 @@
     <definition extends="default" name="choosePlayers">
         <put-attribute name="body" value="/WEB-INF/views/choosePlayers.jspx"/>
     </definition>
+
+    <definition extends="default" name="lockManager">
+        <put-attribute name="body" value="/WEB-INF/views/lockManager.jspx"/>
+    </definition>
 </tiles-definitions>

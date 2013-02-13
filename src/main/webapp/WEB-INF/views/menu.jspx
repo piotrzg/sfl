@@ -14,5 +14,9 @@
             <menu:item id="i_zawodnikzuzlowy_new" messageCode="global_menu_new" url="/zawodnikzuzlowys?form" z="km/KLrRhx/pc5a3ycBVyexe9xko="/>
             <menu:item id="i_zawodnikzuzlowy_list" messageCode="global_menu_list" url="/zawodnikzuzlowys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9mKca/ybb3ArLJGFtmLm21xnciI="/>
         </menu:category>
+        <menu:category id="c_druzynazuzlowa" z="3mHkTU7VCwBaThoVk6pbL7QHrfg=">
+            <menu:item id="i_druzynazuzlowa_new" messageCode="global_menu_new" url="/druzynazuzlowas?form" z="1hz7cyg/BOscBxCUHXXoS1IZ0R4="/>
+            <menu:item id="i_druzynazuzlowa_list" messageCode="global_menu_list" url="/druzynazuzlowas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ibktAvKJW1GVkT20L7kDqYkrCjU="/>
+        </menu:category>
     </menu:menu>
 </div>

@@ -27,6 +27,8 @@ public class ZawodnikZuzlowy {
 
     private List<IndividualResult> weeklyResults;
 
+    private int tid;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -75,7 +75,7 @@ public class ZawodnikZuzlowyController {
         List<IndividualResult> irs = new ArrayList<IndividualResult>();
         for(int i=-2; i<23;i++)
         {
-            IndividualResult ir = new IndividualResult(i, -1);
+            IndividualResult ir = new IndividualResult(i);
             irs.add(ir);
         }
         zawodnikZuzlowy.setWeeklyResults(irs);

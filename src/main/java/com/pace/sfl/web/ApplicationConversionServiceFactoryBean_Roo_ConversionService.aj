@@ -4,9 +4,11 @@
 package com.pace.sfl.web;
 
 import com.pace.sfl.domain.Account;
+import com.pace.sfl.domain.DruzynaZuzlowa;
 import com.pace.sfl.domain.UserProfile;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
 import com.pace.sfl.service.AccountService;
+import com.pace.sfl.service.DruzynaZuzlowaService;
 import com.pace.sfl.service.UserProfileService;
 import com.pace.sfl.service.ZawodnikZuzlowyService;
 import com.pace.sfl.web.ApplicationConversionServiceFactoryBean;
@@ -22,6 +24,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     
     @Autowired
     AccountService ApplicationConversionServiceFactoryBean.accountService;
+    
+    @Autowired
+    DruzynaZuzlowaService ApplicationConversionServiceFactoryBean.druzynaZuzlowaService;
     
     @Autowired
     UserProfileService ApplicationConversionServiceFactoryBean.userProfileService;
@@ -53,6 +58,30 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<DruzynaZuzlowa, String> ApplicationConversionServiceFactoryBean.getDruzynaZuzlowaToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.pace.sfl.domain.DruzynaZuzlowa, java.lang.String>() {
+            public String convert(DruzynaZuzlowa druzynaZuzlowa) {
+                return new StringBuilder().append(druzynaZuzlowa.getName()).append(' ').append(druzynaZuzlowa.getTid()).toString();
+            }
+        };
+    }
+    
+    public Converter<BigInteger, DruzynaZuzlowa> ApplicationConversionServiceFactoryBean.getIdToDruzynaZuzlowaConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.math.BigInteger, com.pace.sfl.domain.DruzynaZuzlowa>() {
+            public com.pace.sfl.domain.DruzynaZuzlowa convert(java.math.BigInteger id) {
+                return druzynaZuzlowaService.findDruzynaZuzlowa(id);
+            }
+        };
+    }
+    
+    public Converter<String, DruzynaZuzlowa> ApplicationConversionServiceFactoryBean.getStringToDruzynaZuzlowaConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.pace.sfl.domain.DruzynaZuzlowa>() {
+            public com.pace.sfl.domain.DruzynaZuzlowa convert(String id) {
+                return getObject().convert(getObject().convert(id, BigInteger.class), DruzynaZuzlowa.class);
+            }
+        };
+    }
+    
     public Converter<UserProfile, String> ApplicationConversionServiceFactoryBean.getUserProfileToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.pace.sfl.domain.UserProfile, java.lang.String>() {
             public String convert(UserProfile userProfile) {
@@ -80,7 +109,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<ZawodnikZuzlowy, String> ApplicationConversionServiceFactoryBean.getZawodnikZuzlowyToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.pace.sfl.domain.ZawodnikZuzlowy, java.lang.String>() {
             public String convert(ZawodnikZuzlowy zawodnikZuzlowy) {
-                return new StringBuilder().append(zawodnikZuzlowy.getFname()).append(' ').append(zawodnikZuzlowy.getLname()).append(' ').append(zawodnikZuzlowy.getKsm()).toString();
+                return new StringBuilder().append(zawodnikZuzlowy.getFname()).append(' ').append(zawodnikZuzlowy.getLname()).append(' ').append(zawodnikZuzlowy.getKsm()).append(' ').append(zawodnikZuzlowy.getTid()).toString();
             }
         };
     }
@@ -105,6 +134,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getAccountToStringConverter());
         registry.addConverter(getIdToAccountConverter());
         registry.addConverter(getStringToAccountConverter());
+        registry.addConverter(getDruzynaZuzlowaToStringConverter());
+        registry.addConverter(getIdToDruzynaZuzlowaConverter());
+        registry.addConverter(getStringToDruzynaZuzlowaConverter());
         registry.addConverter(getUserProfileToStringConverter());
         registry.addConverter(getIdToUserProfileConverter());
         registry.addConverter(getStringToUserProfileConverter());

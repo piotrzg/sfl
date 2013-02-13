@@ -8,6 +8,8 @@
         <field:input field="ksm" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_ksm" z="pID8juQOEYJXX87QtaTGbRVnwIs="/>
         <field:checkbox field="isJunior" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_isJunior" label="Junior"/>
         <field:checkbox field="isPolish" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_isPolish" label="Polish"/>
+        <field:input field="weeklyResults" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_weeklyResults" z="IVRuWApg/a7FlSVe/mfEh8If8sE="/>
+        <field:input field="tid" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_tid" z="U7CXXZeAmyMBHK04ReU36Ae7gks="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_pace_sfl_domain_ZawodnikZuzlowy" render="${not empty dependencies}" z="AOEhopxi1BpGfGx0Zx+S9aIV9h4="/>
 </div>

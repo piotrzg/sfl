@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_pace_sfl_domain_DruzynaZuzlowa" items="${druzynazuzlowas}" z="NpRm8JjpK5f+QAtRf4zroxjAGOs=">
+        <table:table data="${druzynazuzlowas}" id="l_com_pace_sfl_domain_DruzynaZuzlowa" path="/druzynazuzlowas" z="4sA+5sj8Bqwh+ZzRdg+7MoRBJZA=">
+            <table:column id="c_com_pace_sfl_domain_DruzynaZuzlowa_name" property="name" z="we9lAPECqoaNfUFzNas6MFfCeaE="/>
+            <table:column id="c_com_pace_sfl_domain_DruzynaZuzlowa_tid" property="tid" z="j21JX0yV4xLzYgn6nwJpO/WFT18="/>
+            <table:column id="c_com_pace_sfl_domain_DruzynaZuzlowa_lockedRounds" property="lockedRounds" z="AX4VLYpZE7Y+0vJkTAfiECzjru0="/>
+        </table:table>
+    </page:list>
+</div>

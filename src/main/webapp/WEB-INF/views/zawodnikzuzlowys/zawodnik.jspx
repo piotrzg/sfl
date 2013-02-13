@@ -10,11 +10,6 @@
 
 function foo(zid, round, value)
 {
-    var saveData = {};
-    saveData.zawodnikId = zid;
-    saveData.round = round;
-    saveData.biegiStr = value;
-    saveData = JSON.stringify(saveData);
     jQuery.ajax ({
         url: "saveIndividualResults/"+zid,
         type: "POST",
