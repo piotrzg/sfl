@@ -32,4 +32,8 @@
     <definition extends="default" name="lockManager">
         <put-attribute name="body" value="/WEB-INF/views/lockManager.jspx"/>
     </definition>
+
+    <definition extends="default" name="manageTeam">
+        <put-attribute name="body" value="/WEB-INF/views/manageTeam.jspx"/>
+    </definition>
 </tiles-definitions>

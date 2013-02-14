@@ -1,0 +1,143 @@
+<div xmlns:spring="http://www.springframework.org/tags"
+     xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8" />
+    <jsp:output omit-xml-declaration="yes" />
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"><jsp:text /></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"><jsp:text /></script>
+
+    <script type="text/javascript" charset="utf8">
+        // <![CDATA[
+
+        $(function () {
+            $(".junior").draggable({
+                snap: ".squaredotted",
+                snapMode: "inner",
+                snapTolerance: 40,
+                opacity: .4,
+                create: function(){$(this).data('position',$(this).position())},
+                cursorAt:{left:15},
+                cursor:'move',
+                start:function(){$(this).stop(true,true)}
+            });
+            $(".polish").draggable({
+                snap: ".squaredotted",
+                snapMode: "inner",
+                opacity: .4,
+                create: function(){$(this).data('position',$(this).position())},
+                cursorAt:{left:15},
+                cursor:'move',
+                start:function(){$(this).stop(true,true)}
+            });
+
+            $(".foreign").draggable({
+                snap: ".squaredotted",
+                snapMode: "inner",
+                opacity: .4,
+                create: function(){$(this).data('position',$(this).position())},
+                cursorAt:{left:15},
+                cursor:'move',
+                start:function(){$(this).stop(true,true)}
+            });
+
+            $(".all").droppable({
+                accept: ".polish,.junior,.foreign",
+                drop: function (event, ui) {
+                    $(this).css("background-color", "lightgreen");
+                    snapToMiddle(ui.draggable,$(this));
+                },
+                out: function (event, ui) {
+                    $(this).css("background-color", "")
+                }
+            });
+
+            $(".JuniorBox").droppable({
+                accept: ".junior",
+                drop: function (event, ui) {
+                    $(this).css("background-color", "lightgreen");
+                    snapToMiddle(ui.draggable,$(this));
+                },
+                out: function (event, ui) {
+                    $(this).css("background-color", "")
+                }
+            });
+            $(".PolishBox").droppable({
+                accept: ".polish,.junior",
+                drop: function (event, ui) {
+                    $(this).css("background-color", "lightgreen");
+                    snapToMiddle(ui.draggable,$(this));
+                },
+                out: function (event, ui) {
+                    $(this).css("background-color", "")
+                }
+            });
+        });
+
+
+        function snapToMiddle(dragger, target){
+            var topMove = target.position().top - dragger.data('position').top + (target.outerHeight(true) - dragger.outerHeight(true)) / 2;
+            var leftMove= target.position().left - dragger.data('position').left + (target.outerWidth(true) - dragger.outerWidth(true)) / 2;
+            dragger.animate({top:topMove,left:leftMove},{duration:600,easing:'easeOutBack'});
+        }
+        // ]]>
+    </script>
+
+    <style>
+        .square {
+            width:400px;
+            height:50px;
+            border:1px solid black;
+            margin-bottom:5px;
+            margin-left:5px;
+            text-align:center;
+            background-color:lightblue;
+            cursor:pointer;
+        }
+
+        .squaredotted{
+            width:400px;
+            height:50px;
+            border:1px dotted gray;
+            margin-bottom:5px;
+            margin-left:5px;
+            text-align:center;
+            background-color:lightgray;
+        }
+    </style>
+
+
+    <h1>Druzyna:  ${druzyna.name}</h1>
+    <a href="">Zapisz ${druzyna.name} do rywalizacji</a>
+
+    <br/>
+
+    <div class="roster">
+        <div class="PolishBox squaredotted">Polish only</div>
+        <div class="PolishBox squaredotted">Polish only</div>
+        <div class="all squaredotted">All</div>
+        <div class="all squaredotted">All</div>
+        <div class="all squaredotted">All</div>
+        <div class="JuniorBox squaredotted">Juniors only</div>
+        <div class="JuniorBox squaredotted">Juniors only</div>
+    </div>
+
+    Zawodnicy:
+    <br/>
+    <c:forEach var="zawodnik" items="${druzyna.zawodnicy}">
+        <c:set var="cssValue" value="foreign" />
+        <c:choose>
+            <c:when test="${zawodnik.isJunior}">
+                <c:set var="cssValue" value="junior" />
+            </c:when>
+            <c:when test="${zawodnik.isPolish}">
+                <c:set var="cssValue" value="polish" />
+            </c:when>
+        </c:choose>
+        <div class="${cssValue} square">${zawodnik.fname} ${zawodnik.lname}</div>
+        <br/>
+    </c:forEach>
+
+</div>

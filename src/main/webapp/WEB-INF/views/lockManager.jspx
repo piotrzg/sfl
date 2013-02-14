@@ -7,11 +7,22 @@
 
     <c:forEach var="druzyna" items="${druzyny}">
         ${druzyna.name}
-        <c:forEach var="lr" items="${druzynalockedRounds}">${lr}</c:forEach>
+        <c:set var="found" value="false" />
+        <c:forEach var="lr" items="${druzyna.lockedRounds}">
+            <c:if test="${found == false}">
+                <c:choose>
+                    <c:when test="${lr == round}">
+                        <a href="../unlock/${druzyna.tid}/${round}">Unlock</a>
+                        <c:set var="found" value="true" />
+                    </c:when>
+                </c:choose>
+            </c:if>
+        </c:forEach>
+
+        <c:if test="${found == false}">
+            <a href="../lock/${druzyna.tid}/${round}">Lock</a>
+        </c:if>
+
         <br/>
     </c:forEach>
-
-    <a href="../lock/0/1">Lock/0/1</a>
-    <a href="../lock/0/2">Lock/0/2</a>
-    <a href="../lock/0/3">Lock/0/3</a>
 </div>

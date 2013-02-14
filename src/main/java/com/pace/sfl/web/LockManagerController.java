@@ -81,4 +81,48 @@ public class LockManagerController {
     }
 
 
+    @RequestMapping(value = "/unlock/{tid}/{round}", produces = "text/html")
+    public String unlockTeamForRound(@PathVariable("tid") int tid,
+                                   @PathVariable("round") int round, Model uiModel)
+    {
+        List<ZawodnikZuzlowy> zawodnikZuzlowyList = zawodnikZuzlowyService.findAllZawodnikZuzlowys();
+
+        for(int i=0; i<zawodnikZuzlowyList.size(); i++)
+        {
+            ZawodnikZuzlowy zawodnik = zawodnikZuzlowyList.get(i);
+            if(tid == zawodnik.getTid())
+            {
+                List<IndividualResult> individualResultList = zawodnik.getWeeklyResults();
+                Iterator<IndividualResult> irIterator = individualResultList.iterator();
+                while(irIterator.hasNext())
+                {
+                    IndividualResult ir = irIterator.next();
+                    if(ir.getRound() == round)
+                    {
+                        ir.setLocked(false);
+                        zawodnik.getWeeklyResults().set(ir.getRound()+2, ir);
+                        zawodnikZuzlowyService.saveZawodnikZuzlowy(zawodnik);
+                        break;
+                    }
+                }
+            }
+        }
+
+        DruzynaZuzlowa dz = druzyny.findDruzynaZuzlowa(tid);
+        if(dz.getLockedRounds() == null)
+        {
+            Set<Integer> lrs = new HashSet<Integer>();
+            dz.setLockedRounds(lrs);
+        }
+
+        dz.getLockedRounds().remove(new Integer(round));
+        dz.setLockedRounds(dz.getLockedRounds());
+        druzyny.saveDruzynaZuzlowa(dz);
+
+        uiModel.addAttribute("druzyny", druzyny.findAllDruzynaZuzlowas());
+        return "lockManager";
+
+    }
+
+
 }
