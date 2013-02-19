@@ -56,7 +56,7 @@ public class ZawodnikZuzlowyController {
             zawodnicy.saveZawodnikZuzlowy(zawodnik);
 
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
 
         return "{\"result\":\"OK\"}";

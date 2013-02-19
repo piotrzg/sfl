@@ -12,6 +12,7 @@
     <script type="text/javascript" charset="utf8">
         // <![CDATA[
 
+        var roster = [];
         $(function () {
             $(".junior").draggable({
                 snap: ".squaredotted",
@@ -25,7 +26,7 @@
             });
             $(".polish").draggable({
                 snap: ".squaredotted",
-                snapMode: "inner",
+                snapMode: "outer",
                 opacity: .4,
                 create: function(){$(this).data('position',$(this).position())},
                 cursorAt:{left:15},
@@ -43,14 +44,19 @@
                 start:function(){$(this).stop(true,true)}
             });
 
+
+
+
             $(".all").droppable({
                 accept: ".polish,.junior,.foreign",
                 drop: function (event, ui) {
                     $(this).css("background-color", "lightgreen");
+                    roster[$(this).context.attributes[0].nodeValue] = ui.draggable.context.attributes[0].nodeValue;
                     snapToMiddle(ui.draggable,$(this));
                 },
                 out: function (event, ui) {
-                    $(this).css("background-color", "")
+                    $(this).css("background-color", "");
+                    roster[$(this).context.attributes[0].nodeValue] = null;
                 }
             });
 
@@ -59,22 +65,44 @@
                 drop: function (event, ui) {
                     $(this).css("background-color", "lightgreen");
                     snapToMiddle(ui.draggable,$(this));
+                    roster[$(this).context.attributes[0].nodeValue] = ui.draggable.context.attributes[0].nodeValue;
                 },
                 out: function (event, ui) {
-                    $(this).css("background-color", "")
+                    $(this).css("background-color", "");
+                    roster[$(this).context.attributes[0].nodeValue] = null;
                 }
             });
             $(".PolishBox").droppable({
                 accept: ".polish,.junior",
+                over: function (event, ui){
+                    $(this).css("background-color", "lightgreen");
+                },
                 drop: function (event, ui) {
                     $(this).css("background-color", "lightgreen");
+                    roster[$(this).context.attributes[0].nodeValue[1]] = ui.draggable.context.attributes[0].nodeValue;
                     snapToMiddle(ui.draggable,$(this));
                 },
                 out: function (event, ui) {
-                    $(this).css("background-color", "")
+                    $(this).css("background-color", "");
+                    roster[$(this).context.attributes[0].nodeValue] = null;
                 }
             });
         });
+
+
+        function displayRoster()
+        {
+            jQuery.ajax ({
+                url: "zapiszDruzyne",
+                type: "POST",
+                data: JSON.stringify({"round": ${round}, "sklad":roster}),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(){
+                    //
+                }
+            });
+        }
 
 
         function snapToMiddle(dragger, target){
@@ -82,13 +110,17 @@
             var leftMove= target.position().left - dragger.data('position').left + (target.outerWidth(true) - dragger.outerWidth(true)) / 2;
             dragger.animate({top:topMove,left:leftMove},{duration:600,easing:'easeOutBack'});
         }
+
+        $(document).ready(function(){
+            snapToMiddle($('#${slot_1.pid}'),$('#s1'));
+        });
         // ]]>
     </script>
 
     <style>
         .square {
-            width:400px;
-            height:50px;
+            width:300px;
+            height:30px;
             border:1px solid black;
             margin-bottom:5px;
             margin-left:5px;
@@ -110,23 +142,69 @@
 
 
     <h1>Druzyna:  ${druzyna.name}</h1>
-    <a href="">Zapisz ${druzyna.name} do rywalizacji</a>
-
+    <a onclick="displayRoster()" href="javascript:void(0)">Zapisz sklad</a>
+    <br/>
     <br/>
 
     <div class="roster">
-        <div class="PolishBox squaredotted">Polish only</div>
-        <div class="PolishBox squaredotted">Polish only</div>
-        <div class="all squaredotted">All</div>
-        <div class="all squaredotted">All</div>
-        <div class="all squaredotted">All</div>
-        <div class="JuniorBox squaredotted">Juniors only</div>
-        <div class="JuniorBox squaredotted">Juniors only</div>
+        <c:if test="${not empty slot_1}">
+            <c:set var="cssStyleValue" value="background-color: lightgreen" />
+        </c:if>
+        <div id="s1" class="PolishBox squaredotted" style="${cssStyleValue}">
+            <c:choose>
+                <c:when test="${not empty slot_1}">
+                    <c:set var="cssValue" value="polish" />
+                    <c:choose>
+                        <c:when test="${slot_1.isJunior}">
+                            <c:set var="cssValue" value="junior" />
+                        </c:when>
+                    </c:choose>
+                    <div id="${slot_1.pid}" class="${cssValue} square">${slot_1.fname} ${slot_1.lname}</div>
+                    <script type="text/javascript" charset="utf8">
+                        // <![CDATA[
+                        roster[1] = ${slot_1.pid};
+                        // ]]>
+                    </script>
+                </c:when>
+                <c:when test="${empty slot_1}">
+                    Polski Zawodnik
+                </c:when>
+            </c:choose>
+            </div>
+
+        <c:if test="${not empty slot_2}">
+            <c:set var="cssStyleValue" value="background-color: lightgreen" />
+        </c:if>
+        <div id="s2" class="PolishBox squaredotted">
+            <c:choose>
+            <c:when test="${not empty slot_2}">
+                <c:set var="cssValue" value="polish" />
+                <c:choose>
+                    <c:when test="${slot_2.isJunior}">
+                        <c:set var="cssValue" value="junior" />
+                    </c:when>
+                </c:choose>
+                <div id="${slot_2.pid}" class="${cssValue} square">${slot_2.fname} ${slot_2.lname}</div>
+                <script type="text/javascript" charset="utf8">
+                    // <![CDATA[
+                    roster[2] = ${slot_2.pid};
+                    // ]]>
+                </script>
+            </c:when>
+            <c:when test="${empty slot_2}">
+                Polski Zawodnik
+            </c:when>
+        </c:choose></div>
+        <div id="s3" class="all squaredotted">Zawodnik</div>
+        <div id="s4" class="all squaredotted">Zawodnik</div>
+        <div id="s5" class="all squaredotted">Zawodnik</div>
+        <div id="s6" class="JuniorBox squaredotted">Junior</div>
+        <div id="s7" class="JuniorBox squaredotted">Junior</div>
     </div>
 
     Zawodnicy:
     <br/>
-    <c:forEach var="zawodnik" items="${druzyna.zawodnicy}">
+    <c:forEach var="zawodnik" items="${notSelected}">
         <c:set var="cssValue" value="foreign" />
         <c:choose>
             <c:when test="${zawodnik.isJunior}">
@@ -136,7 +214,7 @@
                 <c:set var="cssValue" value="polish" />
             </c:when>
         </c:choose>
-        <div class="${cssValue} square">${zawodnik.fname} ${zawodnik.lname}</div>
+        <div id="${zawodnik.pid}" class="${cssValue} square">${zawodnik.fname} ${zawodnik.lname}</div>
         <br/>
     </c:forEach>
 

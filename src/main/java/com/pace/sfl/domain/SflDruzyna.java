@@ -1,6 +1,7 @@
 package com.pace.sfl.domain;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -26,5 +27,20 @@ public class SflDruzyna {
     private Set<ZawodnikZuzlowy> zawodnicy = new HashSet<ZawodnikZuzlowy>();
 
     private boolean locked;
-    private List<TeamWeekResult> teamWeekResultList;
+    private Set<TeamWeekResult> teamWeekResultList;
+
+
+    public List<Integer> getSquadForRound(int round)
+    {
+        Iterator<TeamWeekResult> it = this.teamWeekResultList.iterator();
+
+        while(it.hasNext())
+        {
+            TeamWeekResult twr = it.next();
+            if(twr.getRound() == round)
+                return twr.getSklad();
+        }
+
+        return null;
+    }
 }

@@ -11,7 +11,7 @@
         <field:input field="fname" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_fname" required="true" z="Qba2QLU4uclmYnkSLXF04kpHb0Q="/>
         <field:input field="lname" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_lname" required="true" z="qOSBNEPPcoWpRyiLBbE+JL5gFTw="/>
         <field:input field="ksm" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_ksm" z="pID8juQOEYJXX87QtaTGbRVnwIs="/>
-        <field:input field="weeklyResults" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_weeklyResults" z="IVRuWApg/a7FlSVe/mfEh8If8sE="/>
         <field:input field="tid" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_tid" z="U7CXXZeAmyMBHK04ReU36Ae7gks="/>
+        <field:input field="pid" id="c_com_pace_sfl_domain_ZawodnikZuzlowy_pid" z="GusAV79psQNb1L9JkSh9sRa5j+A="/>
     </form:update>
 </div>

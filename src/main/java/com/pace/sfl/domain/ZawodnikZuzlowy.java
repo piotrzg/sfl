@@ -27,6 +27,8 @@ public class ZawodnikZuzlowy {
 
     private List<IndividualResult> weeklyResults;
 
+    private int pid;
+
     private int tid;
 
     @Override

@@ -8,7 +8,7 @@
         <field:display field="ksm" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_ksm" object="${zawodnikzuzlowy}" z="6kRAMxgRoZXPcmaDx/86wXZFIwY="/>
         <field:display field="isJunior" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_isJunior" label="Junior" object="${zawodnikzuzlowy}"/>
         <field:display field="isPolish" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_isPolish" label="Polish" object="${zawodnikzuzlowy}"/>
-        <field:display field="weeklyResults" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_weeklyResults" object="${zawodnikzuzlowy}" z="bfh8WFbrOZdlYoXKruwtWIGHiHA="/>
         <field:display field="tid" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_tid" object="${zawodnikzuzlowy}" z="hGfkkNS/wUx9zKGXfQoi8CoyQAE="/>
+        <field:display field="pid" id="s_com_pace_sfl_domain_ZawodnikZuzlowy_pid" object="${zawodnikzuzlowy}" z="GzmSI+6fzaTYgf4FAzp4oj+Z9+8="/>
     </page:show>
 </div>

@@ -1,7 +1,6 @@
 package com.pace.sfl;
 
-import com.pace.sfl.domain.ZawodnikZuzlowy;
-
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -21,13 +20,46 @@ public class TeamWeekResult {
 
     public TeamWeekResult(int r)
     {
-        this.round = r;
+        this.setRound(r);
         this.locked = false;
         this.totalPoints = 0.0;
     }
 
     private int round;
-    private List<ZawodnikZuzlowy> sklad;
+    private List<Integer> sklad;
     private boolean locked;
     private double totalPoints;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TeamWeekResult that = (TeamWeekResult) o;
+
+        if (getRound() != that.getRound()) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return getRound();
+    }
+
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
+
+    public List<Integer> getSklad() {
+        return sklad;
+    }
+
+    public void setSklad(List<Integer> sklad) {
+        this.sklad = sklad;
+    }
 }

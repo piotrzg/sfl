@@ -61,7 +61,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<DruzynaZuzlowa, String> ApplicationConversionServiceFactoryBean.getDruzynaZuzlowaToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.pace.sfl.domain.DruzynaZuzlowa, java.lang.String>() {
             public String convert(DruzynaZuzlowa druzynaZuzlowa) {
-                return new StringBuilder().append(druzynaZuzlowa.getName()).append(' ').append(druzynaZuzlowa.getTid()).toString();
+                return new StringBuilder().append(druzynaZuzlowa.getTid()).append(' ').append(druzynaZuzlowa.getName()).toString();
             }
         };
     }
@@ -109,7 +109,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<ZawodnikZuzlowy, String> ApplicationConversionServiceFactoryBean.getZawodnikZuzlowyToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.pace.sfl.domain.ZawodnikZuzlowy, java.lang.String>() {
             public String convert(ZawodnikZuzlowy zawodnikZuzlowy) {
-                return new StringBuilder().append(zawodnikZuzlowy.getFname()).append(' ').append(zawodnikZuzlowy.getLname()).append(' ').append(zawodnikZuzlowy.getKsm()).append(' ').append(zawodnikZuzlowy.getTid()).toString();
+                return new StringBuilder().append(zawodnikZuzlowy.getFname()).append(' ').append(zawodnikZuzlowy.getLname()).append(' ').append(zawodnikZuzlowy.getKsm()).append(' ').append(zawodnikZuzlowy.getPid()).toString();
             }
         };
     }
