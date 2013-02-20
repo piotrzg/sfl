@@ -69,33 +69,77 @@ public class TeamManagementController {
             if(pid == null)
                 continue;
 
+            int indexUsed = 0;
             ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowyByPid(pid);
+            if(zawodnik.getWeeklyResults() == null)
+            {
+                List<IndividualResult> irs = new ArrayList<IndividualResult>();
+                for(int i=-2; i<23;i++)
+                {
+                    IndividualResult ir = new IndividualResult(i);
+                    irs.add(ir);
+                }
+                zawodnik.setWeeklyResults(irs);
+                System.out.println("Savings irs for: "+zawodnik.getLname());
+                zawodnicy.saveZawodnikZuzlowy(zawodnik);
+            }
+
+            boolean isLocked = zawodnik.getWeeklyResults().get(round+2).isLocked();
             if(zawodnik.isIsJunior() && juniorIndex < 8)
             {
                 uiModel.addAttribute("slot_" + juniorIndex, zawodnik);
+                String css = isLocked ? "junior" : "junior moveable";
+                uiModel.addAttribute("slot_" + juniorIndex+"_css", css);
+                indexUsed = juniorIndex;
                 juniorIndex++;
             }
             else if(zawodnik.isIsPolish() && polishIndex < 3)
             {
                 uiModel.addAttribute("slot_"+polishIndex, zawodnik);
+                String css = isLocked ? "polish" : "polish moveable";
+                uiModel.addAttribute("slot_" + polishIndex+"_css", css);
+                indexUsed = polishIndex;
                 polishIndex++;
             }
             else
             {
                 uiModel.addAttribute("slot_"+foreignIndex, zawodnik);
+                String css = isLocked ? "foreign" : "foreign moveable";
+                uiModel.addAttribute("slot_" + foreignIndex+"_css", css);
+                indexUsed = foreignIndex;
                 foreignIndex++;
+            }
+
+            if(indexUsed != 0){
+
+                if(zawodnik.getWeeklyResults() == null)
+                {
+                    List<IndividualResult> irs = new ArrayList<IndividualResult>();
+                    for(int i=-2; i<23;i++)
+                    {
+                        IndividualResult ir = new IndividualResult(i);
+                        irs.add(ir);
+                    }
+                    zawodnik.setWeeklyResults(irs);
+                    System.out.println("Savings irs for: "+zawodnik.getLname());
+                    zawodnicy.saveZawodnikZuzlowy(zawodnik);
+                }
+
+//                boolean isLocked = zawodnik.getWeeklyResults().get(round+2).isLocked();
+//                uiModel.addAttribute("slot_"+indexUsed+"_isLocked", isLocked);
+            }
+            else{
+                //throw Exception
             }
         }
 
 
         Iterator<ZawodnikZuzlowy> zawodnicyIter = sflDruzyna.getZawodnicy().iterator();
-
         while(zawodnicyIter.hasNext())
         {
             ZawodnikZuzlowy zawodnik = zawodnicyIter.next();
 
-            if(!sklad.contains(zawodnik.getPid()))
-            {
+            if(!sklad.contains(zawodnik.getPid())){
                 notSelected.add(zawodnik);
             }
         }
