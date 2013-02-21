@@ -1,6 +1,7 @@
 package com.pace.sfl;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +24,7 @@ public class TeamWeekResult {
         this.setRound(r);
         this.locked = false;
         this.totalPoints = 0.0;
+        this.sklad = new ArrayList<Integer>();
     }
 
     private int round;

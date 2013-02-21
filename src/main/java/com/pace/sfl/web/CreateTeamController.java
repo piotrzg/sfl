@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -257,10 +258,15 @@ public class CreateTeamController {
 
         if(invalidTeamMsg == null)
         {
+            Set<TeamWeekResult> teamWeekResultSet = new HashSet<TeamWeekResult>();
             for(int i=-2; i<Constants.NR_ROUNDS+1; i++)
             {
                 TeamWeekResult twr = new TeamWeekResult(i);
+                teamWeekResultSet.add(twr);
             }
+
+            sflDruzyna.setTeamWeekResultList(teamWeekResultSet);
+            sflDruzynaService.saveSflDruzyna(sflDruzyna);
             return "zarzadzajDruzyna";
         }
         else

@@ -5,7 +5,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
     <jsp:output omit-xml-declaration="yes" />
 
-
     <c:if test="${not empty slot_1.pid}">
         <c:set var="onejs" value="snapToMiddle($('#${slot_1.pid}'), $('#s1'));"/>
         <c:set var="onehm" value="$('#s1').data('howMany',1);"/>
@@ -43,6 +42,7 @@
         // <![CDATA[
 
         var roster = [];
+        var ksm = [];
         $(function () {
             $(".moveable").draggable({
                 snap: ".squaredotted",
@@ -54,25 +54,6 @@
                 cursor:'move',
                 start:function(){$(this).stop(true,true)}
             });
-//            $(".polish").draggable({
-//                snap: ".squaredotted",
-//                snapMode: "inner",
-//                opacity: .4,
-//                create: function(){$(this).data('position',$(this).position())},
-//                cursorAt:{left:15},
-//                cursor:'move',
-//                start:function(){$(this).stop(true,true)}
-//            });
-//
-//            $(".foreign").draggable({
-//                snap: ".squaredotted",
-//                snapMode: "inner",
-//                opacity: .4,
-//                create: function(){$(this).data('position',$(this).position())},
-//                cursorAt:{left:15},
-//                cursor:'move',
-//                start:function(){$(this).stop(true,true)}
-//            });
 
 
             $(".all").droppable({
@@ -86,6 +67,7 @@
                         snapToMiddle(ui.draggable,$(this));
                         var curPlayer = $(this).data("curPlayer", ui.draggable.context.attributes[0].nodeValue);
                         $(this).data("howMany", howMany+1);
+                        updateKSM();
                     }
                 },
                 out: function (event, ui) {
@@ -93,7 +75,6 @@
                     var curPlayer = $(this).data("curPlayer");
                     var draggedPlayer = ui.draggable.context.attributes[0].nodeValue;
                     if(curPlayer == draggedPlayer){
-                        console.log("Removing: "+curPlayer);
                         $(this).removeClass("validPlayerPos");
                         roster[$(this).context.attributes[0].nodeValue[1]] = null;
                         $(this).data("curPlayer", -1);
@@ -113,6 +94,7 @@
                         snapToMiddle(ui.draggable,$(this));
                         var curPlayer = $(this).data("curPlayer", ui.draggable.context.attributes[0].nodeValue);
                         $(this).data("howMany", howMany+1);
+                        updateKSM();
                     }
                 },
                 out: function (event, ui) {
@@ -120,7 +102,6 @@
                     var curPlayer = $(this).data("curPlayer");
                     var draggedPlayer = ui.draggable.context.attributes[0].nodeValue;
                     if(curPlayer == draggedPlayer){
-                        console.log("Removing: "+curPlayer);
                         $(this).removeClass("validPlayerPos");
                         roster[$(this).context.attributes[0].nodeValue[1]] = null;
                         $(this).data("curPlayer", -1);
@@ -139,6 +120,7 @@
                         snapToMiddle(ui.draggable,$(this));
                         var curPlayer = $(this).data("curPlayer", ui.draggable.context.attributes[0].nodeValue);
                         $(this).data("howMany", howMany+1);
+                        updateKSM();
                     }
                 },
                 out: function (event, ui) {
@@ -156,8 +138,30 @@
         });
 
 
-        function displayRoster()
+        function updateKSM()
         {
+            var totalKsm = 0;
+            for(var i=0; i<roster.length; i++)
+            {
+                if(roster[i])
+                    totalKsm += ksm[roster[i]];
+            }
+
+            $('#ksmDisplay').html("KSM: "+totalKsm);
+        }
+
+        function submitRoster()
+        {
+            var totalKsm = 0;
+            for(var i=0; i<roster.length; i++)
+            {
+                if(roster[i])
+                    totalKsm += ksm[roster[i]];
+            }
+
+            if(totalKsm > 40.0)
+                alert("KSM powyzej max 40");
+
             jQuery.ajax ({
                 url: "zapiszDruzyne",
                 type: "POST",
@@ -175,32 +179,33 @@
             var topMove = target.position().top - dragger.data('position').top + (target.outerHeight(true) - dragger.outerHeight(true)) / 2;
             var leftMove= target.position().left - dragger.data('position').left + (target.outerWidth(true) - dragger.outerWidth(true)) / 2;
             dragger.animate({top:topMove,left:leftMove},{duration:600,easing:'easeOutBack'});
+
+            if(dragger.hasClass("locked"))
+                dragger.draggable({disabled:true});
         }
 
         $(document).ready(function(){
 
-            ${onejs}
-                ${onehm}
-                $("#s1").data("curPlayer",'${slot_1.pid}');
+            ${onejs} ${onehm}
+            $("#s1").data("curPlayer",'${slot_1.pid}');
             ${twojs}
-                ${twohm}
-                $("#s2").data("curPlayer",'${slot_2.pid}');
+            ${twohm}
+            $("#s2").data("curPlayer",'${slot_2.pid}');
             ${threejs}
-                ${threehm}
-                $("#s3").data("curPlayer",'${slot_3.pid}');
+            ${threehm}
+            $("#s3").data("curPlayer",'${slot_3.pid}');
             ${fourjs}
-                ${fourhm}
-                $("#s4").data("curPlayer",'${slot_4.pid}');
+            ${fourhm}
+            $("#s4").data("curPlayer",'${slot_4.pid}');
             ${fivejs}
-                ${fivehm}
-                $("#s5").data("curPlayer",'${slot_5.pid}');
+            ${fivehm}
+            $("#s5").data("curPlayer",'${slot_5.pid}');
             ${sixjs}
-                ${sixhm}
-                $("#s6").data("curPlayer",'${slot_6.pid}');
+            ${sixhm}
+            $("#s6").data("curPlayer",'${slot_6.pid}');
             ${sevenjs}
-                ${sevenhm}
-                $("#s7").data("curPlayer",'${slot_7.pid}');
-
+            ${sevenhm}
+            $("#s7").data("curPlayer",'${slot_7.pid}');
         });
         // ]]>
     </script>
@@ -234,8 +239,9 @@
 
 
     <h1>Druzyna:  ${druzyna.name}</h1>
-    <a onclick="displayRoster()" href="javascript:void(0)">Zapisz sklad</a>
+    <a onclick="submitRoster()" href="javascript:void(0)">Zapisz sklad</a>
     <br/>
+    <div id="ksmDisplay">KSM: </div>
     <br/>
 
     <div class="roster">
@@ -249,6 +255,7 @@
                     <script type="text/javascript" charset="utf8">
                         // <![CDATA[
                         roster[1] = ${slot_1.pid};
+                        ksm[${slot_1.pid}] = ${slot_1.ksm};
                         // ]]>
                     </script>
                 </c:when>
@@ -269,6 +276,7 @@
                     <script type="text/javascript" charset="utf8">
                         // <![CDATA[
                         roster[2] = ${slot_2.pid};
+                        ksm[${slot_2.pid}] = ${slot_2.ksm};
                         // ]]>
                     </script>
                 </c:when>
@@ -289,6 +297,7 @@
                     <script type="text/javascript" charset="utf8">
                         // <![CDATA[
                         roster[3] = ${slot_3.pid};
+                        ksm[${slot_3.pid}] = ${slot_3.ksm};
                         // ]]>
                     </script>
                 </c:when>
@@ -308,6 +317,7 @@
                     <script type="text/javascript" charset="utf8">
                         // <![CDATA[
                         roster[4] = ${slot_4.pid};
+                        ksm[${slot_4.pid}] = ${slot_4.ksm};
                         // ]]>
                     </script>
                 </c:when>
@@ -323,10 +333,11 @@
         <div id="s5" class="all squaredotted ${cssStyleValue}">
             <c:choose>
                 <c:when test="${not empty slot_5}">
-                    <div id="${slot_5.pid}" class="${slot_5_css} square">${slot_5.fname} ${slot_5.lname}</div>
+                    <div id="${slot_5.pid}" class="${slot_5_css} square">${slot_5.fname} ${slot_5.lname} ${slot_5.weeklyResults[4].locked}</div>
                     <script type="text/javascript" charset="utf8">
                         // <![CDATA[
                         roster[5] = ${slot_5.pid};
+                        ksm[${slot_5.pid}] = ${slot_5.ksm};
                         // ]]>
                     </script>
                 </c:when>
@@ -342,10 +353,11 @@
         <div id="s6" class="JuniorBox squaredotted ${cssStyleValue}">
             <c:choose>
                 <c:when test="${not empty slot_6}">
-                    <div id="${slot_6.pid}" class="${slot_6_css} square">${slot_6.fname} ${slot_6.lname}</div>
+                    <div id="${slot_6.pid}" class="${slot_6_css} square">${slot_6.fname} ${slot_6.lname} ${slot_6.weeklyResults[4].locked}</div>
                     <script type="text/javascript" charset="utf8">
                         // <![CDATA[
                         roster[6] = ${slot_6.pid};
+                        ksm[${slot_6.pid}] = ${slot_6.ksm};
                         // ]]>
                     </script>
                 </c:when>
@@ -360,10 +372,11 @@
         <div id="s7" class="JuniorBox squaredotted ${cssStyleValue}">
             <c:choose>
                 <c:when test="${not empty slot_7}">
-                    <div id="${slot_7.pid}" class="${slot_7_css} square">${slot_7.fname} ${slot_7.lname}</div>
+                    <div id="${slot_7.pid}" class="${slot_7_css} square">${slot_7.fname} ${slot_7.lname} ${slot_7.weeklyResults[4].locked}</div>
                     <script type="text/javascript" charset="utf8">
                         // <![CDATA[
                         roster[7] = ${slot_7.pid};
+                        ksm[${slot_7.pid}] = ${slot_7.ksm};
                         // ]]>
                     </script>
                 </c:when>
@@ -386,8 +399,18 @@
                 <c:set var="cssValue" value="polish" />
             </c:when>
         </c:choose>
-        <div id="${zawodnik.pid}" class="${cssValue} moveable square">${zawodnik.fname} ${zawodnik.lname}</div>
+        <div id="${zawodnik.pid}" class="${cssValue} moveable square">
+            ${zawodnik.fname} ${zawodnik.lname}
+        </div>
         <br/>
+        <script type="text/javascript" charset="utf8">
+            // <![CDATA[
+            ksm[${zawodnik.pid}] = ${zawodnik.ksm};
+
+            if(${zawodnik.weeklyResults[4].locked})
+                $('#${zawodnik.pid}').draggable({disabled:true});
+            // ]]>
+        </script>
     </c:forEach>
 
 </div>

@@ -56,7 +56,6 @@ public class TeamManagementController {
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
 
-        List<ZawodnikZuzlowy> notSelected = new ArrayList<ZawodnikZuzlowy>();
         List<Integer> sklad = sflDruzyna.getSquadForRound(round);
         Iterator<Integer> skladIter = sklad.iterator();
 
@@ -69,7 +68,6 @@ public class TeamManagementController {
             if(pid == null)
                 continue;
 
-            int indexUsed = 0;
             ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowyByPid(pid);
             if(zawodnik.getWeeklyResults() == null)
             {
@@ -88,58 +86,35 @@ public class TeamManagementController {
             if(zawodnik.isIsJunior() && juniorIndex < 8)
             {
                 uiModel.addAttribute("slot_" + juniorIndex, zawodnik);
-                String css = isLocked ? "junior" : "junior moveable";
+                String css = isLocked ? "junior moveable locked" : "junior moveable";
                 uiModel.addAttribute("slot_" + juniorIndex+"_css", css);
-                indexUsed = juniorIndex;
                 juniorIndex++;
             }
             else if(zawodnik.isIsPolish() && polishIndex < 3)
             {
                 uiModel.addAttribute("slot_"+polishIndex, zawodnik);
-                String css = isLocked ? "polish" : "polish moveable";
+                String css = isLocked ? "polish moveable locked" : "polish moveable";
                 uiModel.addAttribute("slot_" + polishIndex+"_css", css);
-                indexUsed = polishIndex;
                 polishIndex++;
             }
             else
             {
                 uiModel.addAttribute("slot_"+foreignIndex, zawodnik);
-                String css = isLocked ? "foreign" : "foreign moveable";
+                String css = isLocked ? "foreign moveable locked" : "foreign moveable";
                 uiModel.addAttribute("slot_" + foreignIndex+"_css", css);
-                indexUsed = foreignIndex;
                 foreignIndex++;
-            }
-
-            if(indexUsed != 0){
-
-                if(zawodnik.getWeeklyResults() == null)
-                {
-                    List<IndividualResult> irs = new ArrayList<IndividualResult>();
-                    for(int i=-2; i<23;i++)
-                    {
-                        IndividualResult ir = new IndividualResult(i);
-                        irs.add(ir);
-                    }
-                    zawodnik.setWeeklyResults(irs);
-                    System.out.println("Savings irs for: "+zawodnik.getLname());
-                    zawodnicy.saveZawodnikZuzlowy(zawodnik);
-                }
-
-//                boolean isLocked = zawodnik.getWeeklyResults().get(round+2).isLocked();
-//                uiModel.addAttribute("slot_"+indexUsed+"_isLocked", isLocked);
-            }
-            else{
-                //throw Exception
             }
         }
 
 
+        List<ZawodnikZuzlowy> notSelected = new ArrayList<ZawodnikZuzlowy>();
         Iterator<ZawodnikZuzlowy> zawodnicyIter = sflDruzyna.getZawodnicy().iterator();
         while(zawodnicyIter.hasNext())
         {
             ZawodnikZuzlowy zawodnik = zawodnicyIter.next();
 
             if(!sklad.contains(zawodnik.getPid())){
+                zawodnik = zawodnicy.findZawodnikZuzlowyByPid(zawodnik.getPid());
                 notSelected.add(zawodnik);
             }
         }
@@ -164,20 +139,17 @@ public class TeamManagementController {
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
-        System.out.println("sflDruzyna init:"+sflDruzyna.getTeamWeekResultList());
 
         ObjectMapper om = new ObjectMapper();
         try {
             TeamWeekResult twrTemp = om.readValue(json, TeamWeekResult.class);
 
             List<Integer> sklad = twrTemp.getSklad();
-//            List<Integer> sklad = new ArrayList<Integer>();
 
             System.out.println("Sklad:"+sklad);
             System.out.println("twrTemp.getRound():"+twrTemp.getRound());
 
             Set<TeamWeekResult> teamWeekResultSet = sflDruzyna.getTeamWeekResultList();
-            System.out.println("XXX:"+teamWeekResultSet);
             if(teamWeekResultSet != null)
             {
                 TeamWeekResult twr = new TeamWeekResult(twrTemp.getRound());
@@ -188,30 +160,15 @@ public class TeamManagementController {
                 sflDruzyna.setTeamWeekResultList(xxx);
 
                 Iterator<TeamWeekResult> twrIter = teamWeekResultSet.iterator();
-                boolean found = false;
                 while(twrIter.hasNext())
                 {
                     TeamWeekResult teamWeekResult = twrIter.next();
                     if(teamWeekResult.getRound() == twrTemp.getRound())
                     {
-                        System.out.println("teamWeekResult.getSklad():"+teamWeekResult.getSklad());
-//                        System.out.println("B:"+teamWeekResultSet.remove(teamWeekResult));
-//                        TeamWeekResult twr = new TeamWeekResult(twrTemp.getRound());
-//                        twr.setSklad(sklad);
-//                        System.out.println("A1:"+teamWeekResultSet.size());
-//                        teamWeekResultSet.add(twr);
-//                        System.out.println("A2:"+teamWeekResultSet.size());
-//                        found = true;
+//                        System.out.println("teamWeekResult.getSklad():"+teamWeekResult.getSklad());
                         break;
                     }
                 }
-
-//                if(!found)
-//                {
-//                    TeamWeekResult twr = new TeamWeekResult(twrTemp.getRound());
-//                    twr.setSklad(sklad);
-//                    teamWeekResultSet.add(twr);
-//                }
             }
             else
             {
@@ -222,18 +179,11 @@ public class TeamManagementController {
                 sflDruzyna.setTeamWeekResultList(teamWeekResultSet);
             }
 
-
-//            sflDruzyna.setTeamWeekResultList(sflDruzyna.get);
-            System.out.println("YYY:"+teamWeekResultSet);
-            System.out.println("sflDruzyna:"+sflDruzyna.getTeamWeekResultList());
             sflDruzynaService.saveSflDruzyna(sflDruzyna);
-//            sflDruzyna.setTeamWeekResultList();
-
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         uiModel.addAttribute("druzyna", sflDruzyna);
 

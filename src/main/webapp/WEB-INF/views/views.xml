@@ -36,4 +36,8 @@
     <definition extends="default" name="manageTeam">
         <put-attribute name="body" value="/WEB-INF/views/manageTeam.jspx"/>
     </definition>
+
+    <definition extends="default" name="zarzadzajDruzyna">
+        <put-attribute name="body" value="/WEB-INF/views/zarzadzajDruzyna.jspx"/>
+    </definition>
 </tiles-definitions>

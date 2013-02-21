@@ -93,6 +93,20 @@ public class LockManagerController {
             if(tid == zawodnik.getTid())
             {
                 List<IndividualResult> individualResultList = zawodnik.getWeeklyResults();
+                if(individualResultList == null)
+                {
+                    List<IndividualResult> irs = new ArrayList<IndividualResult>();
+                    for(int y=-2; y<23;y++)
+                    {
+                        IndividualResult ir = new IndividualResult(y);
+                        irs.add(ir);
+                    }
+                    zawodnik.setWeeklyResults(irs);
+                    System.out.println("Savings irs for: "+zawodnik.getLname());
+                    zawodnikZuzlowyService.saveZawodnikZuzlowy(zawodnik);
+                }
+
+                individualResultList = zawodnik.getWeeklyResults();
                 Iterator<IndividualResult> irIterator = individualResultList.iterator();
                 while(irIterator.hasNext())
                 {
