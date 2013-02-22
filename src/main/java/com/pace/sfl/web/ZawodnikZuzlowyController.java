@@ -28,6 +28,28 @@ public class ZawodnikZuzlowyController {
     @Autowired
     ZawodnikZuzlowyService zawodnicy;
 
+    @RequestMapping("/zawodnik/ua")
+    public String updateAll(Model uiModel)
+    {
+        List<ZawodnikZuzlowy> wszyscy = zawodnicy.findAllZawodnikZuzlowys();
+
+        for(int i=0; i<wszyscy.size();i++)
+        {
+            ZawodnikZuzlowy zawodnikZuzlowy = wszyscy.get(i);
+            List<IndividualResult> irs = new ArrayList<IndividualResult>();
+            for(int y=-2; y<23;y++)
+            {
+                IndividualResult ir = new IndividualResult(y);
+                irs.add(ir);
+            }
+            zawodnikZuzlowy.setWeeklyResults(irs);
+            zawodnikZuzlowyService.saveZawodnikZuzlowy(zawodnikZuzlowy);
+        }
+
+
+        return "zawodnikzuzlowys/zawodnik";
+    }
+
     @RequestMapping("/zawodnik/{id}")
     public String showPlayer(@PathVariable("id") String zawodnikId, Model uiModel)
     {

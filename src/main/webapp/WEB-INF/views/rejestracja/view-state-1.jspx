@@ -11,7 +11,7 @@
     <p>
       <spring:message code="webflow_state1_message" />
     </p>
-      ${bledy}
+      <div style="color: red">${bledy}</div>
       <form:form modelAttribute="account">
       <div class="submit">
           <table>

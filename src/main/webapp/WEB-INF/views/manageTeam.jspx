@@ -63,9 +63,9 @@
                     if(howMany == 0)
                     {
                         $(this).addClass("validPlayerPos");
-                        roster[$(this).context.attributes[0].nodeValue[1]] = ui.draggable.context.attributes[0].nodeValue;
+                        roster[$(this).context.attributes['id'].nodeValue[1]] = ui.draggable.context.attributes['id'].nodeValue;
                         snapToMiddle(ui.draggable,$(this));
-                        var curPlayer = $(this).data("curPlayer", ui.draggable.context.attributes[0].nodeValue);
+                        var curPlayer = $(this).data("curPlayer", ui.draggable.context.attributes['id'].nodeValue);
                         $(this).data("howMany", howMany+1);
                         updateKSM();
                     }
@@ -73,12 +73,13 @@
                 out: function (event, ui) {
                     var howMany = $(this).data("howMany") || 1;
                     var curPlayer = $(this).data("curPlayer");
-                    var draggedPlayer = ui.draggable.context.attributes[0].nodeValue;
+                    var draggedPlayer = ui.draggable.context.attributes['id'].nodeValue;
                     if(curPlayer == draggedPlayer){
                         $(this).removeClass("validPlayerPos");
-                        roster[$(this).context.attributes[0].nodeValue[1]] = null;
+                        roster[$(this).context.attributes['id'].nodeValue[1]] = null;
                         $(this).data("curPlayer", -1);
                         $(this).data("howMany", 0);
+                        updateKSM();
                     }
                 }
             });
@@ -90,9 +91,9 @@
                     if(howMany == 0)
                     {
                         $(this).addClass("validPlayerPos");
-                        roster[$(this).context.attributes[0].nodeValue[1]] = ui.draggable.context.attributes[0].nodeValue;
+                        roster[$(this).context.attributes['id'].nodeValue[1]] = ui.draggable.context.attributes['id'].nodeValue;
                         snapToMiddle(ui.draggable,$(this));
-                        var curPlayer = $(this).data("curPlayer", ui.draggable.context.attributes[0].nodeValue);
+                        var curPlayer = $(this).data("curPlayer", ui.draggable.context.attributes['id'].nodeValue);
                         $(this).data("howMany", howMany+1);
                         updateKSM();
                     }
@@ -100,12 +101,13 @@
                 out: function (event, ui) {
                     var howMany = $(this).data("howMany") || 1;
                     var curPlayer = $(this).data("curPlayer");
-                    var draggedPlayer = ui.draggable.context.attributes[0].nodeValue;
+                    var draggedPlayer = ui.draggable.context.attributes['id'].nodeValue;
                     if(curPlayer == draggedPlayer){
                         $(this).removeClass("validPlayerPos");
-                        roster[$(this).context.attributes[0].nodeValue[1]] = null;
+                        roster[$(this).context.attributes['id'].nodeValue[1]] = null;
                         $(this).data("curPlayer", -1);
                         $(this).data("howMany", 0);
+                        updateKSM();
                     }
                 }
             });
@@ -116,9 +118,9 @@
                     if(howMany == 0)
                     {
                         $(this).addClass("validPlayerPos");
-                        roster[$(this).context.attributes[0].nodeValue[1]] = ui.draggable.context.attributes[0].nodeValue;
+                        roster[$(this).context.attributes['id'].nodeValue[1]] = ui.draggable.context.attributes['id'].nodeValue;
                         snapToMiddle(ui.draggable,$(this));
-                        var curPlayer = $(this).data("curPlayer", ui.draggable.context.attributes[0].nodeValue);
+                        var curPlayer = $(this).data("curPlayer", ui.draggable.context.attributes['id'].nodeValue);
                         $(this).data("howMany", howMany+1);
                         updateKSM();
                     }
@@ -126,10 +128,10 @@
                 out: function (event, ui) {
                     var howMany = $(this).data("howMany") || 1;
                     var curPlayer = $(this).data("curPlayer");
-                    var draggedPlayer = ui.draggable.context.attributes[0].nodeValue;
+                    var draggedPlayer = ui.draggable.context.attributes['id'].nodeValue;
                     if(curPlayer == draggedPlayer){
                         $(this).removeClass("validPlayerPos");
-                        roster[$(this).context.attributes[0].nodeValue[1]] = null;
+                        roster[$(this).context.attributes['id'].nodeValue[1]] = null;
                         $(this).data("curPlayer", -1);
                         $(this).data("howMany", 0);
                     }
@@ -160,7 +162,7 @@
             }
 
             if(totalKsm > 40.0)
-                alert("KSM powyzej max 40");
+                alert("KSM powyzej max 40 - druzyna nie moze byc zgloszona do tej rundy. Obniz KSM druzyny");
 
             jQuery.ajax ({
                 url: "zapiszDruzyne",
@@ -188,24 +190,20 @@
 
             ${onejs} ${onehm}
             $("#s1").data("curPlayer",'${slot_1.pid}');
-            ${twojs}
-            ${twohm}
+            ${twojs} ${twohm}
             $("#s2").data("curPlayer",'${slot_2.pid}');
-            ${threejs}
-            ${threehm}
+            ${threejs} ${threehm}
             $("#s3").data("curPlayer",'${slot_3.pid}');
-            ${fourjs}
-            ${fourhm}
+            ${fourjs} ${fourhm}
             $("#s4").data("curPlayer",'${slot_4.pid}');
-            ${fivejs}
-            ${fivehm}
+            ${fivejs} ${fivehm}
             $("#s5").data("curPlayer",'${slot_5.pid}');
-            ${sixjs}
-            ${sixhm}
+            ${sixjs} ${sixhm}
             $("#s6").data("curPlayer",'${slot_6.pid}');
-            ${sevenjs}
-            ${sevenhm}
+            ${sevenjs} ${sevenhm}
             $("#s7").data("curPlayer",'${slot_7.pid}');
+
+            updateKSM();
         });
         // ]]>
     </script>
@@ -333,7 +331,7 @@
         <div id="s5" class="all squaredotted ${cssStyleValue}">
             <c:choose>
                 <c:when test="${not empty slot_5}">
-                    <div id="${slot_5.pid}" class="${slot_5_css} square">${slot_5.fname} ${slot_5.lname} ${slot_5.weeklyResults[4].locked}</div>
+                    <div id="${slot_5.pid}" class="${slot_5_css} square">${slot_5.fname} ${slot_5.lname}</div>
                     <script type="text/javascript" charset="utf8">
                         // <![CDATA[
                         roster[5] = ${slot_5.pid};
@@ -353,7 +351,7 @@
         <div id="s6" class="JuniorBox squaredotted ${cssStyleValue}">
             <c:choose>
                 <c:when test="${not empty slot_6}">
-                    <div id="${slot_6.pid}" class="${slot_6_css} square">${slot_6.fname} ${slot_6.lname} ${slot_6.weeklyResults[4].locked}</div>
+                    <div id="${slot_6.pid}" class="${slot_6_css} square">${slot_6.fname} ${slot_6.lname}</div>
                     <script type="text/javascript" charset="utf8">
                         // <![CDATA[
                         roster[6] = ${slot_6.pid};
@@ -372,7 +370,7 @@
         <div id="s7" class="JuniorBox squaredotted ${cssStyleValue}">
             <c:choose>
                 <c:when test="${not empty slot_7}">
-                    <div id="${slot_7.pid}" class="${slot_7_css} square">${slot_7.fname} ${slot_7.lname} ${slot_7.weeklyResults[4].locked}</div>
+                    <div id="${slot_7.pid}" class="${slot_7_css} square">${slot_7.fname} ${slot_7.lname}</div>
                     <script type="text/javascript" charset="utf8">
                         // <![CDATA[
                         roster[7] = ${slot_7.pid};
@@ -389,6 +387,8 @@
 
     Zawodnicy:
     <br/>
+
+    <c:set var="r" value="${round}" />
     <c:forEach var="zawodnik" items="${notSelected}">
         <c:set var="cssValue" value="foreign" />
         <c:choose>
@@ -403,11 +403,12 @@
             ${zawodnik.fname} ${zawodnik.lname}
         </div>
         <br/>
+
         <script type="text/javascript" charset="utf8">
             // <![CDATA[
             ksm[${zawodnik.pid}] = ${zawodnik.ksm};
 
-            if(${zawodnik.weeklyResults[4].locked})
+            if(${zawodnik.weeklyResults[r].locked})
                 $('#${zawodnik.pid}').draggable({disabled:true});
             // ]]>
         </script>

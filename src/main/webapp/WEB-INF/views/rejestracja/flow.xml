@@ -33,6 +33,12 @@
         <transition on="error_invalid_email" to="fix">
             <set name="flowScope.errorDetail" type="java.lang.String" value="'Wprowadz poprawny email'" />
         </transition>
+        <transition on="error_duplicate_email" to="fix">
+            <set name="flowScope.errorDetail" type="java.lang.String" value="'Istnieje juz konto pod danym emailem'" />
+        </transition>
+        <transition on="error_duplicate_username" to="fix">
+            <set name="flowScope.errorDetail" type="java.lang.String" value="'Nazwa uzytkownika istnieje juz w systemie'" />
+        </transition>
     </action-state>
 
     <!-- A sample end state -->

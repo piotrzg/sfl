@@ -54,10 +54,15 @@ public class AccountServiceImpl implements AccountService {
     }
 
     public String saveAccount(Account account) {
+
+        String errMsg = checkIfDuplicateAccount(account);
+        if(errMsg != null)
+            return errMsg;
+
         List authorities = new ArrayList();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-        System.out.println("Account: "+account);
+//        System.out.println("Account: "+account);
         if(account.getPassword().equals(account.getRetypePassword()))
         {
             if(Utils.isEmail(account.getEmail()))
@@ -112,5 +117,23 @@ public class AccountServiceImpl implements AccountService {
 
     public long countAllAccounts() {
         return accountRepository.count();
+    }
+
+
+    private String checkIfDuplicateAccount(Account account)
+    {
+        Account acc = mongoTemplate.findOne(Query.query(Criteria.where("username").is(account.getUsername())), Account.class);
+        if(acc == null)
+        {
+            acc = mongoTemplate.findOne(Query.query(Criteria.where("email").is(account.getEmail())), Account.class);
+
+            if(acc != null)
+                return "error_duplicate_email";
+        }
+        else{
+            return "error_duplicate_username";
+        }
+
+        return null;
     }
 }

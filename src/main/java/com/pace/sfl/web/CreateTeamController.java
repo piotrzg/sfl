@@ -67,7 +67,8 @@ public class CreateTeamController {
 
     @RequestMapping(method = RequestMethod.POST, value = "saveTeamName", produces = "text/html")
     public String saveTeamName(@RequestParam("teamName") String teamName,
-                               final HttpServletRequest request)
+                               final HttpServletRequest request,
+                               Model uiModel)
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
@@ -76,8 +77,16 @@ public class CreateTeamController {
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         if(sflDruzyna == null)
         {
+            SflDruzyna checkIfDruzynaExists = sflDruzynaService.findByTeamName(teamName);
+            if(checkIfDruzynaExists != null)
+            {
+                uiModel.addAttribute("errMsg", "Druzyna o tej samej nazwie juz istnieje. Wybierz inna nazwa dla swojej druzyny");
+                return "createTeam";
+            }
+
             sflDruzyna = new SflDruzyna();
             sflDruzyna.setName(teamName);
+
             sflDruzynaService.saveSflDruzyna(sflDruzyna);
             up.setSflDruzyna(sflDruzyna);
             ups.saveUserProfile(up);
