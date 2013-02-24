@@ -15,10 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -128,14 +125,16 @@ public class TeamManagementController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/wybierzDruzyne/zapiszDruzyne")
-    public String saveTeamForWeek(@RequestBody String json, Model uiModel)
+    public @ResponseBody String saveTeamForWeek(@RequestBody String json, Model uiModel)
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
 
         UserProfile up = ups.findByUsername(name);
         if(up == null)
-            return "login";
+        {
+            return "{\"msg\":\"login\"}";
+        }
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
@@ -170,12 +169,23 @@ public class TeamManagementController {
 
             sflDruzynaService.saveSflDruzyna(sflDruzyna);
 
+            int howManyInSquad = Utils.howManyInSquad(sklad);
+            System.out.println("hmis: "+howManyInSquad);
+            if(howManyInSquad < 6)
+            {
+                String resp = "{\"msg\":\"Druzyna musi miec conajmniej 6 zawodnikow w skladzie\"}";
+                return resp;
+//                uiModel.addAttribute("teamComplianceMsg", "Druzyna musi miec conajmniej 6 zawodnikow w skladzie");
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        uiModel.addAttribute("druzyna", sflDruzyna);
+//        uiModel.addAttribute("teamComplianceMsg", "Druzyna musi miec conajmniej 6 zawodnikow w skladzie");
+//        uiModel.addAttribute("druzyna", sflDruzyna);
 
-        return "manageTeam";
+        return "{\"msg\":\"OK\"}";
+//        return "manageTeam";
     }
 }

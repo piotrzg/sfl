@@ -126,4 +126,18 @@ public class Utils {
         return totalPoints;
     }
 
+    public static int howManyInSquad(List<Integer> squad)
+    {
+        int total = 0;
+        Iterator squadIter = squad.iterator();
+        while(squadIter.hasNext())
+        {
+            Integer i = (Integer)squadIter.next();
+            if(i != null)
+                total++;
+        }
+
+        return total;
+    }
+
 }

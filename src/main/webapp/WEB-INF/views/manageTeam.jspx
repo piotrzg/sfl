@@ -52,6 +52,7 @@
                 create: function(){$(this).data('position',$(this).position())},
                 cursorAt:{left:15},
                 cursor:'move',
+                refreshPositions: true,
                 start:function(){$(this).stop(true,true)}
             });
 
@@ -195,7 +196,14 @@
                 data: JSON.stringify({"round": ${round}, "sklad":roster}),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
-                success: function(){
+                success: function(data){
+                    if(data.msg == "login")
+                    {
+                        window.location = "../login";
+                        return;
+                    }
+
+                    $("#msgDiv").html(data.msg);
                     //
                 }
             });
@@ -262,6 +270,7 @@
 
 
     <h1>Druzyna:  ${druzyna.name}</h1>
+    <div id="msgDiv" style="width:400px; height: 40px; overflow: hidden">Druzyna spelnia wymagania</div>
     <a onclick="submitRoster()" href="javascript:void(0)">Zapisz sklad</a>
     <br/>
     <div id="ksmDisplay">KSM: </div>
