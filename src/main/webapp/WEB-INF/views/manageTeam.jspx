@@ -135,6 +135,7 @@
                         roster[$(this).context.attributes['id'].nodeValue[1]] = null;
                         $(this).data("curPlayer", -1);
                         $(this).data("howMany", 0);
+                        updateKSM();
                     }
                 }
             });

@@ -170,22 +170,58 @@ public class TeamManagementController {
             sflDruzynaService.saveSflDruzyna(sflDruzyna);
 
             int howManyInSquad = Utils.howManyInSquad(sklad);
-            System.out.println("hmis: "+howManyInSquad);
             if(howManyInSquad < 6)
             {
                 String resp = "{\"msg\":\"Druzyna musi miec conajmniej 6 zawodnikow w skladzie\"}";
                 return resp;
-//                uiModel.addAttribute("teamComplianceMsg", "Druzyna musi miec conajmniej 6 zawodnikow w skladzie");
             }
+
+
+            Iterator squadIter = sklad.iterator();
+            int howManyJuniors = 0;
+            while(squadIter.hasNext())
+            {
+                Integer i = (Integer)squadIter.next();
+                if(i != null)
+                {
+                    ZawodnikZuzlowy zz = zawodnicy.findZawodnikZuzlowyByPid(i);
+                    if(zz.isIsJunior())
+                        howManyJuniors++;
+                }
+            }
+
+            if(howManyJuniors < 2)
+            {
+                String resp = "{\"msg\":\"Druzyna musi miec conajmniej 2 juniorow w skladzie\"}";
+                return resp;
+            }
+
+            int howManyPolish = 0;
+            squadIter = sklad.iterator();
+            while(squadIter.hasNext())
+            {
+                Integer i = (Integer)squadIter.next();
+                if(i != null)
+                {
+                    ZawodnikZuzlowy zz = zawodnicy.findZawodnikZuzlowyByPid(i);
+                    if(zz.isIsPolish())
+                        howManyPolish++;
+                }
+            }
+
+            if(howManyPolish < 4)
+            {
+                String resp = "{\"msg\":\"Druzyna musi miec conajmniej 4 Polakow w skladzie\"}";
+                return resp;
+            }
+
+
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-//        uiModel.addAttribute("teamComplianceMsg", "Druzyna musi miec conajmniej 6 zawodnikow w skladzie");
-//        uiModel.addAttribute("druzyna", sflDruzyna);
-
-        return "{\"msg\":\"OK\"}";
+        return "{\"msg\":\"Zmiany zapisane!\"}";
 //        return "manageTeam";
     }
 }
