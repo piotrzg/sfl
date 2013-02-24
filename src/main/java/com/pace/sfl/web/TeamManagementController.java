@@ -158,17 +158,6 @@ public class TeamManagementController {
                 HashSet xxx = new HashSet(teamWeekResultSet);
                 xxx.add(twr);
                 sflDruzyna.setTeamWeekResultList(xxx);
-
-                Iterator<TeamWeekResult> twrIter = teamWeekResultSet.iterator();
-                while(twrIter.hasNext())
-                {
-                    TeamWeekResult teamWeekResult = twrIter.next();
-                    if(teamWeekResult.getRound() == twrTemp.getRound())
-                    {
-//                        System.out.println("teamWeekResult.getSklad():"+teamWeekResult.getSklad());
-                        break;
-                    }
-                }
             }
             else
             {

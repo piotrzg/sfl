@@ -143,11 +143,22 @@
         function updateKSM()
         {
             var totalKsm = 0;
+            var totalPlayers = 0;
+            var minKsm = 100;
             for(var i=0; i<roster.length; i++)
             {
-                if(roster[i])
+                if(roster[i] != null && roster[i] != undefined) // roster[i] can equal 0
+                {
                     totalKsm += ksm[roster[i]];
+                    totalPlayers++;
+
+                    if(ksm[roster[i]] < minKsm)
+                        minKsm = ksm[roster[i]];
+                }
             }
+
+            if(minKsm != 100 && totalPlayers == 7)
+                totalKsm = totalKsm - minKsm;
 
             $('#ksmDisplay').html("KSM: "+totalKsm);
         }
@@ -155,14 +166,28 @@
         function submitRoster()
         {
             var totalKsm = 0;
+            var totalPlayers = 0;
+            var minKsm = 100;
             for(var i=0; i<roster.length; i++)
             {
-                if(roster[i])
+                if(roster[i] != null & roster[i] != undefined) // roster[i] can equal 0
+                {
                     totalKsm += ksm[roster[i]];
+                    if(ksm[roster[i]] < minKsm)
+                        minKsm = ksm[roster[i]];
+
+                    totalPlayers++;
+                }
             }
 
+            if(minKsm != 100 && totalPlayers == 7)
+                totalKsm = totalKsm - minKsm;
+
             if(totalKsm > 40.0)
+            {
                 alert("KSM powyzej max 40 - druzyna nie moze byc zgloszona do tej rundy. Obniz KSM druzyny");
+                return;
+            }
 
             jQuery.ajax ({
                 url: "zapiszDruzyne",
@@ -249,7 +274,7 @@
         <div id="s1" class="PolishBox squaredotted ${cssStyleValue}">
             <c:choose>
                 <c:when test="${not empty slot_1}">
-                    <div id="${slot_1.pid}" class="${slot_1_css} square">${slot_1.fname} ${slot_1.lname} ${slot_2_isLocked}</div>
+                    <div id="${slot_1.pid}" class="${slot_1_css} square">${slot_1.fname} ${slot_1.lname}</div>
                     <script type="text/javascript" charset="utf8">
                         // <![CDATA[
                         roster[1] = ${slot_1.pid};
