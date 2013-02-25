@@ -169,52 +169,53 @@ public class TeamManagementController {
 
             sflDruzynaService.saveSflDruzyna(sflDruzyna);
 
-            int howManyInSquad = Utils.howManyInSquad(sklad);
-            if(howManyInSquad < 6)
-            {
-                String resp = "{\"msg\":\"Druzyna musi miec conajmniej 6 zawodnikow w skladzie\"}";
-                return resp;
-            }
-
-
             Iterator squadIter = sklad.iterator();
+            int howManyInSquad = 0;
             int howManyJuniors = 0;
+            int howManyPolish = 0;
+            double totalKSM = 0.0;
+            double minKSM = 100.0;
             while(squadIter.hasNext())
             {
                 Integer i = (Integer)squadIter.next();
                 if(i != null)
                 {
+                    howManyInSquad++;
                     ZawodnikZuzlowy zz = zawodnicy.findZawodnikZuzlowyByPid(i);
                     if(zz.isIsJunior())
                         howManyJuniors++;
-                }
-            }
 
-            if(howManyJuniors < 2)
-            {
-                String resp = "{\"msg\":\"Druzyna musi miec conajmniej 2 juniorow w skladzie\"}";
-                return resp;
-            }
-
-            int howManyPolish = 0;
-            squadIter = sklad.iterator();
-            while(squadIter.hasNext())
-            {
-                Integer i = (Integer)squadIter.next();
-                if(i != null)
-                {
-                    ZawodnikZuzlowy zz = zawodnicy.findZawodnikZuzlowyByPid(i);
                     if(zz.isIsPolish())
                         howManyPolish++;
+
+                    totalKSM += zz.getKsm();
+
+                    if(zz.getKsm() < minKSM)
+                        minKSM = zz.getKsm();
                 }
             }
 
-            if(howManyPolish < 4)
-            {
-                String resp = "{\"msg\":\"Druzyna musi miec conajmniej 4 Polakow w skladzie\"}";
-                return resp;
-            }
+            String resp = "{\"msg\": \"OK\"}";
+            if(howManyInSquad < 6)
+                return "{\"msg\":\"Druzyna musi miec conajmniej 6 zawodnikow w skladzie\"}";
 
+            if(howManyJuniors < 2)
+                return "{\"msg\":\"Druzyna musi miec conajmniej 2 juniorow w skladzie\"}";
+
+            if(howManyPolish < 4)
+                return "{\"msg\":\"Druzyna musi miec conajmniej 4 Polakow w skladzie\"}";
+
+
+            if(minKSM != 100 && howManyInSquad == 7)
+                totalKSM = totalKSM - minKSM;
+
+            if(totalKSM > 40.0)
+                return "{\"msg\":\"KSM druzyny jest za wysoki. Obniz KSM druzyny\"}";
+
+            if(totalKSM < 33.0)
+                return "{\"msg\":\"KSM druzyny jest za niski. Podwyz KSM druzyny\"}";
+
+            return resp;
 
 
         } catch (IOException e) {
