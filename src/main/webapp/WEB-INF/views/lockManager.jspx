@@ -25,4 +25,6 @@
 
         <br/>
     </c:forEach>
+    <br/>
+    <a href="../lock/all/${round}">Lock All</a>
 </div>

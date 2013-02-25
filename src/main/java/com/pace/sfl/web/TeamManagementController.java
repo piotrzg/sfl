@@ -223,6 +223,5 @@ public class TeamManagementController {
         }
 
         return "{\"msg\":\"Zmiany zapisane!\"}";
-//        return "manageTeam";
     }
 }

@@ -2,6 +2,7 @@ package com.pace.sfl.web;
 
 import com.pace.sfl.IndividualResult;
 import com.pace.sfl.domain.DruzynaZuzlowa;
+import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
 import com.pace.sfl.service.DruzynaZuzlowaService;
 import com.pace.sfl.service.ZawodnikZuzlowyService;
@@ -74,6 +75,50 @@ public class LockManagerController {
         dz.getLockedRounds().add(new Integer(round));
         dz.setLockedRounds(dz.getLockedRounds());
         druzyny.saveDruzynaZuzlowa(dz);
+
+        uiModel.addAttribute("druzyny", druzyny.findAllDruzynaZuzlowas());
+        return "lockManager";
+
+    }
+
+
+    @RequestMapping(value = "/lock/all/{round}", produces = "text/html")
+    public String lockAllTeamsForRound(@PathVariable("round") int round, Model uiModel)
+    {
+        List<ZawodnikZuzlowy> zawodnikZuzlowyList = zawodnikZuzlowyService.findAllZawodnikZuzlowys();
+
+        for(int i=0; i<zawodnikZuzlowyList.size(); i++)
+        {
+            ZawodnikZuzlowy zawodnik = zawodnikZuzlowyList.get(i);
+            List<IndividualResult> individualResultList = zawodnik.getWeeklyResults();
+            Iterator<IndividualResult> irIterator = individualResultList.iterator();
+            while(irIterator.hasNext())
+            {
+                IndividualResult ir = irIterator.next();
+                if(ir.getRound() == round)
+                {
+                    ir.setLocked(true);
+                    zawodnik.getWeeklyResults().set(ir.getRound()+2, ir);
+                    zawodnikZuzlowyService.saveZawodnikZuzlowy(zawodnik);
+                    break;
+                }
+            }
+        }
+
+        List<DruzynaZuzlowa>  druzynaZuzlowaList = druzyny.findAllDruzynaZuzlowas();
+        for(int i=0; i<druzynaZuzlowaList.size();i++)
+        {
+            DruzynaZuzlowa dz = druzynaZuzlowaList.get(i);
+            if(dz.getLockedRounds() == null)
+            {
+                Set<Integer> lrs = new HashSet<Integer>();
+                dz.setLockedRounds(lrs);
+            }
+
+            dz.getLockedRounds().add(new Integer(round));
+            dz.setLockedRounds(dz.getLockedRounds());
+            druzyny.saveDruzynaZuzlowa(dz);
+        }
 
         uiModel.addAttribute("druzyny", druzyny.findAllDruzynaZuzlowas());
         return "lockManager";
