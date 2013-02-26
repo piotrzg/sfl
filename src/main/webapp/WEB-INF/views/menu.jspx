@@ -19,4 +19,6 @@
             <menu:item id="i_druzynazuzlowa_list" messageCode="global_menu_list" url="/druzynazuzlowas?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ibktAvKJW1GVkT20L7kDqYkrCjU="/>
         </menu:category>
     </menu:menu>
+
+    <a href="/login">Login</a>
 </div>

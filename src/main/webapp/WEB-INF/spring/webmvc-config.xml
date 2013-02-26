@@ -84,6 +84,12 @@
   </bean>
 <bean class="com.pace.sfl.web.ApplicationConversionServiceFactoryBean" id="applicationConversionService"/>
 
+    <!--<bean id="exampleInitBean" class="com.pace.sfl.service.UserProfileServiceImpl" init-method="init"/>-->
+    <!--<bean id="accountService" class="com.pace.sfl.service.AccountServiceImpl" init-method="init"/>-->
+
+    <bean id="sampleBean" class="com.pace.sfl.domain.SampleBean" init-method="init">
+        <!--<property name="nazwa" value="FalubazHejo"></property>-->
+    </bean>
 
     <import resource="webflow-config.xml"/>
 </beans>

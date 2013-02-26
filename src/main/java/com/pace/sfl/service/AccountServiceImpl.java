@@ -23,6 +23,11 @@ import java.util.List;
 @Service("accountService")
 public class AccountServiceImpl implements AccountService {
 
+    public void init()
+    {
+               System.out.println("INIT!");
+    }
+
     @Autowired
     MongoTemplate mongoTemplate;
     @Autowired

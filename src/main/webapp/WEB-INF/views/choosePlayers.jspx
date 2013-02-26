@@ -14,7 +14,8 @@
 
         $(document).ready(function() {
 
-            var oTable = $('#example').dataTable( {
+            var oTable = $('#playerList').dataTable( {
+                "iDisplayLength": 50,
                 "aoColumnDefs": [
                     { "bSortable": false, "aTargets": [ 2 ] }
                 ],
@@ -51,7 +52,7 @@ Zawodnicy:
         </p>
 
 
-        <table id="example">
+        <table id="playerList">
             <thead>
             <tr>
                 <th>Imie</th>

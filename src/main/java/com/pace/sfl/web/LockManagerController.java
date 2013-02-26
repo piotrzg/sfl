@@ -2,6 +2,7 @@ package com.pace.sfl.web;
 
 import com.pace.sfl.IndividualResult;
 import com.pace.sfl.domain.DruzynaZuzlowa;
+import com.pace.sfl.domain.SampleBean;
 import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
 import com.pace.sfl.service.DruzynaZuzlowaService;
@@ -29,10 +30,15 @@ public class LockManagerController {
     @Autowired
     DruzynaZuzlowaService druzyny;
 
+    @Autowired
+    SampleBean sb;
+
     @RequestMapping(value = "/lockManager/{round}", produces = "text/html")
     public String showLockManager(@PathVariable("round") int round,
                                   Model uiModel)
     {
+        System.out.println("Lock Manager sb: "+sb.getNazwa());
+        uiModel.addAttribute("isLoggedIn", "yes");
         uiModel.addAttribute("druzyny", druzyny.findAllDruzynaZuzlowas());
         uiModel.addAttribute("round", round);
         return "lockManager";
@@ -105,7 +111,7 @@ public class LockManagerController {
             }
         }
 
-        List<DruzynaZuzlowa>  druzynaZuzlowaList = druzyny.findAllDruzynaZuzlowas();
+        List<DruzynaZuzlowa> druzynaZuzlowaList = druzyny.findAllDruzynaZuzlowas();
         for(int i=0; i<druzynaZuzlowaList.size();i++)
         {
             DruzynaZuzlowa dz = druzynaZuzlowaList.get(i);

@@ -66,6 +66,12 @@ public class TeamManagementController {
                 continue;
 
             ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowyByPid(pid);
+            if(zawodnik == null)
+            {
+                // throw exception - should never happen
+            }
+
+
             if(zawodnik.getWeeklyResults() == null)
             {
                 List<IndividualResult> irs = new ArrayList<IndividualResult>();

@@ -4,6 +4,7 @@
 
 target/
 .idea/
+main/resources/META-INF/spring/email.properties
 
 *.pydevproject
 .project
