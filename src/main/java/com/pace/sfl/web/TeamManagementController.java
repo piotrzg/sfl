@@ -86,6 +86,7 @@ public class TeamManagementController {
             }
 
             boolean isLocked = zawodnik.getWeeklyResults().get(round+2).isLocked();
+            System.out.println(zawodnik.getLname() + ": " + isLocked);
             if(zawodnik.isIsJunior() && juniorIndex < 8)
             {
                 uiModel.addAttribute("slot_" + juniorIndex, zawodnik);
@@ -203,13 +204,13 @@ public class TeamManagementController {
 
             String resp = "{\"msg\": \"OK\"}";
             if(howManyInSquad < 6)
-                return "{\"msg\":\"Druzyna musi miec conajmniej 6 zawodnikow w skladzie\"}";
+                return "{\"msg\":\"Druzyna musi miec conajmniej 6 zawodnikow w skladzie. Zmiany zostały zapisane.\"}";
 
             if(howManyJuniors < 2)
-                return "{\"msg\":\"Druzyna musi miec conajmniej 2 juniorow w skladzie\"}";
+                return "{\"msg\":\"Druzyna musi miec conajmniej 2 juniorow w skladzie. Zmiany zostały zapisane.\"}";
 
             if(howManyPolish < 4)
-                return "{\"msg\":\"Druzyna musi miec conajmniej 4 Polakow w skladzie\"}";
+                return "{\"msg\":\"Druzyna musi miec conajmniej 4 Polakow w skladzie. Zmiany zostały zapisane.\"}";
 
 
             if(minKSM != 100 && howManyInSquad == 7)

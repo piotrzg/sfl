@@ -15,6 +15,13 @@
         $(document).ready(function() {
 
             var oTable = $('#playerList').dataTable( {
+                "oLanguage": {
+                    "sSearch": "Szukaj",
+                    "oPaginate": {
+                        "sNext": "Następna",
+                        "sPrevious": "Poprzednia"
+                    }
+                },
                 "iDisplayLength": 50,
                 "aoColumnDefs": [
                     { "bSortable": false, "aTargets": [ 2 ] }

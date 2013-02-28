@@ -172,7 +172,7 @@
             var minKsm = 100;
             for(var i=0; i<roster.length; i++)
             {
-                if(roster[i] != null & roster[i] != undefined) // roster[i] can equal 0
+                if(roster[i] != null && roster[i] != undefined) // roster[i] can equal 0
                 {
                     totalKsm += ksm[roster[i]];
                     if(ksm[roster[i]] < minKsm)
@@ -438,12 +438,11 @@
             ${zawodnik.fname} ${zawodnik.lname}
         </div>
         <br/>
-
         <script type="text/javascript" charset="utf8">
             // <![CDATA[
             ksm[${zawodnik.pid}] = ${zawodnik.ksm};
 
-            if(${zawodnik.weeklyResults[r].locked})
+            if(${zawodnik.weeklyResults[r+2].locked})
                 $('#${zawodnik.pid}').draggable({disabled:true});
             // ]]>
         </script>

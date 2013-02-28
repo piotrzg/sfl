@@ -6,11 +6,29 @@
 
   <spring:url var="banner" value="/resources/images/banner-graphic.png" />
   <spring:url var="home" value="/" />
+  <spring:url var="login" value="/login" />
+  <spring:url var="rejestracja" value="/rejestracja" />
+  <spring:url value="/resources/j_spring_security_logout" var="logout"/>
   <spring:message code="button_home" var="home_label" htmlEscape="false" />
+    <div id="headerLinks">
+        <a href="${home}">Strong Główna</a>&#160;
+
+        <c:if test="${pageContext['request'].userPrincipal != null}">
+            <span>
+                <spring:url value="/resources/j_spring_security_logout" var="logout"/>
+                <a href="${logout}">
+                    <spring:message code="security_logout"/>
+                </a>
+            </span>
+        </c:if>
+        <c:if test="${pageContext['request'].userPrincipal == null}">
+            <a href="${login}">Zaloguj się</a>  &#160;
+            <a href="${rejestracja}">Zarejestruj się</a>
+        </c:if>
+    </div>
   <a href="${home}" name="${fn:escapeXml(home_label)}" title="${fn:escapeXml(home_label)}">
     <img src="${banner}" />
   </a>
 
-    Is it?: ${isLoggedIn}
-    <tiles:insertAttribute name="isLoggedIn" ignore="true" />
-</div> 
+
+</div>

@@ -1,11 +1,14 @@
 package com.pace.sfl.Utils;
 
 import com.pace.sfl.Constants;
+import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
 
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.springframework.ui.Model;
 
 /**
  * Created with IntelliJ IDEA.
@@ -124,6 +127,22 @@ public class Utils {
         }
 
         return totalPoints;
+    }
+
+
+    public static Model populateModel(Model uiModel, SflDruzyna sflDruzyna)
+    {
+        double totalKSM = getTotalKSM((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("totalKSM", totalKSM);
+        boolean isValidTeamBasedOnKSM = isValidBasedOnKSM((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("isValidTeamBasedOnKSM",isValidTeamBasedOnKSM);
+        int nrJuniors = howManyJuniors((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("nrJuniors", nrJuniors);
+        int nrPolish = howManyPolish((HashSet)sflDruzyna.getZawodnicy());
+        uiModel.addAttribute("nrPolish", nrPolish);
+        uiModel.addAttribute("druzyna", sflDruzyna);
+
+        return uiModel;
     }
 
 }

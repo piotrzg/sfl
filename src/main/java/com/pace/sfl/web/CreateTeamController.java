@@ -1,6 +1,5 @@
 package com.pace.sfl.web;
 
-import com.pace.sfl.IndividualResult;
 import com.pace.sfl.TeamWeekResult;
 import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.UserProfile;
@@ -13,7 +12,6 @@ import com.pace.sfl.Utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +44,7 @@ public class CreateTeamController {
     SflDruzynaService sflDruzynaService;
 
     @RequestMapping(value = "/ct", produces = "text/html")
-    public String show()
+    public String show(Model model)
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
@@ -59,9 +57,7 @@ public class CreateTeamController {
         if(sflDruzyna == null)
             return "createTeam";
         else
-        {
             return "choosePlayers";
-        }
     }
 
 
@@ -80,7 +76,7 @@ public class CreateTeamController {
             SflDruzyna checkIfDruzynaExists = sflDruzynaService.findByTeamName(teamName);
             if(checkIfDruzynaExists != null)
             {
-                uiModel.addAttribute("errMsg", "Druzyna o tej samej nazwie juz istnieje. Wybierz inna nazwa dla swojej druzyny");
+                uiModel.addAttribute("errMsg", "Drużyna o tej samej nazwie już istnieje. Wybierz inną nazwe dla swojej drużyny");
                 return "createTeam";
             }
 
@@ -94,8 +90,7 @@ public class CreateTeamController {
         }
         else
         {
-            System.out.println("WTF dude you already have a team!");
-            return "createTeam";
+            return "choosePlayers";
         }
 
     }
@@ -113,11 +108,7 @@ public class CreateTeamController {
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
 
-        double totalKSM = Utils.getTotalKSM((HashSet)sflDruzyna.getZawodnicy());
-        uiModel.addAttribute("totalKSM", totalKSM);
-        boolean isValidTeamBasedOnKSM = Utils.isValidBasedOnKSM((HashSet)sflDruzyna.getZawodnicy());
-        uiModel.addAttribute("isValidTeamBasedOnKSM",isValidTeamBasedOnKSM);
-        uiModel.addAttribute("druzyna", sflDruzyna);
+        Utils.populateModel(uiModel, sflDruzyna);
 
         return "choosePlayers";
     }
@@ -149,7 +140,7 @@ public class CreateTeamController {
             sb.append(',');
             sb.append(listaZawodnikow.get(i).getKsm());
             if(zawodnicySet == null || !zawodnicySet.contains(listaZawodnikow.get(i))){
-                sb.append(",\"<a href='dodajZawodnika?id="+listaZawodnikow.get(i).getId()+"'>Dodaj do skladu</a>\"");
+                sb.append(",\"<a href='dodajZawodnika?id="+listaZawodnikow.get(i).getId()+"'>Dodaj do składu</a>\"");
             }
             else{
                 sb.append(",\"W skladzie\"");
@@ -176,8 +167,8 @@ public class CreateTeamController {
 
         if(zawodnicySet.size() >= Constants.MAX_TEAM_PLAYERS)
         {
-            uiModel.addAttribute("msgToUser", "Sklad druzyny nie moze przekraczac "+Constants.MAX_TEAM_PLAYERS + " zawodnikow.");
-            uiModel.addAttribute("druzyna", sflDruzyna);
+            uiModel.addAttribute("msgToUser", "Skład druzyny nie moze przekraczac "+Constants.MAX_TEAM_PLAYERS+" zawodnikow.");
+            Utils.populateModel(uiModel, sflDruzyna);
             return "choosePlayers";
         }
 
@@ -193,19 +184,11 @@ public class CreateTeamController {
             sflDruzyna.setZawodnicy(zawodnicySet);
             sflDruzynaService.saveSflDruzyna(sflDruzyna);
 
-            uiModel.addAttribute("msgToUser", zawodnik.getFname() +" " +zawodnik.getLname()+" dodany do skladu!") ;
+            uiModel.addAttribute("msgToUser", zawodnik.getFname() +" " +zawodnik.getLname()+" dodany do składu!") ;
             uiModel.addAttribute("zawodnikzuzlowy", zawodnik);
         }
 
-        double totalKSM = Utils.getTotalKSM((HashSet)sflDruzyna.getZawodnicy());
-        uiModel.addAttribute("totalKSM", totalKSM);
-        boolean isValidTeamBasedOnKSM = Utils.isValidBasedOnKSM((HashSet)sflDruzyna.getZawodnicy());
-        uiModel.addAttribute("isValidTeamBasedOnKSM",isValidTeamBasedOnKSM);
-        int nrJuniors = Utils.howManyJuniors((HashSet)sflDruzyna.getZawodnicy());
-        uiModel.addAttribute("nrJuniors", nrJuniors);
-        int nrPolish = Utils.howManyPolish((HashSet)sflDruzyna.getZawodnicy());
-        uiModel.addAttribute("nrPolish", nrPolish);
-        uiModel.addAttribute("druzyna", sflDruzyna);
+        Utils.populateModel(uiModel, sflDruzyna);
         return "choosePlayers";
     }
 
@@ -216,9 +199,19 @@ public class CreateTeamController {
         String name = auth.getName(); //get logged in username
 
         UserProfile up = ups.findByUsername(name);
-        SflDruzyna sflDruzyna = up.getSflDruzyna();
+        if(up == null)
+            return "login";
 
+        SflDruzyna sflDruzyna = up.getSflDruzyna();
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
+        if(sflDruzyna.isLocked()) // and after March 25)
+        {
+            Utils.populateModel(uiModel, sflDruzyna);
+            uiModel.addAttribute("msgToUser", "Upłynął termin możliwości usuwania zawodników. Możesz tylko dodawać zawodników do składu.");
+            return "choosePlayers";
+        }
+
+
         BigInteger bint = new BigInteger(zawodnikId);
         ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowy(bint);
         HashSet zawodnicySet = (HashSet<ZawodnikZuzlowy>)sflDruzyna.getZawodnicy();
@@ -226,17 +219,10 @@ public class CreateTeamController {
         sflDruzyna.setZawodnicy(zawodnicySet);
         sflDruzynaService.saveSflDruzyna(sflDruzyna);
 
-        double totalKSM = Utils.getTotalKSM((HashSet)sflDruzyna.getZawodnicy());
-        uiModel.addAttribute("totalKSM", totalKSM);
-        boolean isValidTeamBasedOnKSM = Utils.isValidBasedOnKSM((HashSet)sflDruzyna.getZawodnicy());
-        uiModel.addAttribute("isValidTeamBasedOnKSM",isValidTeamBasedOnKSM);
-        int nrJuniors = Utils.howManyJuniors((HashSet)sflDruzyna.getZawodnicy());
-        uiModel.addAttribute("nrJuniors", nrJuniors);
-        int nrPolish = Utils.howManyPolish((HashSet)sflDruzyna.getZawodnicy());
-        uiModel.addAttribute("nrPolish", nrPolish);
-        uiModel.addAttribute("druzyna", sflDruzyna);
+        Utils.populateModel(uiModel, sflDruzyna);
         return "choosePlayers";
     }
+
 
     @RequestMapping(value = "/zglosDruzyne", produces = "text/html")
     public String submitTeam(Model uiModel)
@@ -245,6 +231,9 @@ public class CreateTeamController {
         String name = auth.getName(); //get logged in username
 
         UserProfile up = ups.findByUsername(name);
+        if(up == null)
+            return "login";
+
         SflDruzyna sflDruzyna = up.getSflDruzyna();
 
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
@@ -254,7 +243,7 @@ public class CreateTeamController {
 
         boolean isValidTeamBasedOnKSM = Utils.isValidBasedOnKSM(zawodnicySet);
         if(!isValidTeamBasedOnKSM)
-            invalidTeamMsg = "Zadna kombinacja skladu nie spelnia wymogow KSM";
+            invalidTeamMsg = "Żadna kombinacja składu nie spełnia wymogów KSM";
 
         int nrJuniors = Utils.howManyJuniors(zawodnicySet);
         if(nrJuniors < 2)
@@ -275,6 +264,7 @@ public class CreateTeamController {
             }
 
             sflDruzyna.setTeamWeekResultList(teamWeekResultSet);
+            sflDruzyna.setLocked(true);
             sflDruzynaService.saveSflDruzyna(sflDruzyna);
             return "zarzadzajDruzyna";
         }
