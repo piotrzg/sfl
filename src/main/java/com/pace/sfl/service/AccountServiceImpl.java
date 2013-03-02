@@ -11,6 +11,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,11 +24,6 @@ import java.util.List;
 @Transactional
 @Service("accountService")
 public class AccountServiceImpl implements AccountService {
-
-    public void init()
-    {
-               System.out.println("INIT!");
-    }
 
     @Autowired
     MongoTemplate mongoTemplate;
@@ -73,6 +70,9 @@ public class AccountServiceImpl implements AccountService {
             if(Utils.isEmail(account.getEmail()))
             {
                 account.setRoles(authorities);
+                PasswordEncoder encoder = new Md5PasswordEncoder();
+                String hashedPass = encoder.encodePassword(account.getPassword(), null);
+                account.setPassword(hashedPass);
                 accountRepository.save(account);
 
                 UserProfile up = new UserProfile();

@@ -7,6 +7,21 @@
             <menu:item id="i_zawodnikzuzlowy_new" messageCode="global_menu_new" url="/zawodnikzuzlowys?form" z="km/KLrRhx/pc5a3ycBVyexe9xko="/>
             <menu:item id="i_zawodnikzuzlowy_list" messageCode="global_menu_list" url="/zawodnikzuzlowys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9mKca/ybb3ArLJGFtmLm21xnciI="/>
         </menu:category>
+
+        <menu:category id="c_druzyna">
+            <menu:item id="i_wybierz" url="/choosePlayers"/>
+            <menu:item id="i_zarzadzaj" url="/zarzadzajDruzyna"/>
+            <menu:item id="i_druzyna_stats" url="/"/>
+        </menu:category>
+        <menu:category id="c_liga">
+            <menu:item id="i_liga_wyniki" url="/"/>
+            <menu:item id="i_liga_tabela" url="/"/>
+        </menu:category>
+        <menu:category id="c_rest">
+            <menu:item id="i_kontakt_link" url="/kontakt"/>
+        </menu:category>
+
+
     </menu:menu>
 
 </div>

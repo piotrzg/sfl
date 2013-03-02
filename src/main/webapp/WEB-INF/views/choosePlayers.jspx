@@ -36,9 +36,9 @@
 
     <h1>Druzyna:  ${druzyna.name}</h1>
     <a href="zglosDruzyne">Zglos ${druzyna.name} do rywalizacji</a>
-
     <h2>${whyTeamIsInvalidMsg}</h2>
     <br/>
+
     ${msgToUser}
 
         <p>
@@ -50,8 +50,6 @@ Zawodnicy:
         </c:forEach>
             <br/>
             Suma KSM Druzyny: ${totalKSM}
-            <br/>
-            Dozwolony sklad:${isValidTeamBasedOnKSM}
             <br/>
             Liczba juniorow: ${nrJuniors}
             <br/>
