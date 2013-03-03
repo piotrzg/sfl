@@ -204,7 +204,7 @@ public class CreateTeamController {
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
-        if(sflDruzyna.isLocked()) // and after March 25)
+        if(sflDruzyna.isLocked() ) // and after March 25)
         {
             Utils.populateModel(uiModel, sflDruzyna);
             uiModel.addAttribute("msgToUser", "Upłynął termin możliwości usuwania zawodników. Możesz tylko dodawać zawodników do składu.");
@@ -243,7 +243,7 @@ public class CreateTeamController {
 
         boolean isValidTeamBasedOnKSM = Utils.isValidBasedOnKSM(zawodnicySet);
         if(!isValidTeamBasedOnKSM)
-            invalidTeamMsg = "Żadna kombinacja składu nie spełnia wymogów KSM";
+            invalidTeamMsg = "Żadna kombinacja składu nie spełnia wymogów KSM.";
 
         int nrJuniors = Utils.howManyJuniors(zawodnicySet);
         if(nrJuniors < 2)
