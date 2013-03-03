@@ -3,10 +3,13 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <menu:menu id="_menu">
-        <menu:category id="c_zawodnikzuzlowy" z="00uKKYr2rBy4U1DF0e50mM8z/10=">
+
+
+
+<!--        <menu:category id="c_zawodnikzuzlowy" z="00uKKYr2rBy4U1DF0e50mM8z/10=">
             <menu:item id="i_zawodnikzuzlowy_new" messageCode="global_menu_new" url="/zawodnikzuzlowys?form" z="km/KLrRhx/pc5a3ycBVyexe9xko="/>
             <menu:item id="i_zawodnikzuzlowy_list" messageCode="global_menu_list" url="/zawodnikzuzlowys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9mKca/ybb3ArLJGFtmLm21xnciI="/>
-        </menu:category>
+        </menu:category>-->
 
         <menu:category id="c_druzyna">
             <menu:item id="i_wybierz" url="/choosePlayers"/>
@@ -14,10 +17,11 @@
             <menu:item id="i_druzyna_stats" url="/"/>
         </menu:category>
         <menu:category id="c_liga">
-            <menu:item id="i_liga_wyniki" url="/"/>
-            <menu:item id="i_liga_tabela" url="/"/>
+            <menu:item id="i_liga_wyniki" url="/liga_wyniki"/>
+            <menu:item id="i_liga_tabela" url="/tabela"/>
         </menu:category>
         <menu:category id="c_rest">
+            <menu:item id="i_zasady" url="/zasady"/>
             <menu:item id="i_kontakt_link" url="/kontakt"/>
         </menu:category>
 

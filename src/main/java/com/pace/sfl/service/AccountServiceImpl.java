@@ -82,7 +82,7 @@ public class AccountServiceImpl implements AccountService {
                 // Create a thread safe "copy" of the template message and customize it
                 SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
                 msg.setTo(account.getEmail());
-                msg.setText("Witamy w serwisie Speedway Fantasy!");
+                msg.setText("Witamy w serwisie Speedway Fantasy!\nTwój login: "+account.getUsername());
                 try{
                     this.mailSender.send(msg);
                 }

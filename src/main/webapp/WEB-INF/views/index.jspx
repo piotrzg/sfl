@@ -9,6 +9,10 @@
     </h3>
     <p>
       <spring:message code="welcome_text" />
+        <br/>
+        <br/>
+        <spring:url value="/rejestracja" var="rejestracja"/>
+        Aby móc brać w rywalizacji, <a href="${rejestracja}">zarejestruj się</a>
     </p>
   </util:panel>
 </div>

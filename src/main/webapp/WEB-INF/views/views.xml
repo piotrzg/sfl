@@ -22,6 +22,18 @@
         <put-attribute name="body" value="/WEB-INF/views/login.jspx"/>
     </definition>
 
+    <definition extends="default" name="kontakt">
+        <put-attribute name="body" value="/WEB-INF/views/kontakt.jspx"/>
+    </definition>
+
+    <definition extends="default" name="tabela">
+        <put-attribute name="body" value="/WEB-INF/views/tabela.jspx"/>
+    </definition>
+
+    <definition extends="default" name="liga_wyniki">
+        <put-attribute name="body" value="/WEB-INF/views/liga_wyniki.jspx"/>
+    </definition>
+
     <definition extends="default" name="createTeam">
         <put-attribute name="body" value="/WEB-INF/views/createTeam.jspx"/>
     </definition>
