@@ -252,10 +252,10 @@ table td form {
 }
 
 table th {
-	font-size: 0.9em;
+	/*font-size: 0.9em;*/
 	text-align: left;
 	font-weight: bold;
-	color: #FFF;
+	/*color: #FFF;*/
 	background: #999;
 }
 

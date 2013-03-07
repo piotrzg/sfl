@@ -1,5 +1,4 @@
 <div xmlns:spring="http://www.springframework.org/tags"
-     xmlns:fn="http://java.sun.com/jsp/jstl/functions"
      xmlns:c="http://java.sun.com/jsp/jstl/core"
      xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
@@ -244,44 +243,55 @@
 
     <style>
         .square {
-            width:300px;
+            vertical-align: middle;
+            width:280px;
             height:30px;
             border:1px solid black;
             margin-bottom:5px;
             margin-left:5px;
             text-align:center;
+            font-size: 20px;
+            font-weight: bold;
             background-color:lightblue;
             cursor:pointer;
         }
 
         .squaredotted{
-            width:400px;
+            width:380px;
             height:50px;
-            border:1px dotted gray;
+            border:2px dashed black;
             margin-bottom:5px;
             margin-left:5px;
-            text-align:center;
+            font-size: 40px;
             background-color:lightgray;
+            overflow: hidden;
+            padding-left: 4px;
         }
 
         .validPlayerPos{
             background-color: #90ee90;
         }
+
+        .roster{
+            text-align: left;
+            font-size: 30px;
+            font-weight: bold
+        }
     </style>
 
 
-    <h1>Druzyna:  ${druzyna.name}</h1>
-    <div id="msgDiv" style="width:400px; height: 40px; overflow: hidden">Druzyna spelnia wymagania</div>
+    <h1>Drużyna: ${druzyna.name}</h1>
+    <div id="msgDiv" style="width:400px; height: 40px; overflow: hidden">Aby wstawić zawodnika do składu, przesuń zawodnika do odpowiedniego miejsca</div>
     <a onclick="submitRoster()" href="javascript:void(0)">Zapisz sklad</a>
     <br/>
-    <div id="ksmDisplay">KSM: </div>
-    <br/>
+    <div id="ksmDisplay">KSM: </div><br/>
 
     <div class="roster">
         <c:if test="${not empty slot_1}">
             <c:set var="cssStyleValue" value="validPlayerPos" />
         </c:if>
         <div id="s1" class="PolishBox squaredotted ${cssStyleValue}">
+            1. Polski Zawodnik
             <c:choose>
                 <c:when test="${not empty slot_1}">
                     <div id="${slot_1.pid}" class="${slot_1_css} square">${slot_1.fname} ${slot_1.lname}</div>
@@ -292,9 +302,6 @@
                         // ]]>
                     </script>
                 </c:when>
-                <c:when test="${empty slot_1}">
-                    Polski Zawodnik
-                </c:when>
             </c:choose>
         </div>
         <c:set var="cssStyleValue" value="" />
@@ -303,6 +310,7 @@
             <c:set var="cssStyleValue" value="validPlayerPos" />
         </c:if>
         <div id="s2" class="PolishBox squaredotted ${cssStyleValue}">
+            2. Polski Zawodnik
             <c:choose>
                 <c:when test="${not empty slot_2}">
                     <div id="${slot_2.pid}" class="${slot_2_css} square">${slot_2.fname} ${slot_2.lname}</div>
@@ -313,9 +321,6 @@
                         // ]]>
                     </script>
                 </c:when>
-                <c:when test="${empty slot_2}">
-                    Polski Zawodnik
-                </c:when>
             </c:choose>
         </div>
         <c:set var="cssStyleValue" value="" />
@@ -324,6 +329,7 @@
             <c:set var="cssStyleValue" value="validPlayerPos" />
         </c:if>
         <div id="s3" class="all squaredotted ${cssStyleValue}">
+            3. Zawodnik
             <c:choose>
                 <c:when test="${not empty slot_3}">
                     <div id="${slot_3.pid}" class="${slot_3_css} square">${slot_3.fname} ${slot_3.lname}</div>
@@ -334,7 +340,6 @@
                         // ]]>
                     </script>
                 </c:when>
-                <c:when test="${empty slot_3}">Zawodnik</c:when>
             </c:choose>
         </div>
         <c:set var="cssStyleValue" value="" />
@@ -344,6 +349,7 @@
             <c:set var="cssStyleValue" value="validPlayerPos" />
         </c:if>
         <div id="s4" class="all squaredotted ${cssStyleValue}">
+            4. Zawodnik
             <c:choose>
                 <c:when test="${not empty slot_4}">
                     <div id="${slot_4.pid}" class="${slot_4_css} square">${slot_4.fname} ${slot_4.lname}</div>
@@ -354,7 +360,6 @@
                         // ]]>
                     </script>
                 </c:when>
-                <c:when test="${empty slot_4}">Zawodnik</c:when>
             </c:choose>
         </div>
         <c:set var="cssStyleValue" value="" />
@@ -364,6 +369,7 @@
             <c:set var="cssStyleValue" value="validPlayerPos" />
         </c:if>
         <div id="s5" class="all squaredotted ${cssStyleValue}">
+            5. Zawodnik
             <c:choose>
                 <c:when test="${not empty slot_5}">
                     <div id="${slot_5.pid}" class="${slot_5_css} square">${slot_5.fname} ${slot_5.lname}</div>
@@ -374,7 +380,6 @@
                         // ]]>
                     </script>
                 </c:when>
-                <c:when test="${empty slot_5}">Zawodnik</c:when>
             </c:choose>
         </div>
         <c:set var="cssStyleValue" value="" />
@@ -384,6 +389,7 @@
             <c:set var="cssStyleValue" value="validPlayerPos" />
         </c:if>
         <div id="s6" class="JuniorBox squaredotted ${cssStyleValue}">
+            6. Junior
             <c:choose>
                 <c:when test="${not empty slot_6}">
                     <div id="${slot_6.pid}" class="${slot_6_css} square">${slot_6.fname} ${slot_6.lname}</div>
@@ -394,7 +400,6 @@
                         // ]]>
                     </script>
                 </c:when>
-                <c:when test="${empty slot_6}">Junior</c:when>
             </c:choose>
         </div>
         <c:set var="cssStyleValue" value="" />
@@ -403,6 +408,7 @@
             <c:set var="cssStyleValue" value="validPlayerPos" />
         </c:if>
         <div id="s7" class="JuniorBox squaredotted ${cssStyleValue}">
+            7. Junior
             <c:choose>
                 <c:when test="${not empty slot_7}">
                     <div id="${slot_7.pid}" class="${slot_7_css} square">${slot_7.fname} ${slot_7.lname}</div>
@@ -413,7 +419,6 @@
                         // ]]>
                     </script>
                 </c:when>
-                <c:when test="${empty slot_7}">Junior</c:when>
             </c:choose>
         </div>
         <c:set var="cssStyleValue" value="" />
@@ -435,7 +440,7 @@
             </c:when>
         </c:choose>
         <div id="${zawodnik.pid}" class="${cssValue} moveable square">
-            ${zawodnik.fname} ${zawodnik.lname}
+            ${zawodnik.fname} ${zawodnik.lname} (${zawodnik.ksm})
         </div>
         <br/>
         <script type="text/javascript" charset="utf8">

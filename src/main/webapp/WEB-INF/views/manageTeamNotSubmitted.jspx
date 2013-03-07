@@ -1,0 +1,11 @@
+<div xmlns:spring="http://www.springframework.org/tags"
+     xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8" />
+    <jsp:output omit-xml-declaration="yes" />
+
+    <spring:url value="/choosePlayers" var="cp"/>
+    <div style="font-size: 14px">
+Musisz najpierw wybrać kadre twojego zespołu i zgłosić ją do rywalizacji. Klikając <a href="${cp}">tutaj</a>, możesz dokonać
+    wybory kadry. W tym linku również możesz dokonać zgłoszenia zespołu do rywalizacji klikając "Zgłoś drużyne do rywalizacji".
+    </div>
+</div>

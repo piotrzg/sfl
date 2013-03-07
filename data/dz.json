@@ -1,0 +1,10 @@
+{ "_id" : { "$oid" : "511b1a4904641cf7baa17641" }, "_class" : "com.pace.sfl.domain.DruzynaZuzlowa", "name" : "Falubaz Zielona Góra", "tid" : 0, "lockedRounds" : [] }
+{ "_id" : { "$oid" : "511b1a5804641cf7baa17642" }, "_class" : "com.pace.sfl.domain.DruzynaZuzlowa", "name" : "Unibax Toruń", "tid" : 1, "lockedRounds" : [] }
+{ "_id" : { "$oid" : "511b1a7104641cf7baa17643" }, "_class" : "com.pace.sfl.domain.DruzynaZuzlowa", "name" : "Unia Tarnów", "tid" : 2, "lockedRounds" : [] }
+{ "_id" : { "$oid" : "511b1aac04641cf7baa17644" }, "_class" : "com.pace.sfl.domain.DruzynaZuzlowa", "name" : "Unia Leszno", "tid" : 3, "lockedRounds" : [] }
+{ "_id" : { "$oid" : "511b1ac104641cf7baa17645" }, "_class" : "com.pace.sfl.domain.DruzynaZuzlowa", "name" : "Stal Gorzów", "tid" : 4, "lockedRounds" : [] }
+{ "_id" : { "$oid" : "511b1ada04641cf7baa17646" }, "_class" : "com.pace.sfl.domain.DruzynaZuzlowa", "name" : "Stal Rzeszów", "tid" : 5, "lockedRounds" : [] }
+{ "_id" : { "$oid" : "511b1af404641cf7baa17647" }, "_class" : "com.pace.sfl.domain.DruzynaZuzlowa", "name" : "WTS Wrocław", "tid" : 6, "lockedRounds" : [] }
+{ "_id" : { "$oid" : "511b1b3704641cf7baa17648" }, "_class" : "com.pace.sfl.domain.DruzynaZuzlowa", "name" : "Polonia Bydgoszcz", "tid" : 7, "lockedRounds" : [] }
+{ "_id" : { "$oid" : "511b1b5a04641cf7baa17649" }, "_class" : "com.pace.sfl.domain.DruzynaZuzlowa", "name" : "Włókniarz Częstochowa", "tid" : 8, "lockedRounds" : [] }
+{ "_id" : { "$oid" : "511b1b7704641cf7baa1764a" }, "_class" : "com.pace.sfl.domain.DruzynaZuzlowa", "name" : "Start Gniezno", "tid" : 9, "lockedRounds" : [] }

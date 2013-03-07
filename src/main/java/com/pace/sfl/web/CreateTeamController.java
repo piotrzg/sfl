@@ -50,8 +50,6 @@ public class CreateTeamController {
         String name = auth.getName(); //get logged in username
 
         UserProfile up = ups.findByUsername(name);
-//        if(up == null)
-//            return "login";
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         if(sflDruzyna == null)
@@ -220,6 +218,7 @@ public class CreateTeamController {
         sflDruzynaService.saveSflDruzyna(sflDruzyna);
 
         Utils.populateModel(uiModel, sflDruzyna);
+        uiModel.addAttribute("msgToUser", zawodnik.getFname() +" " +zawodnik.getLname()+" usunięty ze składu") ;
         return "choosePlayers";
     }
 

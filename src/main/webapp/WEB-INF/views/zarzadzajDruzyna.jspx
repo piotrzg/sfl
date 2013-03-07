@@ -1,5 +1,4 @@
-<div xmlns:spring="http://www.springframework.org/tags"
-     xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
     <jsp:output omit-xml-declaration="yes" />
 
@@ -12,5 +11,16 @@
 5 Runda - <a href="wybierzDruzyne/5">Wybierz sklad</a><br/>
 6 Runda - <a href="wybierzDruzyne/6">Wybierz sklad</a><br/>
 7 Runda - <a href="wybierzDruzyne/7">Wybierz sklad</a><br/>
+8 Runda - <a href="wybierzDruzyne/8">Wybierz sklad</a><br/>
+9 Runda - <a href="wybierzDruzyne/9">Wybierz sklad</a><br/>
+10 Runda - <a href="wybierzDruzyne/10">Wybierz sklad</a><br/>
+11 Runda - <a href="wybierzDruzyne/11">Wybierz sklad</a><br/>
+12 Runda - <a href="wybierzDruzyne/12">Wybierz sklad</a><br/>
+13 Runda - <a href="wybierzDruzyne/13">Wybierz sklad</a><br/>
+14 Runda - <a href="wybierzDruzyne/14">Wybierz sklad</a><br/>
+15 Runda - <a href="wybierzDruzyne/15">Wybierz sklad</a><br/>
+16 Runda - <a href="wybierzDruzyne/16">Wybierz sklad</a><br/>
+17 Runda - <a href="wybierzDruzyne/17">Wybierz sklad</a><br/>
+18 Runda - <a href="wybierzDruzyne/18">Wybierz sklad</a><br/>
 
 </div>

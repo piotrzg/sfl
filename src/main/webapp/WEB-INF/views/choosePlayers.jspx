@@ -1,9 +1,7 @@
-<div xmlns:spring="http://www.springframework.org/tags"
-     xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-     xmlns:c="http://java.sun.com/jsp/jstl/core"
+<div xmlns:c="http://java.sun.com/jsp/jstl/core"
      xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
-    <jsp:output omit-xml-declaration="yes" />
+    <jsp:output omit-xml-declaration="yes"/>
 
     <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/css/jquery.dataTables.css"/>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"><jsp:text /></script>
@@ -17,6 +15,7 @@
             var oTable = $('#playerList').dataTable( {
                 "oLanguage": {
                     "sSearch": "Szukaj",
+                    "sLengthMenu": "Pokaż _MENU_ zawodników",
                     "oPaginate": {
                         "sNext": "Następna",
                         "sPrevious": "Poprzednia"
@@ -24,7 +23,8 @@
                 },
                 "iDisplayLength": 50,
                 "aoColumnDefs": [
-                    { "bSortable": false, "aTargets": [ 2 ] }
+                    { "sWidth": "30%", "bSortable": false, "aTargets": [ 2 ] },
+                    { "sWidth": "16%", "aTargets": [ 1 ] }
                 ],
                 "bProcessing": true,
                 "sAjaxSource": "getAllPlayers"
@@ -34,18 +34,33 @@
         // ]]>
     </script>
 
+    <style>
+        #playerList {
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+
+    <div style="font-size: 14px">
     <h1>Druzyna:  ${druzyna.name}</h1>
-    <a href="zglosDruzyne">Zglos ${druzyna.name} do rywalizacji</a>
+    <c:if test="${!druzyna.locked}">
+        <a onClick="return window.confirm('Po zgłoszeniu, nie będziesz mógł usuwać zawodników. Czy chcesz zgłosić drużynę do rywalizacji?')" href="zglosDruzyne">
+            Zgłoś ${druzyna.name} do rywalizacji
+        </a>
+    </c:if>
     <h2>${whyTeamIsInvalidMsg}</h2>
     <br/>
 
     ${msgToUser}
 
         <p>
-Zawodnicy:
+<b>Kadra:</b>
             <br/>
         <c:forEach var="zawodnik" items="${druzyna.zawodnicy}">
-            ${zawodnik.fname} ${zawodnik.lname} ${zawodnik.ksm}  <a href="usunZawodnika?id=${zawodnik.id}">Usun</a>
+            ${zawodnik.fname} ${zawodnik.lname} ${zawodnik.ksm}
+            <c:if test="${!druzyna.locked}">
+                <a href="usunZawodnika?id=${zawodnik.id}">Usun</a>
+            </c:if>
             <br/>
         </c:forEach>
             <br/>
@@ -59,12 +74,11 @@ Zawodnicy:
 
         <table id="playerList">
             <thead>
-            <tr>
-                <th>Imie</th>
-                <th>KSM</th>
-                <th>Dodaj</th>
+            <tr style="color: black">
+                <th>Zawodnik</th><th>KSM</th><th>Dodaj</th>
             </tr>
             </thead>
-            <tbody>            </tbody>
+            <tbody>         </tbody>
         </table>
+    </div>
 </div>

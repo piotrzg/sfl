@@ -26,6 +26,10 @@
         <put-attribute name="body" value="/WEB-INF/views/kontakt.jspx"/>
     </definition>
 
+    <definition extends="default" name="manageTeamNotSubmitted">
+        <put-attribute name="body" value="/WEB-INF/views/manageTeamNotSubmitted.jspx"/>
+    </definition>
+
     <definition extends="default" name="tabela">
         <put-attribute name="body" value="/WEB-INF/views/tabela.jspx"/>
     </definition>
@@ -37,6 +41,7 @@
     <definition extends="default" name="createTeam">
         <put-attribute name="body" value="/WEB-INF/views/createTeam.jspx"/>
     </definition>
+
     <definition extends="default" name="choosePlayers">
         <put-attribute name="body" value="/WEB-INF/views/choosePlayers.jspx"/>
     </definition>

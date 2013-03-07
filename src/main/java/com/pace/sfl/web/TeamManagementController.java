@@ -40,6 +40,25 @@ public class TeamManagementController {
     @Autowired
     ZawodnikZuzlowyService zawodnicy;
 
+    @RequestMapping(value = "/zarzadzajDruzyna", produces = "text/html")
+    public String zarzadzajDruzyna()
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        UserProfile up = ups.findByUsername(name);
+        if(up == null)
+            return "login";
+
+        SflDruzyna sflDruzyna = up.getSflDruzyna();
+        sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
+
+        if(!sflDruzyna.isLocked())
+            return "manageTeamNotSubmitted";
+        else
+            return "zarzadzajDruzyna";
+    }
+
     @RequestMapping(value = "/wybierzDruzyne/{round}", produces = "text/html")
     public String chooseTeamForWeek(@PathVariable("round") int round, Model uiModel)
     {
@@ -52,6 +71,9 @@ public class TeamManagementController {
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
+
+        if(!sflDruzyna.isLocked())
+            return "manageTeamNotSubmitted";
 
         List<Integer> sklad = sflDruzyna.getSquadForRound(round);
         Iterator<Integer> skladIter = sklad.iterator();
@@ -70,7 +92,6 @@ public class TeamManagementController {
             {
                 // throw exception - should never happen
             }
-
 
             if(zawodnik.getWeeklyResults() == null)
             {
