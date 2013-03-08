@@ -107,7 +107,7 @@ public class TeamManagementController {
             }
 
             boolean isLocked = zawodnik.getWeeklyResults().get(round+2).isLocked();
-            System.out.println(zawodnik.getLname() + ": " + isLocked);
+//            System.out.println(zawodnik.getLname() + ": " + isLocked);
             if(zawodnik.isIsJunior() && juniorIndex < 8)
             {
                 uiModel.addAttribute("slot_" + juniorIndex, zawodnik);

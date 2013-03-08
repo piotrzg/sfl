@@ -127,6 +127,10 @@ public class CreateTeamController {
             sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
             zawodnicySet = (HashSet<ZawodnikZuzlowy>)sflDruzyna.getZawodnicy();
         }
+        else
+        {
+            //throw exception
+        }
 
         StringBuilder sb = new StringBuilder();
         sb.append("{\"aaData\": [");
