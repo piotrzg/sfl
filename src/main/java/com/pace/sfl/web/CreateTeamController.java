@@ -44,7 +44,7 @@ public class CreateTeamController {
     SflDruzynaService sflDruzynaService;
 
     @RequestMapping(value = "/ct", produces = "text/html")
-    public String show(Model model)
+    public String show(Model uiModel)
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
@@ -52,6 +52,8 @@ public class CreateTeamController {
         UserProfile up = ups.findByUsername(name);
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
+        sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
+        Utils.populateModel(uiModel, sflDruzyna);
         if(sflDruzyna == null)
             return "createTeam";
         else

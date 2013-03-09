@@ -43,10 +43,7 @@ public class TeamManagementController {
     @RequestMapping(value = "/zarzadzajDruzyna", produces = "text/html")
     public String zarzadzajDruzyna()
     {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
-
-        UserProfile up = ups.findByUsername(name);
+        UserProfile up = ups.findByUsername(getAuthName());
         if(up == null)
             return "login";
 
@@ -62,10 +59,7 @@ public class TeamManagementController {
     @RequestMapping(value = "/wybierzDruzyne/{round}", produces = "text/html")
     public String chooseTeamForWeek(@PathVariable("round") int round, Model uiModel)
     {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
-
-        UserProfile up = ups.findByUsername(name);
+        UserProfile up = ups.findByUsername(getAuthName());
         if(up == null)
             return "login";
 
@@ -90,6 +84,16 @@ public class TeamManagementController {
             ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowyByPid(pid);
             if(zawodnik == null)
             {
+                List<Integer> tempSklad = new ArrayList<Integer>(sklad);
+                tempSklad.remove(pid);
+                TeamWeekResult twrTemp = new TeamWeekResult(round);
+                twrTemp.setSklad(tempSklad);
+                Set<TeamWeekResult> teamWeekResultSet = sflDruzyna.getTeamWeekResultList();
+                teamWeekResultSet.remove(twrTemp);
+                teamWeekResultSet.add(twrTemp);
+                sflDruzyna.setTeamWeekResultList(teamWeekResultSet);
+                System.out.println("Sklad has a pid that does not exist in database. Should never happen");
+                continue;
                 // throw exception - should never happen
             }
 
@@ -102,12 +106,10 @@ public class TeamManagementController {
                     irs.add(ir);
                 }
                 zawodnik.setWeeklyResults(irs);
-                System.out.println("Savings irs for: "+zawodnik.getLname());
                 zawodnicy.saveZawodnikZuzlowy(zawodnik);
             }
 
             boolean isLocked = zawodnik.getWeeklyResults().get(round+2).isLocked();
-//            System.out.println(zawodnik.getLname() + ": " + isLocked);
             if(zawodnik.isIsJunior() && juniorIndex < 8)
             {
                 uiModel.addAttribute("slot_" + juniorIndex, zawodnik);
@@ -155,14 +157,10 @@ public class TeamManagementController {
     @RequestMapping(method = RequestMethod.POST, value = "/wybierzDruzyne/zapiszDruzyne")
     public @ResponseBody String saveTeamForWeek(@RequestBody String json, Model uiModel)
     {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
-
-        UserProfile up = ups.findByUsername(name);
+        UserProfile up = ups.findByUsername(getAuthName());
         if(up == null)
-        {
             return "{\"msg\":\"login\"}";
-        }
+
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
@@ -173,18 +171,14 @@ public class TeamManagementController {
 
             List<Integer> sklad = twrTemp.getSklad();
 
-            System.out.println("Sklad:"+sklad);
-            System.out.println("twrTemp.getRound():"+twrTemp.getRound());
-
             Set<TeamWeekResult> teamWeekResultSet = sflDruzyna.getTeamWeekResultList();
             if(teamWeekResultSet != null)
             {
                 TeamWeekResult twr = new TeamWeekResult(twrTemp.getRound());
                 twr.setSklad(sklad);
-                sflDruzyna.getTeamWeekResultList().remove(twrTemp);
-                HashSet xxx = new HashSet(teamWeekResultSet);
-                xxx.add(twr);
-                sflDruzyna.setTeamWeekResultList(xxx);
+                teamWeekResultSet.remove(twr);
+                teamWeekResultSet.add(twr);
+                sflDruzyna.setTeamWeekResultList(teamWeekResultSet);
             }
             else
             {
@@ -252,4 +246,12 @@ public class TeamManagementController {
 
         return "{\"msg\":\"Zmiany zapisane!\"}";
     }
+
+
+    private String getAuthName()
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth.getName(); //get logged in username
+    }
+
 }
