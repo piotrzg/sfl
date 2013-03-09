@@ -33,6 +33,7 @@
     <mvc:view-controller path="/login"/>
     <mvc:view-controller path="/kontakt"/>
     <mvc:view-controller path="/tabela"/>
+    <mvc:view-controller path="/druzynaWyniki"/>
     <mvc:view-controller path="/liga_wyniki"/>
     <mvc:view-controller path="/zarzadzajDruzyna"/>
     <mvc:view-controller path="/" view-name="index"/>

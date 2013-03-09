@@ -34,6 +34,14 @@
         <put-attribute name="body" value="/WEB-INF/views/tabela.jspx"/>
     </definition>
 
+    <definition extends="default" name="druzynaWyniki">
+        <put-attribute name="body" value="/WEB-INF/views/druzynaWyniki.jspx"/>
+    </definition>
+
+    <definition extends="default" name="druzynaRundaWynik">
+        <put-attribute name="body" value="/WEB-INF/views/druzynaRundaWynik.jspx"/>
+    </definition>
+
     <definition extends="default" name="liga_wyniki">
         <put-attribute name="body" value="/WEB-INF/views/liga_wyniki.jspx"/>
     </definition>

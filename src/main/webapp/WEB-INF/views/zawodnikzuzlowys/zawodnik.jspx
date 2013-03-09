@@ -26,7 +26,7 @@ function foo(zid, round, value)
     <h1>${zawodnik.fname} ${zawodnik.lname}</h1>
 
     <c:forEach var="ir" items="${zawodnik.weeklyResults}">
-        ${ir.round}: <input type="text" id="${ir.round}" name="${ir.round}" value="" />
+        ${ir.round}: <input type="text" id="${ir.round}" name="${ir.round}" value="${ir.biegiStr}" />
         <a onclick="foo('${zid}',${ir.round}, document.getElementById(${ir.round}).value)" href="javascript:void(0)">Zapisz</a>
         <br/>
     </c:forEach>

@@ -1,0 +1,26 @@
+<div xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8" />
+    <jsp:output omit-xml-declaration="yes" />
+
+
+
+1 Runda - <a href="druzyna/wyniki/1">Wyniki</a><br/>
+2 Runda - <a href="druzyna/wyniki/2">Wyniki</a><br/>
+3 Runda - <a href="druzyna/wyniki/3">Wyniki</a><br/>
+4 Runda - <a href="druzyna/wyniki/4">Wyniki</a><br/>
+5 Runda - <a href="druzyna/wyniki/5">Wyniki</a><br/>
+6 Runda - <a href="druzyna/wyniki/6">Wyniki</a><br/>
+7 Runda - <a href="druzyna/wyniki/7">Wyniki</a><br/>
+8 Runda - <a href="druzyna/wyniki/8">Wyniki</a><br/>
+9 Runda - <a href="druzyna/wyniki/9">Wyniki</a><br/>
+10 Runda - <a href="druzyna/wyniki/10">Wyniki</a><br/>
+11 Runda - <a href="druzyna/wyniki/11">Wyniki</a><br/>
+12 Runda - <a href="druzyna/wyniki/12">Wyniki</a><br/>
+13 Runda - <a href="druzyna/wyniki/13">Wyniki</a><br/>
+14 Runda - <a href="druzyna/wyniki/14">Wyniki</a><br/>
+15 Runda - <a href="druzyna/wyniki/15">Wyniki</a><br/>
+16 Runda - <a href="druzyna/wyniki/16">Wyniki</a><br/>
+17 Runda - <a href="druzyna/wyniki/17">Wyniki</a><br/>
+18 Runda - <a href="druzyna/wyniki/18">Wyniki</a><br/>
+
+</div>
