@@ -14,7 +14,7 @@
         <menu:category id="c_druzyna">
             <menu:item id="i_wybierz" url="/choosePlayers"/>
             <menu:item id="i_zarzadzaj" url="/zarzadzajDruzyna"/>
-            <menu:item id="i_druzyna_stats" url="/"/>
+            <menu:item id="i_druzyna_stats" url="/druzynaWyniki"/>
         </menu:category>
         <menu:category id="c_liga">
             <menu:item id="i_liga_wyniki" url="/liga_wyniki"/>

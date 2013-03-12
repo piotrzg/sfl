@@ -60,8 +60,7 @@ public class TeamManagementController {
     public String chooseTeamForWeek(@PathVariable("round") int round, Model uiModel)
     {
         UserProfile up = ups.findByUsername(getAuthName());
-        if(up == null)
-            return "login";
+        if(up == null) return "login";
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());

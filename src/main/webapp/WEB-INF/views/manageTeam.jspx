@@ -50,22 +50,18 @@
 
             $(".all").droppable({
                 accept: ".polish,.junior,.foreign",
-                drop: function (event, ui) {},
-                out: function (event, ui) {}
+                drop: function (event, ui) {},out: function (event, ui) {}
             });
 
             $(".JuniorBox").droppable({
                 accept: ".junior",
-                drop: function (event, ui) {},
-                out: function (event, ui) {}
+                drop: function (event, ui) {},out: function (event, ui) {}
             });
             $(".PolishBox").droppable({
                 accept: ".polish,.junior",
-                drop: function (event, ui) {},
-                out: function (event, ui) {}
+                drop: function (event, ui) {},out: function (event, ui) {}
             });
         });
-
 
         function updateKSM()
         {
@@ -134,7 +130,6 @@
             });
         }
 
-
         function snapToMiddle(dragger, target){
             var topMove = target.position().top - dragger.data('position').top + (target.outerHeight(true) - dragger.outerHeight(true)) / 2;
             var leftMove= target.position().left - dragger.data('position').left + (target.outerWidth(true) - dragger.outerWidth(true)) / 2;
@@ -195,7 +190,6 @@
             font-weight: bold
         }
 
-
         #deslectedPlaceHolders{
             text-align: left;
             width: 300px;
@@ -229,7 +223,7 @@
                             <span id="d${slot_1.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_1.pid})">Usuń</a></span>
                         </c:if>
                     ${slot_1.fname} ${slot_1.lname}</div>
-                    <script type="text/javascript" charset="utf8">
+                    <script type="text/javascript">
                         // <![CDATA[
                         roster[1] = ${slot_1.pid};
                         ksm["${slot_1.pid}"] = ${slot_1.ksm};
@@ -253,7 +247,7 @@
                             <span id="d${slot_2.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_2.pid})">Usuń</a></span>
                         </c:if>
                     ${slot_2.fname} ${slot_2.lname}</div>
-                    <script type="text/javascript" charset="utf8">
+                    <script type="text/javascript">
                         // <![CDATA[
                         roster[2] = ${slot_2.pid};
                         ksm["${slot_2.pid}"] = ${slot_2.ksm};
@@ -277,7 +271,7 @@
                             <span id="d${slot_3.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_3.pid})">Usuń</a></span>
                         </c:if>
                     ${slot_3.fname} ${slot_3.lname}</div>
-                    <script type="text/javascript" charset="utf8">
+                    <script type="text/javascript">
                         // <![CDATA[
                         roster[3] = ${slot_3.pid};
                         ksm["${slot_3.pid}"] = ${slot_3.ksm};
@@ -302,7 +296,7 @@
                             <span id="d${slot_4.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_4.pid})">Usuń</a></span>
                         </c:if>
                     ${slot_4.fname} ${slot_4.lname}</div>
-                    <script type="text/javascript" charset="utf8">
+                    <script type="text/javascript">
                         // <![CDATA[
                         roster[4] = ${slot_4.pid};
                         ksm["${slot_4.pid}"] = ${slot_4.ksm};
@@ -327,7 +321,7 @@
                             <span id="d${slot_5.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_5.pid})">Usuń</a></span>
                         </c:if>
                     ${slot_5.fname} ${slot_5.lname}</div>
-                    <script type="text/javascript" charset="utf8">
+                    <script type="text/javascript">
                         // <![CDATA[
                         roster[5] = ${slot_5.pid};
                         ksm["${slot_5.pid}"] = ${slot_5.ksm};
@@ -352,7 +346,7 @@
                             <span id="d${slot_6.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_6.pid})">Usuń</a></span>
                         </c:if>
                     ${slot_6.fname} ${slot_6.lname}</div>
-                    <script type="text/javascript" charset="utf8">
+                    <script type="text/javascript">
                         // <![CDATA[
                         roster[6] = ${slot_6.pid};
                         ksm["${slot_6.pid}"] = ${slot_6.ksm};
@@ -377,7 +371,7 @@
                         </c:if>
                         ${slot_7.fname} ${slot_7.lname}
                     </div>
-                    <script type="text/javascript" charset="utf8">
+                    <script type="text/javascript">
                         // <![CDATA[
                         roster[7] = ${slot_7.pid};
                         ksm["${slot_7.pid}"] = ${slot_7.ksm};
@@ -400,44 +394,37 @@
             if(isJunior)
             {
                 var ui = $('#'+zid);
-                if(!roster[6])
-                {
+                if(!roster[6]){
                     var target = $('#s6');
                     $('#s6').addClass("validPlayerPos");
                     snapAndUpdate(6, zid, ui, target);
                 }
-                else if(!roster[7])
-                {
+                else if(!roster[7]){
                     var target = $('#s7');
                     $('#s7').addClass("validPlayerPos");
                     snapAndUpdate(7, zid, ui, target);
                 }
-                else if(!roster[1])
-                {
+                else if(!roster[1]){
                     var target = $('#s1');
                     $('#s1').addClass("validPlayerPos");
                     snapAndUpdate(1, zid, ui, target);
                 }
-                else if(!roster[2])
-                {
+                else if(!roster[2]){
                     var target = $('#s2');
                     $('#s2').addClass("validPlayerPos");
                     snapAndUpdate(2, zid, ui, target) ;
                 }
-                else if(!roster[3])
-                {
+                else if(!roster[3]){
                     var target = $('#s3');
                     $('#s3').addClass("validPlayerPos");
                     snapAndUpdate(3, zid, ui, target);
                 }
-                else if(!roster[4])
-                {
+                else if(!roster[4]){
                     var target = $('#s4');
                     $('#s4').addClass("validPlayerPos");
                     snapAndUpdate(4, zid, ui, target);
                 }
-                else if(!roster[5])
-                {
+                else if(!roster[5]){
                     var target = $('#s5');
                     $('#s5').addClass("validPlayerPos");
                     snapAndUpdate(5, zid, ui, target)
@@ -446,32 +433,27 @@
             else if(isPolish)
             {
                 var ui = $('#'+zid);
-                if(!roster[1])
-                {
+                if(!roster[1]){
                     var target = $('#s1');
                     $('#s1').addClass("validPlayerPos");
                     snapAndUpdate(1, zid, ui, target);
                 }
-                else if(!roster[2])
-                {
+                else if(!roster[2]){
                     var target = $('#s2');
                     $('#s2').addClass("validPlayerPos");
                     snapAndUpdate(2, zid, ui, target);
                 }
-                else if(!roster[3])
-                {
+                else if(!roster[3]){
                     var target = $('#s3');
                     $('#s3').addClass("validPlayerPos");
                     snapAndUpdate(3, zid, ui, target);
                 }
-                else if(!roster[4])
-                {
+                else if(!roster[4]){
                     var target = $('#s4');
                     $('#s4').addClass("validPlayerPos");
                     snapAndUpdate(4, zid, ui, target);
                 }
-                else if(!roster[5])
-                {
+                else if(!roster[5]){
                     var target = $('#s5');
                     $('#s5').addClass("validPlayerPos");
                     snapAndUpdate(5, zid, ui, target);
@@ -480,28 +462,23 @@
             else
             {
                 var ui = $('#'+zid);
-                if(!roster[3])
-                {
+                if(!roster[3]){
                     var target = $('#s3');
                     $('#s3').addClass("validPlayerPos");
                     snapAndUpdate(3, zid, ui, target);
                 }
-                else if(!roster[4])
-                {
+                else if(!roster[4]){
                     var target = $('#s4');
                     $('#s4').addClass("validPlayerPos");
                     snapAndUpdate(4, zid, ui, target);
                 }
-                else if(!roster[5])
-                {
+                else if(!roster[5]){
                     var target = $('#s5');
                     $('#s5').addClass("validPlayerPos");
                     snapAndUpdate(5, zid, ui, target);
                 }
             }
-
         }
-
 
         function snapAndUpdate(slot, zid, ui, target)
         {
@@ -512,13 +489,12 @@
             $('#d'+zid).toggle();
         }
 
-
         function delFromRoster(zid)
         {
             var target = $('#ns'+zid);
             var ui = $('#'+zid);
             snapToMiddle(ui,target);
-            $('#a'+zid).toggle() ;
+            $('#a'+zid).toggle();
             $('#d'+zid).toggle();
             for(var i=1; i<8; i++)
             {
@@ -555,7 +531,7 @@
             </div>
         </div>
         <br/>
-        <script type="text/javascript" charset="utf8">
+        <script type="text/javascript">
             // <![CDATA[
             ksm["${zawodnik.pid}"] = ${zawodnik.ksm};
 
@@ -564,7 +540,6 @@
             // ]]>
         </script>
     </c:forEach>
-
 
     <div id="deslectedPlaceHolders">
         <c:if test="${not empty slot_1}"><div id="ns${slot_1.pid}"><jsp:text /></div></c:if>
@@ -575,5 +550,4 @@
         <c:if test="${not empty slot_6}"><div id="ns${slot_6.pid}"><jsp:text /></div></c:if>
         <c:if test="${not empty slot_7}"><div id="ns${slot_7.pid}"><jsp:text /></div></c:if>
     </div>
-
 </div>

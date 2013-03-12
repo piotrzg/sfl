@@ -18,13 +18,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 @Controller
 public class DruzynaWynikiController {
-
-
 
     @Autowired
     UserProfileService ups;
@@ -42,10 +41,11 @@ public class DruzynaWynikiController {
         String name = auth.getName(); //get logged in username
 
         UserProfile up = ups.findByUsername(name);
+        if(up == null) return "login";
+
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
-        if(sflDruzyna == null)
-        {
+        if(sflDruzyna == null){
             //should never happen
         }
 
@@ -53,7 +53,34 @@ public class DruzynaWynikiController {
         Iterator<Integer> skladIter = sklad.iterator();
 
         int totalPoints = 0;
-        while(skladIter.hasNext())
+        List<ZawodnikZuzlowy> viewZawodnicy = new ArrayList<ZawodnikZuzlowy>();
+        List<ZawodnikZuzlowy> selectedZawodnicy = new ArrayList<ZawodnikZuzlowy>();
+        Iterator<ZawodnikZuzlowy> zzIter = sflDruzyna.getZawodnicy().iterator();
+        while(zzIter.hasNext())
+        {
+            ZawodnikZuzlowy zz = zzIter.next();
+            zz = zawodnicy.findZawodnikZuzlowyByPid(zz.getPid());
+
+            boolean selected = false;
+            for(int i=0; i<sklad.size(); i++)
+            {
+                if(sklad.get(i) == zz.getPid()){
+                    selected = true;
+                    break;
+                }
+            }
+
+            if(selected){
+                selectedZawodnicy.add(zz);
+                IndividualResult ir = zz.getWeeklyResults().get(round+2);
+                totalPoints += ir.getTotalPoints();
+            }
+            else
+                viewZawodnicy.add(zz);
+        }
+
+
+        /*while(skladIter.hasNext())
         {
             Integer pid = skladIter.next();
             if(pid == null)
@@ -61,19 +88,17 @@ public class DruzynaWynikiController {
 
             ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowyByPid(pid);
             if(zawodnik == null)
-            {
-                //should never happen
-                continue;
-            }
+                continue; //should never happen
 
             IndividualResult ir = zawodnik.getWeeklyResults().get(round+2);
             totalPoints += ir.getTotalPoints();
-
-        }
+        }*/
 
         uiModel.addAttribute("round", round);
         uiModel.addAttribute("tp", totalPoints);
         uiModel.addAttribute("druzyna", sflDruzyna);
+        uiModel.addAttribute("selectedZawodnicy", selectedZawodnicy);
+        uiModel.addAttribute("viewZawodnicy", viewZawodnicy);
 
         return "druzynaRundaWynik";
 

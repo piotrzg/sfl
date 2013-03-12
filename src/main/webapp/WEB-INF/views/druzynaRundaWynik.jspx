@@ -8,7 +8,21 @@
 
 Runda: ${round}
     <br/>
-Suma: ${tp}
+<b>Punkty: ${tp}</b>
+
+    <br/>
+    <c:set var="r" value="${round}" />
+    <c:forEach var="zawodnik" items="${selectedZawodnicy}">
+        ${zawodnik.weeklyResults[r+2].totalPoints} ${zawodnik.fname} ${zawodnik.lname} (${zawodnik.weeklyResults[r+2].biegiStr})
+        <br/>
+    </c:forEach>
+    <br/>
+    --------------------------------------------------
+    <br/>
+    <c:forEach var="zawodnik" items="${viewZawodnicy}">
+        ${zawodnik.fname} ${zawodnik.lname}
+        <br/>
+    </c:forEach>
 
 
 </div>

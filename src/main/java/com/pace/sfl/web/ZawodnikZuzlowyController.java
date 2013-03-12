@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,28 +50,26 @@ public class ZawodnikZuzlowyController {
     }
 
     @RequestMapping("/zawodnik/{id}")
-    public String showPlayer(@PathVariable("id") String zawodnikId, Model uiModel)
+    public String showPlayer(@PathVariable("id") int zawodnikId, Model uiModel)
     {
-        BigInteger bint = new BigInteger(zawodnikId);
-        ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowy(bint);
+        ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowyByPid(zawodnikId);
         uiModel.addAttribute("zawodnik", zawodnik);
-        uiModel.addAttribute("zid", zawodnik.getId().toString());
+        uiModel.addAttribute("zid", zawodnik.getPid());
         return "zawodnikzuzlowys/zawodnik";
     }
 
     @RequestMapping(
             value = "/zawodnik/saveIndividualResults/{zid}", method = RequestMethod.POST)
-    public @ResponseBody String saveIndResult(@RequestBody String json, @PathVariable("zid") String zid)
+    public @ResponseBody String saveIndResult(@RequestBody String json, @PathVariable("zid") int zid)
     {
         ObjectMapper om = new ObjectMapper();
         try {
             IndividualResult ir = om.readValue(json, IndividualResult.class);
             double tp = Utils.parseBiegiStr(ir.getBiegiStr());
 
-            System.out.println("Total Points: "+tp);
+//            System.out.println("Total Points: "+tp);
 
-            BigInteger bint = new BigInteger(zid);
-            ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowy(bint);
+            ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowyByPid(zid);
             ir.setTotalPoints(tp);
             zawodnik.getWeeklyResults().set(ir.getRound()+2, ir);
             zawodnicy.saveZawodnikZuzlowy(zawodnik);

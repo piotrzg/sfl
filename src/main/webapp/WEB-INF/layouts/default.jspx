@@ -7,8 +7,8 @@
 			
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=8" />	
-			
+		<meta http-equiv="X-UA-Compatible" content="IE=8" />
+        <meta name="google-site-verification" content="i6iNLsJmXd1x1WnLO6LBhEq5GdsFwb2BvKQAL3UDj60" />
 		<util:load-scripts />
 		
 		<spring:message code="application_name" var="app_name" htmlEscape="false"/>
@@ -24,5 +24,21 @@
 		    	<tiles:insertAttribute name="footer" ignore="true"/>
 		    </div>
 		</div>
+
+           <script type="text/javascript">
+               // <![CDATA[
+               var _gaq = _gaq || [];
+               _gaq.push(['_setAccount', 'UA-10774766-6']);
+               _gaq.push(['_setDomainName', 'speedwayfantasy.pl']);
+               _gaq.push(['_setAllowLinker', true]);
+               _gaq.push(['_trackPageview']);
+
+               (function() {
+                   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+               })();
+               // ]]>
+           </script>
 	</body>
 </html>
