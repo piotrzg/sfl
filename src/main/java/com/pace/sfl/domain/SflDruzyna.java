@@ -27,7 +27,7 @@ public class SflDruzyna {
     private Set<ZawodnikZuzlowy> zawodnicy = new HashSet<ZawodnikZuzlowy>();
 
     private boolean locked;
-    private Set<TeamWeekResult> teamWeekResultList;
+    private List<TeamWeekResult> teamWeekResultList;
 
 
     public List<Integer> getSquadForRound(int round)

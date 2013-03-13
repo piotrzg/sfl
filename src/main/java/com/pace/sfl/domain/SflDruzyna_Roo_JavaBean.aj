@@ -6,6 +6,7 @@ package com.pace.sfl.domain;
 import com.pace.sfl.TeamWeekResult;
 import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
+import java.util.List;
 import java.util.Set;
 
 privileged aspect SflDruzyna_Roo_JavaBean {
@@ -34,11 +35,11 @@ privileged aspect SflDruzyna_Roo_JavaBean {
         this.locked = locked;
     }
     
-    public Set<TeamWeekResult> SflDruzyna.getTeamWeekResultList() {
+    public List<TeamWeekResult> SflDruzyna.getTeamWeekResultList() {
         return this.teamWeekResultList;
     }
     
-    public void SflDruzyna.setTeamWeekResultList(Set<TeamWeekResult> teamWeekResultList) {
+    public void SflDruzyna.setTeamWeekResultList(List<TeamWeekResult> teamWeekResultList) {
         this.teamWeekResultList = teamWeekResultList;
     }
     

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -52,12 +53,14 @@ public class CreateTeamController {
         UserProfile up = ups.findByUsername(name);
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
-        sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
-        Utils.populateModel(uiModel, sflDruzyna);
         if(sflDruzyna == null)
             return "createTeam";
         else
+        {
+            sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
+            Utils.populateModel(uiModel, sflDruzyna);
             return "choosePlayers";
+        }
     }
 
 
@@ -71,11 +74,9 @@ public class CreateTeamController {
 
         UserProfile up = ups.findByUsername(name);
         SflDruzyna sflDruzyna = up.getSflDruzyna();
-        if(sflDruzyna == null)
-        {
+        if(sflDruzyna == null){
             SflDruzyna checkIfDruzynaExists = sflDruzynaService.findByTeamName(teamName);
-            if(checkIfDruzynaExists != null)
-            {
+            if(checkIfDruzynaExists != null){
                 uiModel.addAttribute("errMsg", "Drużyna o tej samej nazwie już istnieje. Wybierz inną nazwe dla swojej drużyny");
                 return "createTeam";
             }
@@ -88,8 +89,7 @@ public class CreateTeamController {
             ups.saveUserProfile(up);
             return "choosePlayers";
         }
-        else
-        {
+        else{
             return "choosePlayers";
         }
 
@@ -106,6 +106,9 @@ public class CreateTeamController {
             return "login";
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
+        if(sflDruzyna == null)
+            return "createTeam";
+
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
 
         Utils.populateModel(uiModel, sflDruzyna);
@@ -261,7 +264,7 @@ public class CreateTeamController {
 
         if(invalidTeamMsg == null)
         {
-            Set<TeamWeekResult> teamWeekResultSet = new HashSet<TeamWeekResult>();
+            List<TeamWeekResult> teamWeekResultSet = new ArrayList<TeamWeekResult>();
             for(int i=-2; i<Constants.NR_ROUNDS+1; i++)
             {
                 TeamWeekResult twr = new TeamWeekResult(i);

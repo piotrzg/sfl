@@ -76,7 +76,7 @@
     <!-- this is a template message that we can pre-load with default state -->
     <bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
         <property name="from" value="speedwayFantasy@gmail.com"/>
-        <property name="subject" value="Subject Testing"/>
+        <property name="subject" value="Rejestracja Speedway Fantasy"/>
     </bean>
 
 

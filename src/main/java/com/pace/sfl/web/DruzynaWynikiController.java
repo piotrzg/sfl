@@ -44,10 +44,11 @@ public class DruzynaWynikiController {
         if(up == null) return "login";
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
-        sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
         if(sflDruzyna == null){
-            //should never happen
+            return "createTeam";
         }
+
+        sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
 
         List<Integer> sklad = sflDruzyna.getSquadForRound(round);
         Iterator<Integer> skladIter = sklad.iterator();
@@ -96,11 +97,20 @@ public class DruzynaWynikiController {
 
         uiModel.addAttribute("round", round);
         uiModel.addAttribute("tp", totalPoints);
-        uiModel.addAttribute("druzyna", sflDruzyna);
         uiModel.addAttribute("selectedZawodnicy", selectedZawodnicy);
         uiModel.addAttribute("viewZawodnicy", viewZawodnicy);
 
         return "druzynaRundaWynik";
+    }
 
+
+    @RequestMapping(value = "/liga/wyniki/{round}", produces = "text/html")
+    public String ligaWyniki(@PathVariable("round") int round, Model uiModel)
+    {
+        List<SflDruzyna> sflDruzynaList = sflDruzynaService.findAllSflDruzynas();
+
+        uiModel.addAttribute("druzyny", sflDruzynaList);
+        uiModel.addAttribute("round", round);
+        return "ligaRundaWynik";
     }
 }

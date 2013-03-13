@@ -48,6 +48,9 @@ public class TeamManagementController {
             return "login";
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
+        if(sflDruzyna == null){
+            return "createTeam";
+        }
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
 
         if(!sflDruzyna.isLocked())
@@ -63,6 +66,9 @@ public class TeamManagementController {
         if(up == null) return "login";
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
+        if(sflDruzyna == null){
+            return "createTeam";
+        }
         sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
 
         if(!sflDruzyna.isLocked())
@@ -87,7 +93,7 @@ public class TeamManagementController {
                 tempSklad.remove(pid);
                 TeamWeekResult twrTemp = new TeamWeekResult(round);
                 twrTemp.setSklad(tempSklad);
-                Set<TeamWeekResult> teamWeekResultSet = sflDruzyna.getTeamWeekResultList();
+                List<TeamWeekResult> teamWeekResultSet = sflDruzyna.getTeamWeekResultList();
                 teamWeekResultSet.remove(twrTemp);
                 teamWeekResultSet.add(twrTemp);
                 sflDruzyna.setTeamWeekResultList(teamWeekResultSet);
@@ -170,7 +176,7 @@ public class TeamManagementController {
 
             List<Integer> sklad = twrTemp.getSklad();
 
-            Set<TeamWeekResult> teamWeekResultSet = sflDruzyna.getTeamWeekResultList();
+            List<TeamWeekResult> teamWeekResultSet = sflDruzyna.getTeamWeekResultList();
             if(teamWeekResultSet != null)
             {
                 TeamWeekResult twr = new TeamWeekResult(twrTemp.getRound());
@@ -181,7 +187,7 @@ public class TeamManagementController {
             }
             else
             {
-                teamWeekResultSet = new HashSet<TeamWeekResult>();
+                teamWeekResultSet = new ArrayList<TeamWeekResult>();
                 TeamWeekResult twr = new TeamWeekResult(twrTemp.getRound());
                 twr.setSklad(sklad);
                 teamWeekResultSet.add(twr);

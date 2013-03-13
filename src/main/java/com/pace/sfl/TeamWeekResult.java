@@ -1,6 +1,5 @@
 package com.pace.sfl;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,14 +15,14 @@ public class TeamWeekResult {
     public TeamWeekResult()
     {
         this.locked = false;
-        this.totalPoints = 0.0;
+        this.setTotalPoints(0.0);
     }
 
     public TeamWeekResult(int r)
     {
         this.setRound(r);
         this.locked = false;
-        this.totalPoints = 0.0;
+        this.setTotalPoints(0.0);
         this.sklad = new ArrayList<Integer>();
     }
 
@@ -63,5 +62,13 @@ public class TeamWeekResult {
 
     public void setSklad(List<Integer> sklad) {
         this.sklad = sklad;
+    }
+
+    public double getTotalPoints() {
+        return totalPoints;
+    }
+
+    public void setTotalPoints(double totalPoints) {
+        this.totalPoints = totalPoints;
     }
 }

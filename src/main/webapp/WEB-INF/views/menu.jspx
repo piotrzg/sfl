@@ -17,7 +17,7 @@
             <menu:item id="i_druzyna_stats" url="/druzynaWyniki"/>
         </menu:category>
         <menu:category id="c_liga">
-            <menu:item id="i_liga_wyniki" url="/liga_wyniki"/>
+            <menu:item id="i_liga_wyniki" url="/ligaWyniki"/>
             <menu:item id="i_liga_tabela" url="/tabela"/>
         </menu:category>
         <menu:category id="c_rest">
