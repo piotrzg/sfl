@@ -1,0 +1,33 @@
+<div xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8" />
+    <jsp:output omit-xml-declaration="yes" />
+
+<h1>Kadra Drużyny</h1>
+- minimum 6 zawodników<br/>
+- maksimum 12 zawodników<br/>
+- w przeciągu całego sezonu można dodawać zawodników jeśli nie przekroczono maksymalnej ilości 12 zawodników<br/>
+
+<h1>Skład Drużyny</h1>
+- w składzie na daną rundę musi być 2 juniorów<br/>
+- w składzie na daną rundę musi być 4 Polaków<br/>
+- minimum 6 zawodników musi być wyselekcjonowanych na daną rundę<br/>
+- minimalny KSM składu musi przekraczać 33<br/>
+- maksymalny KSM składu nie może przekraczać 40<br/>
+
+<h1>Terminarz</h1>
+- skład zespołu na daną rundę będzie otwarty dla zmian do północy dnia poprzedzającego pierwszy mecz danej rundy. Np.
+    jeśli pierwszy mecz rundy jest w sobotę o 20, skład można zmieniać aż do północy w piątek<br/>
+- jeśli jakiś mecz Ekstraligi zostanie przełożony, będzie można dokonać zmian w składzie tylko na zawodnikach których kluby
+    nie odjechały meczu<br/>
+
+<h1>Punktacja</h1>
+- drużyna otrzymuje tyle punktów w danej rundzie ile wywalczą zawodnicy wyselekcjonowani na daną rundę w rzeczywistych meczach Ekstraligi<br/>
+- nie liczą się bonusy
+- jeśli skład posiada mniej niż 6 zawodników, drużyna otrzyma zero punktów na daną kolejke<br/>
+- jeśli skład nie spełnia wymogu minimalnego KSM, drużyna otrzyma połowe punktów<br/>
+- jeśli skład nie spełnia wymogu maksymalnego KSM, drużyna otrzyma zero punktów na daną kolejke<br/>
+- oficjalna ilość punktów dla drużyny jest ustalana tylko wtedy gdy wszystkie mecze w danej rundzie zostały odjechane w Ekstralidze.
+    Przykładowo, oficjalna punktacja 2 rundy nie będzie znana aż do 30 maja kiedy Falubaz odjedzie ostatni mecz tej rundy
+
+
+</div>

@@ -1,4 +1,5 @@
-<html xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:tiles="http://tiles.apache.org/tags-tiles" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" >  
+<html xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:tiles="http://tiles.apache.org/tags-tiles" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" >
 	
 	<jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
 	
@@ -6,6 +7,11 @@
 	<jsp:directive.page pageEncoding="UTF-8" /> 
 			
 	<head>
+        <meta name="description" content="Poprowadź swoją własną drużyne do mistrzostwa Speedway Ekstraligi!"/>
+        <meta name="keywords" content="Żużel, speedway, Hancock, Falubaz, Hampel, SGP, Apator, Manager, Fantasy"/>
+        <meta property="og:image" content="http://speedwayfantasy.pl/resources/images/banner-graphic.png"/>
+        <meta property="og:title" content="SFL - Speedway Fantasy Liga"/>
+        <meta property="og:type" content="game"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=8" />
         <meta name="google-site-verification" content="i6iNLsJmXd1x1WnLO6LBhEq5GdsFwb2BvKQAL3UDj60" />

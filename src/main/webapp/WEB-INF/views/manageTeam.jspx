@@ -219,8 +219,8 @@
                 <c:when test="${not empty slot_1}">
                     <div id="${slot_1.pid}" class="${slot_1_css} square">
                         <c:if test="${!slot_1.weeklyResults[r+2].locked}">
-                            <span id="a${slot_1.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_1.pid},${slot_1.isJunior},${slot_1.isPolish})">Dodaj</a></span>
-                            <span id="d${slot_1.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_1.pid})">Usuń</a></span>
+                            <span id="a${slot_1.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_1.pid},${slot_1.isJunior},${slot_1.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
+                            <span id="d${slot_1.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_1.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
                     ${slot_1.fname} ${slot_1.lname}</div>
                     <script type="text/javascript">
@@ -243,8 +243,8 @@
                 <c:when test="${not empty slot_2}">
                     <div id="${slot_2.pid}" class="${slot_2_css} square">
                         <c:if test="${!slot_2.weeklyResults[r+2].locked}">
-                            <span id="a${slot_2.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_2.pid},${slot_2.isJunior},${slot_2.isPolish})">Dodaj</a></span>
-                            <span id="d${slot_2.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_2.pid})">Usuń</a></span>
+                            <span id="a${slot_2.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_2.pid},${slot_2.isJunior},${slot_2.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
+                            <span id="d${slot_2.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_2.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
                     ${slot_2.fname} ${slot_2.lname}</div>
                     <script type="text/javascript">
@@ -267,8 +267,8 @@
                 <c:when test="${not empty slot_3}">
                     <div id="${slot_3.pid}" class="${slot_3_css} square">
                         <c:if test="${!slot_3.weeklyResults[r+2].locked}">
-                            <span id="a${slot_3.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_3.pid},${slot_3.isJunior},${slot_3.isPolish})">Dodaj</a></span>
-                            <span id="d${slot_3.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_3.pid})">Usuń</a></span>
+                            <span id="a${slot_3.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_3.pid},${slot_3.isJunior},${slot_3.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
+                            <span id="d${slot_3.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_3.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
                     ${slot_3.fname} ${slot_3.lname}</div>
                     <script type="text/javascript">
@@ -292,8 +292,8 @@
                 <c:when test="${not empty slot_4}">
                     <div id="${slot_4.pid}" class="${slot_4_css} square">
                         <c:if test="${!slot_4.weeklyResults[r+2].locked}">
-                            <span id="a${slot_4.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_4.pid},${slot_4.isJunior},${slot_4.isPolish})">Dodaj</a></span>
-                            <span id="d${slot_4.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_4.pid})">Usuń</a></span>
+                            <span id="a${slot_4.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_4.pid},${slot_4.isJunior},${slot_4.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
+                            <span id="d${slot_4.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_4.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
                     ${slot_4.fname} ${slot_4.lname}</div>
                     <script type="text/javascript">
@@ -317,8 +317,8 @@
                 <c:when test="${not empty slot_5}">
                     <div id="${slot_5.pid}" class="${slot_5_css} square">
                         <c:if test="${!slot_5.weeklyResults[r+2].locked}">
-                            <span id="a${slot_5.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_5.pid},${slot_5.isJunior},${slot_5.isPolish})">Dodaj</a></span>
-                            <span id="d${slot_5.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_5.pid})">Usuń</a></span>
+                            <span id="a${slot_5.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_5.pid},${slot_5.isJunior},${slot_5.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
+                            <span id="d${slot_5.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_5.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
                     ${slot_5.fname} ${slot_5.lname}</div>
                     <script type="text/javascript">
@@ -342,8 +342,8 @@
                 <c:when test="${not empty slot_6}">
                     <div id="${slot_6.pid}" class="${slot_6_css} square">
                         <c:if test="${!slot_6.weeklyResults[r+2].locked}">
-                            <span id="a${slot_6.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_6.pid},${slot_6.isJunior},${slot_6.isPolish})">Dodaj</a></span>
-                            <span id="d${slot_6.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_6.pid})">Usuń</a></span>
+                            <span id="a${slot_6.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_6.pid},${slot_6.isJunior},${slot_6.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
+                            <span id="d${slot_6.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_6.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
                     ${slot_6.fname} ${slot_6.lname}</div>
                     <script type="text/javascript">
@@ -366,8 +366,8 @@
                 <c:when test="${not empty slot_7}">
                     <div id="${slot_7.pid}" class="${slot_7_css} square">
                         <c:if test="${!slot_7.weeklyResults[r+2].locked}">
-                            <span id="a${slot_7.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_7.pid}, ${slot_7.isJunior}, ${slot_7.isPolish})">Dodaj</a></span>
-                            <span id="d${slot_7.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_7.pid})">Usuń</a></span>
+                            <span id="a${slot_7.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_7.pid}, ${slot_7.isJunior}, ${slot_7.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
+                            <span id="d${slot_7.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_7.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
                         ${slot_7.fname} ${slot_7.lname}
                     </div>
@@ -524,8 +524,8 @@
         <div id="ns${zawodnik.pid}">
             <div id="${zawodnik.pid}" class="${cssValue} moveable square">
                 <c:if test="${!zawodnik.weeklyResults[r+2].locked}">
-                    <span id="a${zawodnik.pid}"><a href="javascript:void(0)" onclick="addToRoster(${zawodnik.pid}, ${zawodnik.isJunior}, ${zawodnik.isPolish})">Dodaj</a></span>
-                    <span id="d${zawodnik.pid}" style="display: none"><a href="javascript:void(0)" onclick="delFromRoster(${zawodnik.pid})">Usuń</a></span>
+                    <span id="a${zawodnik.pid}"><a href="javascript:void(0)" onclick="addToRoster(${zawodnik.pid}, ${zawodnik.isJunior}, ${zawodnik.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
+                    <span id="d${zawodnik.pid}" style="display: none"><a href="javascript:void(0)" onclick="delFromRoster(${zawodnik.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                 </c:if>
                 <span>${zawodnik.fname} ${zawodnik.lname} (${zawodnik.ksm})</span>
             </div>
