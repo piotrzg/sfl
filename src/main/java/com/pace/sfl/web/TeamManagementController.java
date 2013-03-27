@@ -196,12 +196,12 @@ public class TeamManagementController {
 
             sflDruzynaService.saveSflDruzyna(sflDruzyna);
 
-            Iterator squadIter = sklad.iterator();
             int howManyInSquad = 0;
             int howManyJuniors = 0;
             int howManyPolish = 0;
             double totalKSM = 0.0;
             double minKSM = 100.0;
+            Iterator squadIter = sklad.iterator();
             while(squadIter.hasNext())
             {
                 Integer i = (Integer)squadIter.next();
@@ -222,27 +222,26 @@ public class TeamManagementController {
                 }
             }
 
-            String resp = "{\"msg\": \"OK\"}";
             if(howManyInSquad < 6)
-                return "{\"msg\":\"Druzyna musi miec conajmniej 6 zawodnikow w skladzie. Zmiany zostały zapisane.\"}";
+                return "{\"msg\":\"Druzyna musi miec conajmniej 6 zawodników w składzie. Zmiany zostały zapisane. Zgodnie z regulaminem, aktualny skład nie zdobędzie punktów na daną rundę\"}";
 
             if(howManyJuniors < 2)
-                return "{\"msg\":\"Druzyna musi miec conajmniej 2 juniorow w skladzie. Zmiany zostały zapisane.\"}";
+                return "{\"msg\":\"Druzyna musi miec conajmniej 2 juniorów w składzie. Zmiany zostały zapisane.\"}";
 
             if(howManyPolish < 4)
-                return "{\"msg\":\"Druzyna musi miec conajmniej 4 Polakow w skladzie. Zmiany zostały zapisane.\"}";
+                return "{\"msg\":\"Druzyna musi miec conajmniej 4 Polaków w składzie. Zmiany zostały zapisane.\"}";
 
 
             if(minKSM != 100 && howManyInSquad == 7)
                 totalKSM = totalKSM - minKSM;
 
             if(totalKSM > 40.0)
-                return "{\"msg\":\"KSM druzyny jest za wysoki. Obniz KSM druzyny\"}";
+                return "{\"msg\":\"KSM drużyny jest za wysoki. Obniż KSM drużyny. Zgodnie z regulaminem, aktualny skład nie zdobędzie punktów na daną rundę\"}";
 
             if(totalKSM < 33.0)
-                return "{\"msg\":\"KSM druzyny jest za niski. Podwyz KSM druzyny\"}";
+                return "{\"msg\":\"KSM drużyny jest za niski. Podwyż KSM drużyny. Zgodnie z regulaminem, aktualny skład zdobędzie tylko połowę punktów wywalczonych przez zawodników w danej rundzie\"}";
 
-            return resp;
+            return "{\"msg\":\"Zmiany zapisane!\"}";
 
 
         } catch (IOException e) {

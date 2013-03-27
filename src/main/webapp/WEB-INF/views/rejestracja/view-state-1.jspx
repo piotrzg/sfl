@@ -22,8 +22,8 @@
           </table>
         <spring:message var="cancel" code="button_cancel" htmlEscape="false" />
         <spring:message var="proceed" code="button_proceed" htmlEscape="false" />
-        <input type="submit" id="cancel" name="_eventId_cancel" value="${fn:escapeXml(cancel)}" />
         <input type="submit" id="success" name="_eventId_success" onClick="foo()" value="${fn:escapeXml(proceed)}" />
+        <input type="submit" id="cancel" name="_eventId_cancel" value="${fn:escapeXml(cancel)}" />
       </div>
     </form:form>
   </util:panel>

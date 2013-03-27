@@ -119,8 +119,7 @@
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function(data){
-                    if(data.msg == "login")
-                    {
+                    if(data.msg == "login"){
                         window.location = "../login";
                         return;
                     }
@@ -140,7 +139,6 @@
         }
 
         $(document).ready(function(){
-
             ${onejs}
             ${twojs}
             ${threejs}
@@ -200,9 +198,11 @@
         }
     </style>
 
-
     <h1>Drużyna: ${druzyna.name}</h1>
-    <div id="msgDiv" style="width:400px; height: 40px; overflow: hidden">Aby wstawić zawodnika do składu, przesuń zawodnika do odpowiedniego miejsca</div>
+    <div id="msgDiv" style="width:400px; height: 60px; overflow: hidden">
+        Kliknij "+" aby wstawić zawodnika do składu
+    </div>
+
     <a onclick="submitRoster()" href="javascript:void(0)">Zapisz sklad</a>
     <br/>
     <div id="ksmDisplay">KSM: </div><br/>
@@ -391,8 +391,7 @@
         // <![CDATA[
         function addToRoster(zid, isJunior, isPolish)
         {
-            if(isJunior)
-            {
+            if(isJunior){
                 var ui = $('#'+zid);
                 if(!roster[6]){
                     var target = $('#s6');

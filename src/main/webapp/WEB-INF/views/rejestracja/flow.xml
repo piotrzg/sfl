@@ -11,7 +11,7 @@
     <!-- A sample view state -->
     <view-state id="view-state-1" view="rejestracja/view-state-1" model="account">
     	<transition on="success" to="wasSaveGood"/>
-    	<transition on="cancel" to="end-state"/>
+        <transition on="cancel" to="end-state-cancel"/>
     </view-state>
 
     <view-state id="fix" view="rejestracja/view-state-1" model="account">
@@ -19,7 +19,7 @@
             <set name="requestScope.bledy" value="errorDetail" />
         </on-render>
         <transition on="success" to="wasSaveGood"/>
-        <transition on="cancel" to="end-state"/>
+        <transition on="cancel" to="end-state-cancel"/>
     </view-state>
 
 
@@ -42,8 +42,7 @@
     </action-state>
 
     <!-- A sample end state -->
-    <end-state id="end-state" view="rejestracja/end-state">
-
-    </end-state>
+    <end-state id="end-state" view="rejestracja/end-state"></end-state>
+    <end-state id="end-state-cancel" view="rejestracja/end-state-cancel"></end-state>
 	
 </flow>
