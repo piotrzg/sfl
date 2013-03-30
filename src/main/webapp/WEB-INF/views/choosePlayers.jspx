@@ -42,36 +42,54 @@
     </style>
 
     <div style="font-size: 14px">
-    <h1>Druzyna:  ${druzyna.name}</h1>
+    <h1>Drużyna:  ${druzyna.name}</h1>
     <c:if test="${!druzyna.locked}">
-        <a onClick="return window.confirm('Po zgłoszeniu, nie będziesz mógł usuwać zawodników. Czy chcesz zgłosić drużynę do rywalizacji?')" href="zglosDruzyne">
+        <a style="font-size: 16px" onClick="return window.confirm('Po zgłoszeniu, nie będziesz mógł usuwać zawodników. Czy chcesz zgłosić drużynę do rywalizacji?')" href="zglosDruzyne">
             Zgłoś ${druzyna.name} do rywalizacji
         </a>
     </c:if>
-    <h2>${whyTeamIsInvalidMsg}</h2>
-    <br/>
+    <h2 style="color:red">${whyTeamIsInvalidMsg}</h2>
 
     ${msgToUser}
 
         <p>
 <b>Kadra:</b>
-            <br/>
-        <c:forEach var="zawodnik" items="${druzyna.zawodnicy}">
-            ${zawodnik.fname} ${zawodnik.lname} ${zawodnik.ksm}
-            <c:if test="${!druzyna.locked}">
-                <a href="usunZawodnika?id=${zawodnik.id}">Usun</a>
-            </c:if>
-            <br/>
-        </c:forEach>
-            <br/>
-            Suma KSM Druzyny: ${totalKSM}
+            <table summary="Kadra" id="box-table-a">
+                <thead>
+                <tr>
+                    <th scope="col">Nr.</th>
+                    <th scope="col">Zawodnik</th>
+                    <th scope="col">KSM</th>
+                    <th scope="col">-</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                    <c:forEach varStatus="loop" var="zawodnik" items="${druzyna.zawodnicy}">
+                        <tr>
+                            <td>${loop.index+1}.</td>
+                            <td>
+                                ${zawodnik.fname} ${zawodnik.lname}
+                                ${zawodnik.isJunior ? "(J)" : (zawodnik.isPolish ? "(PL)":'')}
+                            </td>
+                            <td>${zawodnik.ksm}</td>
+                            <td>
+                                <c:if test="${!druzyna.locked}">
+                                    <a href="usunZawodnika?id=${zawodnik.id}">Usun</a>
+                                </c:if>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
             <br/>
             Liczba juniorow: ${nrJuniors}
             <br/>
             Liczba Polakow: ${nrPolish}
         </p>
 
-
+        J - Junior<br/>
+        PL - Polak<br/>
         <table id="playerList">
             <thead>
             <tr style="color: black">

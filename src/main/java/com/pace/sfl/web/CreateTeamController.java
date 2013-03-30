@@ -143,7 +143,17 @@ public class CreateTeamController {
         {
             if(i != 0) sb.append(',');
             sb.append("[");
-            sb.append('"'+listaZawodnikow.get(i).getLname() +" "+ listaZawodnikow.get(i).getFname()+'"');
+
+            String xinfo = "";
+            if(listaZawodnikow.get(i).isIsJunior())
+                xinfo += 'J';
+            else if(listaZawodnikow.get(i).isIsPolish())
+                xinfo += "PL";
+            sb.append('"'+listaZawodnikow.get(i).getLname() +' '+ listaZawodnikow.get(i).getFname());
+            if(!"".equals(xinfo))
+                sb.append(" ("+xinfo+")");
+
+            sb.append('"');
             sb.append(',');
             sb.append(listaZawodnikow.get(i).getKsm());
             if(zawodnicySet == null || !zawodnicySet.contains(listaZawodnikow.get(i))){
@@ -251,7 +261,11 @@ public class CreateTeamController {
 
         boolean isValidTeamBasedOnKSM = Utils.isValidBasedOnKSM(zawodnicySet);
         if(!isValidTeamBasedOnKSM)
-            invalidTeamMsg = "Żadna kombinacja składu nie spełnia wymogów KSM.";
+            invalidTeamMsg = "Żadna kombinacja składu nie spełnia wymogu maksymalnego KSM.";
+
+        boolean isValidTeamBasedOnMinKSM = Utils.meetsMinimumKSM(zawodnicySet);
+        if(!isValidTeamBasedOnMinKSM)
+            invalidTeamMsg = "Żadna kombinacja składu nie spełnia wymogu minimalnego KSM.";
 
         int nrJuniors = Utils.howManyJuniors(zawodnicySet);
         if(nrJuniors < 2)

@@ -67,6 +67,33 @@ public class Utils {
         return true;
     }
 
+
+    public static boolean meetsMinimumKSM(HashSet<ZawodnikZuzlowy> zawodnicy)
+    {
+        List<Double> ksms = new ArrayList<Double>(Constants.MAX_TEAM_PLAYERS);
+
+        Iterator<ZawodnikZuzlowy> zawodnicyIterator = zawodnicy.iterator();
+
+        while(zawodnicyIterator.hasNext())
+        {
+            ksms.add(zawodnicyIterator.next().getKsm());
+        }
+
+        Collections.sort(ksms, Collections.reverseOrder());
+
+        double bottom6Ksms = 0.0;
+        for(int i=0; i<6 && i<zawodnicy.size(); i++)
+        {
+            bottom6Ksms += ksms.get(i);
+        }
+
+//        System.out.println("bottom 6 KSMs: "+bottom6Ksms);
+        if(bottom6Ksms < 33.0)
+            return false;
+
+        return true;
+    }
+
     public static int howManyJuniors(HashSet<ZawodnikZuzlowy> zawodnicy)
     {
         Iterator<ZawodnikZuzlowy> zawodnicyIterator = zawodnicy.iterator();
