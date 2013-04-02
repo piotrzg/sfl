@@ -196,6 +196,12 @@
         #deslectedPlaceHolders div{
             height: 34px;
         }
+
+        .locked{
+            background-image: url("/resources/images/padlock.png");
+            background-repeat: no-repeat;
+            opacity: 1;
+        }
     </style>
 
     <h1>Drużyna: ${druzyna.name}</h1>
@@ -222,7 +228,7 @@
                             <span id="a${slot_1.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_1.pid},${slot_1.isJunior},${slot_1.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
                             <span id="d${slot_1.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_1.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
-                    ${slot_1.fname} ${slot_1.lname}</div>
+                    ${slot_1.fname} ${slot_1.lname} (${slot_1.ksm})</div>
                     <script type="text/javascript">
                         // <![CDATA[
                         roster[1] = ${slot_1.pid};
@@ -246,7 +252,7 @@
                             <span id="a${slot_2.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_2.pid},${slot_2.isJunior},${slot_2.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
                             <span id="d${slot_2.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_2.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
-                    ${slot_2.fname} ${slot_2.lname}</div>
+                    ${slot_2.fname} ${slot_2.lname} (${slot_2.ksm})</div>
                     <script type="text/javascript">
                         // <![CDATA[
                         roster[2] = ${slot_2.pid};
@@ -270,7 +276,7 @@
                             <span id="a${slot_3.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_3.pid},${slot_3.isJunior},${slot_3.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
                             <span id="d${slot_3.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_3.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
-                    ${slot_3.fname} ${slot_3.lname}</div>
+                    ${slot_3.fname} ${slot_3.lname} (${slot_3.ksm})</div>
                     <script type="text/javascript">
                         // <![CDATA[
                         roster[3] = ${slot_3.pid};
@@ -295,7 +301,7 @@
                             <span id="a${slot_4.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_4.pid},${slot_4.isJunior},${slot_4.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
                             <span id="d${slot_4.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_4.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
-                    ${slot_4.fname} ${slot_4.lname}</div>
+                    ${slot_4.fname} ${slot_4.lname} (${slot_4.ksm})</div>
                     <script type="text/javascript">
                         // <![CDATA[
                         roster[4] = ${slot_4.pid};
@@ -320,7 +326,7 @@
                             <span id="a${slot_5.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_5.pid},${slot_5.isJunior},${slot_5.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
                             <span id="d${slot_5.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_5.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
-                    ${slot_5.fname} ${slot_5.lname}</div>
+                    ${slot_5.fname} ${slot_5.lname} (${slot_5.ksm})</div>
                     <script type="text/javascript">
                         // <![CDATA[
                         roster[5] = ${slot_5.pid};
@@ -345,7 +351,7 @@
                             <span id="a${slot_6.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_6.pid},${slot_6.isJunior},${slot_6.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
                             <span id="d${slot_6.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_6.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
-                    ${slot_6.fname} ${slot_6.lname}</div>
+                    ${slot_6.fname} ${slot_6.lname} (${slot_6.ksm})</div>
                     <script type="text/javascript">
                         // <![CDATA[
                         roster[6] = ${slot_6.pid};
@@ -369,7 +375,7 @@
                             <span id="a${slot_7.pid}" style="display:none"><a href="javascript:void(0)" onclick="addToRoster(${slot_7.pid}, ${slot_7.isJunior}, ${slot_7.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
                             <span id="d${slot_7.pid}"><a href="javascript:void(0)" onclick="delFromRoster(${slot_7.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
                         </c:if>
-                        ${slot_7.fname} ${slot_7.lname}
+                        ${slot_7.fname} ${slot_7.lname} (${slot_7.ksm})
                     </div>
                     <script type="text/javascript">
                         // <![CDATA[
@@ -525,6 +531,9 @@
                 <c:if test="${!zawodnik.weeklyResults[r+2].locked}">
                     <span id="a${zawodnik.pid}"><a href="javascript:void(0)" onclick="addToRoster(${zawodnik.pid}, ${zawodnik.isJunior}, ${zawodnik.isPolish})"><img src="/resources/images/dodaj.png" alt="Dodaj"/></a></span>
                     <span id="d${zawodnik.pid}" style="display: none"><a href="javascript:void(0)" onclick="delFromRoster(${zawodnik.pid})"><img src="/resources/images/usun.png" alt="Usuń"/></a></span>
+                </c:if>
+                <c:if test="${zawodnik.weeklyResults[r+2].locked}">
+                    <span><img src="/resources/images/padlock.png"/></span>
                 </c:if>
                 <span>${zawodnik.fname} ${zawodnik.lname} (${zawodnik.ksm})</span>
             </div>

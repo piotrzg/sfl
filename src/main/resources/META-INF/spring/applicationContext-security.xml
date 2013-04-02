@@ -13,7 +13,7 @@
                     authentication-failure-url="/login?login_error=t" />
         <logout logout-url="/resources/j_spring_security_logout" />
         <!-- Configure these elements to secure URIs in your application -->
-        <intercept-url pattern="/choices/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/lockManager/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/member/**" access="isAuthenticated()" />
         <intercept-url pattern="/zarzadzajDruzyna/**" access="isAuthenticated()" />
         <intercept-url pattern="/ct/**" access="isAuthenticated()" />
@@ -29,6 +29,5 @@
             <password-encoder hash="md5"/>
         </authentication-provider>
     </authentication-manager>
-
 
 </beans:beans>
