@@ -33,4 +33,12 @@ privileged aspect UserProfile_Roo_JavaBean {
         this.sflDruzyna = sflDruzyna;
     }
     
+    public long UserProfile.getLastLogin() {
+        return this.lastLogin;
+    }
+    
+    public void UserProfile.setLastLogin(long lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+    
 }

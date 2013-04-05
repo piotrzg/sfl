@@ -5,12 +5,6 @@
     <menu:menu id="_menu">
 
 
-
-<!--        <menu:category id="c_zawodnikzuzlowy" z="00uKKYr2rBy4U1DF0e50mM8z/10=">
-            <menu:item id="i_zawodnikzuzlowy_new" messageCode="global_menu_new" url="/zawodnikzuzlowys?form" z="km/KLrRhx/pc5a3ycBVyexe9xko="/>
-            <menu:item id="i_zawodnikzuzlowy_list" messageCode="global_menu_list" url="/zawodnikzuzlowys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9mKca/ybb3ArLJGFtmLm21xnciI="/>
-        </menu:category>-->
-
         <menu:category id="c_druzyna">
             <menu:item id="i_wybierz" url="/choosePlayers"/>
             <menu:item id="i_zarzadzaj" url="/zarzadzajDruzyna"/>
@@ -19,6 +13,7 @@
         <menu:category id="c_liga">
             <menu:item id="i_liga_wyniki" url="/ligaWyniki"/>
             <menu:item id="i_liga_tabela" url="/tabela"/>
+            <menu:item id="i_liga_stats" url="/liga/stats"/>
         </menu:category>
         <menu:category id="c_rest">
             <menu:item id="i_zasady" url="/zasady"/>

@@ -64,7 +64,6 @@ public class AccountServiceImpl implements AccountService {
         List authorities = new ArrayList();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-//        System.out.println("Account: "+account);
         if(account.getPassword().equals(account.getRetypePassword()))
         {
             if(Utils.isEmail(account.getEmail()))
@@ -73,6 +72,8 @@ public class AccountServiceImpl implements AccountService {
                 PasswordEncoder encoder = new Md5PasswordEncoder();
                 String hashedPass = encoder.encodePassword(account.getPassword(), null);
                 account.setPassword(hashedPass);
+                String emailStr = account.getEmail().toLowerCase();
+                account.setEmail(emailStr);
                 accountRepository.save(account);
 
                 UserProfile up = new UserProfile();
@@ -127,7 +128,8 @@ public class AccountServiceImpl implements AccountService {
 
     private String checkIfDuplicateAccount(Account account)
     {
-        Account acc = mongoTemplate.findOne(Query.query(Criteria.where("username").is(account.getUsername())), Account.class);
+        String desiredUsername = account.getUsername();
+        Account acc = mongoTemplate.findOne(Query.query(Criteria.where("username").regex('^'+desiredUsername+'$', "i")), Account.class);
         if(acc == null)
         {
             acc = mongoTemplate.findOne(Query.query(Criteria.where("email").is(account.getEmail())), Account.class);

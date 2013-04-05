@@ -7,4 +7,5 @@ import org.springframework.roo.addon.layers.service.RooService;
 public interface SflDruzynaService {
 
     public SflDruzyna findByTeamName(String teamName);
+    public boolean doesTeamExistIgnoreCase(String teamName);
 }

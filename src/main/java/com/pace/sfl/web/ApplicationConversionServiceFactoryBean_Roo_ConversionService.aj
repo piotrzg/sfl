@@ -85,7 +85,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<UserProfile, String> ApplicationConversionServiceFactoryBean.getUserProfileToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.pace.sfl.domain.UserProfile, java.lang.String>() {
             public String convert(UserProfile userProfile) {
-                return new StringBuilder().append(userProfile.getCity()).toString();
+                return new StringBuilder().append(userProfile.getCity()).append(' ').append(userProfile.getLastLogin()).toString();
             }
         };
     }

@@ -75,9 +75,10 @@ public class CreateTeamController {
         UserProfile up = ups.findByUsername(name);
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         if(sflDruzyna == null){
-            SflDruzyna checkIfDruzynaExists = sflDruzynaService.findByTeamName(teamName);
-            if(checkIfDruzynaExists != null){
-                uiModel.addAttribute("errMsg", "Drużyna o tej samej nazwie już istnieje. Wybierz inną nazwe dla swojej drużyny");
+            boolean checkIfDruzynaExists = sflDruzynaService.doesTeamExistIgnoreCase(teamName);
+            if(checkIfDruzynaExists){
+                uiModel.addAttribute("errMsg", "Drużyna o tej samej nazwie już istnieje." +
+                                                "Wybierz inną nazwe dla swojej drużyny");
                 return "createTeam";
             }
 

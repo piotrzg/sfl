@@ -8,8 +8,7 @@
 - w przeciągu całego sezonu można dodawać zawodników jeśli nie przekroczono maksymalnej ilości 12 zawodników<br/>
 
 <h1>Skład Drużyny</h1>
-- w składzie na daną rundę musi być 2 juniorów<br/>
-- w składzie na daną rundę musi być 4 Polaków<br/>
+- w składzie na daną rundę musi być 2 juniorów i 4 Polaków<br/>
 - minimum 6 zawodników musi być wyselekcjonowanych na daną rundę<br/>
 - minimalny KSM składu musi przekraczać 33<br/>
 - maksymalny KSM składu nie może przekraczać 40<br/>
@@ -22,12 +21,15 @@
 
 <h1>Punktacja</h1>
 - drużyna otrzymuje tyle punktów w danej rundzie ile wywalczą zawodnicy wyselekcjonowani na daną rundę w rzeczywistych meczach Ekstraligi<br/>
-- nie liczą się bonusy
+- nie liczą się bonusy<br/>
 - jeśli skład posiada mniej niż 6 zawodników, drużyna otrzyma zero punktów na daną kolejke<br/>
 - jeśli skład nie spełnia wymogu minimalnego KSM, drużyna otrzyma połowe punktów<br/>
 - jeśli skład nie spełnia wymogu maksymalnego KSM, drużyna otrzyma zero punktów na daną kolejke<br/>
 - oficjalna ilość punktów dla drużyny jest ustalana tylko wtedy gdy wszystkie mecze w danej rundzie zostały odjechane w Ekstralidze.
-    Przykładowo, oficjalna punktacja 2 rundy nie będzie znana aż do 30 maja kiedy Falubaz odjedzie ostatni mecz tej rundy
+    Przykładowo, oficjalna punktacja 2 rundy nie będzie znana aż do 30 maja kiedy Falubaz odjedzie ostatni mecz tej rundy<br/>
 
-
+<h1>Wygrana Kolejka</h1>
+- drużyna która zdobędzie największą ilość punktów w danej kolejce zostanie zwycięzcą danej kolejki (rundy)<br/>
+- jeśli dwie drużyny będą miały taką samą ilość punktów, wygrywa drużyna z niższym KSM<br/>
+- oficjalne wyniki danej rundy będą znane tylko wtedy kiedy wszystkie mecze danej rundy będą rozegrane przez Ekstralige<br/>
 </div>

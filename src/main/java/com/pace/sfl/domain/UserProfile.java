@@ -1,6 +1,5 @@
 package com.pace.sfl.domain;
 
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -22,4 +21,6 @@ public class UserProfile {
 
     @OneToOne
     private SflDruzyna sflDruzyna;
+
+    private long lastLogin;
 }

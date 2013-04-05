@@ -13,8 +13,13 @@ public class Role {
     private String role;
     private String roleDescription;
 
+    public void setRole(String r)
+    {
+        this.role = r;
+    }
+
     public String getRole()
     {
-        return "ROLE_USER";
+        return this.role;
     }
 }

@@ -20,4 +20,14 @@ public class SflDruzynaServiceImpl implements SflDruzynaService {
         return druzyna;
     }
 
+    public boolean doesTeamExistIgnoreCase(String teamName)
+    {
+        SflDruzyna druzyna = mongoTemplate.findOne(Query.query(Criteria.where("name").regex('^'+teamName+'$', "i")), SflDruzyna.class);
+
+        if(druzyna != null)
+            return true;
+        else
+            return false;
+    }
+
 }

@@ -39,7 +39,6 @@ public class CustomMongoSecurityService implements UserDetailsService {
 
             System.out.println("loadUserByUsername: "+username);
             this.user = userService.findByUsername(username);
-            System.out.println("loadUserByUsername: "+getAuthorities());
             boolean enabled = true;
             boolean accountNonExpired = true;
             boolean credentialsNonExpired = true;
