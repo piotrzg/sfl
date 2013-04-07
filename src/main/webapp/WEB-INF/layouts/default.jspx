@@ -9,6 +9,7 @@
 	<head>
         <meta name="description" content="Poprowadź swoją własną drużyne do mistrzostwa Speedway Ekstraligi!"/>
         <meta name="keywords" content="Żużel, speedway, Hancock, Falubaz, Hampel, SGP, Apator, Manager, Fantasy, zuzel, kierownik"/>
+        <meta http-equiv="Content-Language" content="pl"/>
         <meta property="og:image" content="http://speedwayfantasy.pl/resources/images/fb_og.jpg"/>
         <meta property="og:title" content="SFL - Speedway Fantasy Liga"/>
         <meta property="og:type" content="game"/>
@@ -27,7 +28,6 @@
 		    <tiles:insertAttribute name="menu" ignore="true" />   
 		    <div id="main">
 	    		<tiles:insertAttribute name="body"/> 
-		    	<tiles:insertAttribute name="footer" ignore="true"/>
 		    </div>
 		</div>
 
