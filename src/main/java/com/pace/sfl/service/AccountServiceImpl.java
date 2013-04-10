@@ -39,7 +39,7 @@ public class AccountServiceImpl implements AccountService {
 
     public Account findByUsername(String username)
     {
-        Account acc = mongoTemplate.findOne(Query.query(Criteria.where("username").is(username)), Account.class);
+        Account acc = mongoTemplate.findOne(Query.query(Criteria.where("username").regex('^'+username+'$', "i")), Account.class);
 
         if(acc == null)
         {

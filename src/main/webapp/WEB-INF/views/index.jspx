@@ -8,12 +8,21 @@
     <h3>
       <spring:message code="welcome_h3" arguments="${app_name}" />
     </h3>
+          Zbliża się "pierwsza" runda rywalizacji w Ekstralidze Żużlowej! Pora wystawić wasze najlepsze składy do
+          rywalizacji w SFL. Przypominamy, że w tą Niedziele rozgrywana będzie <b>trzecia (3)</b> runda, a co za
+          tym idzie, musicie wyselekcjonować skład na trzecią rundę w SFL. Po zalogowaniu, możecie kliknąć na ten
+          link aby dokonać zmian: <a href="wybierzDruzyne/3">Trzecia Runda SFL</a>
+          <br/>
+          <br/><br/><hr/><br/>
     <p>
       <spring:message code="welcome_text" />
         <br/>
         <br/>
         <spring:url value="/rejestracja" var="rejestracja"/>
         Aby móc brać w rywalizacji, <a href="${rejestracja}">zarejestruj się</a>
+
+
+
     </p>
       </div>
   </util:panel>

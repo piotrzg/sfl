@@ -32,6 +32,9 @@ public class SflDruzyna {
 
     public List<Integer> getSquadForRound(int round)
     {
+        if(this.teamWeekResultList == null)
+            return null;
+
         Iterator<TeamWeekResult> it = this.teamWeekResultList.iterator();
 
         while(it.hasNext())

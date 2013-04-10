@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
+
     <menu:menu id="_menu">
-
-
         <menu:category id="c_druzyna">
             <menu:item id="i_wybierz" url="/choosePlayers"/>
             <menu:item id="i_zarzadzaj" url="/zarzadzajDruzyna"/>
@@ -19,8 +19,26 @@
             <menu:item id="i_zasady" url="/zasady"/>
             <menu:item id="i_kontakt_link" url="/kontakt"/>
         </menu:category>
-
-
     </menu:menu>
 
+    <br/>
+    <div class="sidestatspart">
+        <table class="indexhead">
+            <tbody>
+                <tr><td>Najczęściej wybierani do kadry</td></tr>
+            </tbody>
+        </table>
+        <table class="indexside">
+            <tbody><tr>
+                <td><strong>Zawodnik</strong></td>
+                <td><strong>Wybierany</strong></td>
+            </tr>
+            <tr><td>T. Gollob</td><td>26</td></tr>
+            <tr><td>J. Hampel</td><td>25</td></tr>
+            <tr><td>K. Adamczewski</td><td>16</td></tr>
+            <tr><td>P. Dudek</td><td>13</td></tr>
+            <tr><td>P. Pawlicki</td><td>13</td></tr>
+            </tbody>
+        </table>
+    </div>
 </div>

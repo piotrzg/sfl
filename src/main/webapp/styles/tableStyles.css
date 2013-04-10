@@ -174,7 +174,6 @@
 	background: #eff2ff;
 }
 
-
 #newspaper-a
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -203,7 +202,6 @@
 	color: #339;
 	background: #d0dafd;
 }
-
 
 #newspaper-b
 {
@@ -237,7 +235,6 @@
 	color: #339;
 	background: #d0dafd;
 }
-
 
 #newspaper-c
 {
@@ -301,19 +298,15 @@
 	border-top: 1px solid #fff;
 	color: #669;
 }
-#rounded-corner tfoot td.rounded-foot-left
-{
+#rounded-corner tfoot td.rounded-foot-left{
 	background: #e8edff url('table-images/botleft.png') left bottom no-repeat;
 }
-#rounded-corner tfoot td.rounded-foot-right
-{
+#rounded-corner tfoot td.rounded-foot-right{
 	background: #e8edff url('table-images/botright.png') right bottom no-repeat;
 }
-#rounded-corner tbody tr:hover td
-{
+#rounded-corner tbody tr:hover td{
 	background: #d0dafd;
 }
-
 
 #background-image
 {

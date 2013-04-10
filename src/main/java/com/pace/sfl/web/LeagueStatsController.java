@@ -26,7 +26,7 @@ public class LeagueStatsController {
     SflDruzynaService sflDruzynaService;
 
     @RequestMapping(value = "/liga/stats", produces = "text/html")
-    public String showLockManager(Model uiModel)
+    public String getLeagueStats(Model uiModel)
     {
         HashMap<ZawodnikZuzlowy, Integer> zawodnikCounts = new HashMap();
 
@@ -47,7 +47,6 @@ public class LeagueStatsController {
                     zawodnikCounts.put(zz, 1);
             }
         }
-
 
         uiModel.addAttribute("zcounts", zawodnikCounts);
         return "ligaStats";

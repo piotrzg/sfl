@@ -26,5 +26,6 @@
         <br/>
     </c:forEach>
     <br/>
-    <a href="../lock/all/${round}">Lock All</a>
+    <a href="../lock/all/${round}">Lock All</a><br/>
+    <a href="../sendReminders/${round}">Send Reminders</a>
 </div>

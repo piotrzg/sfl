@@ -169,11 +169,6 @@
             <version>4.2.0.Final</version>
         </dependency>
         <dependency>
-            <groupId>org.cloudfoundry</groupId>
-            <artifactId>cloudfoundry-runtime</artifactId>
-            <version>0.8.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
             <version>1.0.0.M5</version>
@@ -186,7 +181,7 @@
         <dependency>
             <groupId>org.springframework.webflow</groupId>
             <artifactId>spring-js-resources</artifactId>
-            <version>2.2.1.RELEASE</version>
+            <version>2.3.0.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>commons-digester</groupId>
