@@ -1,5 +1,6 @@
 package com.pace.sfl.web;
 
+import com.pace.sfl.Utils.Utils;
 import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
 import com.pace.sfl.service.SflDruzynaService;
@@ -8,10 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -48,7 +46,8 @@ public class LeagueStatsController {
             }
         }
 
-        uiModel.addAttribute("zcounts", zawodnikCounts);
+        Map sortedCounts = Utils.sortByValue(zawodnikCounts);
+        uiModel.addAttribute("zcounts", sortedCounts);
         return "ligaStats";
     }
 }

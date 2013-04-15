@@ -1,8 +1,7 @@
 package com.pace.sfl.web;
 
 import com.pace.sfl.IndividualResult;
-import com.pace.sfl.TeamWeekResult;
-import com.pace.sfl.domain.DruzynaZuzlowa;
+import com.pace.sfl.Utils.Utils;
 import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.UserProfile;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
@@ -10,7 +9,6 @@ import com.pace.sfl.service.SflDruzynaService;
 import com.pace.sfl.service.UserProfileService;
 import com.pace.sfl.service.ZawodnikZuzlowyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,9 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class DruzynaWynikiController {
@@ -108,8 +104,18 @@ public class DruzynaWynikiController {
     public String ligaWyniki(@PathVariable("round") int round, Model uiModel)
     {
         List<SflDruzyna> sflDruzynaList = sflDruzynaService.findAllSflDruzynas();
+        Map<SflDruzyna, Double> sflDruzynaPoints = new HashMap<SflDruzyna, Double>();
+        Iterator<SflDruzyna> sflDruzynaIterator = sflDruzynaList.iterator();
+        while(sflDruzynaIterator.hasNext())
+        {
+            SflDruzyna sflDruzyna = sflDruzynaIterator.next();
+            if(sflDruzyna == null || sflDruzyna.getTeamWeekResultList() == null)
+                continue;
+            sflDruzynaPoints.put(sflDruzyna, sflDruzyna.getTeamWeekResultList().get(round+2).getTotalPoints());
+        }
 
-        uiModel.addAttribute("druzyny", sflDruzynaList);
+        Map sortedCounts = Utils.sortByValue(sflDruzynaPoints);
+        uiModel.addAttribute("druzyny", sortedCounts);
         uiModel.addAttribute("round", round);
         return "ligaRundaWynik";
     }

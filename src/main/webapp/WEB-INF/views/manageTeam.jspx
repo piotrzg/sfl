@@ -50,16 +50,16 @@
 
             $(".all").droppable({
                 accept: ".polish,.junior,.foreign",
-                drop: function (event, ui) {},out: function (event, ui) {}
+                drop: function (event, ui){},out: function (event, ui) {}
             });
 
             $(".JuniorBox").droppable({
                 accept: ".junior",
-                drop: function (event, ui) {},out: function (event, ui) {}
+                drop: function (event, ui){},out: function (event, ui) {}
             });
             $(".PolishBox").droppable({
                 accept: ".polish,.junior",
-                drop: function (event, ui) {},out: function (event, ui) {}
+                drop: function (event, ui){},out: function (event, ui) {}
             });
         });
 
@@ -192,7 +192,6 @@
             text-align: left;
             width: 300px;
         }
-
         #deslectedPlaceHolders div{
             height: 34px;
         }
@@ -205,6 +204,7 @@
     </style>
 
     <h1>Drużyna: ${druzyna.name}</h1>
+    <h2>Runda: ${round}</h2>
     <div id="msgDiv" style="width:400px; height: 60px; overflow: hidden">
         Kliknij "+" aby wstawić zawodnika do składu
     </div>

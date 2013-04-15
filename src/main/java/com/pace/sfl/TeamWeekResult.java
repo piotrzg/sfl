@@ -7,8 +7,6 @@ import java.util.List;
  * Created with IntelliJ IDEA.
  * User: Piotr
  * Date: 2/11/13
- * Time: 10:13 PM
- * To change this template use File | Settings | File Templates.
  */
 public class TeamWeekResult {
 

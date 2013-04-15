@@ -15,9 +15,11 @@
         <logout logout-url="/resources/j_spring_security_logout" />
         <!-- Configure these elements to secure URIs in your application -->
         <intercept-url pattern="/lockManager/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/lock/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/sendReminders/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/zawodnikzuzlowys/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/member/**" access="isAuthenticated()" />
+        <intercept-url pattern="/choosePlayers/**" access="isAuthenticated()" />
         <intercept-url pattern="/zarzadzajDruzyna/**" access="isAuthenticated()" />
         <intercept-url pattern="/wybierzDruzyne/**" access="isAuthenticated()" />
         <intercept-url pattern="/ct/**" access="isAuthenticated()" />

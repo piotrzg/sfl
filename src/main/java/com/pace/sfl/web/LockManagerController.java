@@ -27,7 +27,6 @@ import java.util.*;
  * Created with IntelliJ IDEA.
  * User: Piotr
  * Date: 2/12/13
- * Time: 10:56 PM
  */
 @Controller
 public class LockManagerController {
@@ -63,8 +62,7 @@ public class LockManagerController {
     }
 
     @RequestMapping(value = "/sendReminders/{round}", produces = "text/html")
-    public String sendReminders(@PathVariable("round") int round,
-                                  Model uiModel)
+    public String sendReminders(@PathVariable("round") int round)
     {
         List<SflDruzyna> sflDruzynaList = sflDruzynaService.findAllSflDruzynas();
         Iterator<SflDruzyna> sflDruzynaIterator = sflDruzynaList.iterator();
@@ -75,17 +73,17 @@ public class LockManagerController {
 
             if(sklad == null){
                 UserProfile up = mongoTemplate.findOne(Query.query(Criteria.where("sflDruzyna.name").is(sflDruzyna.getName())), UserProfile.class);
+                System.out.println(up.getUserAccount().getEmail()+": "+"Nie zglosiles");
                 SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
                 msg.setTo(up.getUserAccount().getEmail());
                 msg.setSubject("SpeedwayFantasy.pl - nie zapomnij zgłosić swojej drużyny!");
                 msg.setText("Nie zgłosiłeś jeszcze swojej drużyny do rywalizacji na speedwayFantasy.pl" +
                         " Zaloguj się aby zgłosić drużynę" +
-                        " i zacznij zdobywać punkty.\nhttp://speedwayfantasy.pl");
+                        " i zacznij zdobywać punkty.\nhttp://speedwayfantasy.pl/choosePlayers");
                 try{
                     this.mailSender.send(msg);
-                    System.out.println("Falling asleep for 2 seconds");
-                    Thread.sleep(2000);
-                    System.out.println("Back from sleep");
+                    Thread.sleep(1500);
+                    System.out.println("Back from sleep for 1.5 seconds");
                 }
                 catch(MailException ex) {
                     System.err.println(ex.getMessage());
@@ -132,15 +130,16 @@ public class LockManagerController {
             if(emailMsg != null)
             {
                 UserProfile up = mongoTemplate.findOne(Query.query(Criteria.where("sflDruzyna.name").is(sflDruzyna.getName())), UserProfile.class);
+                System.out.println(up.getUserAccount().getEmail()+": "+emailMsg);
                 SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
                 msg.setTo(up.getUserAccount().getEmail());
                 msg.setSubject("SpeedwayFantasy.pl - skład na "+round+" rundę nie spełnia wymagań");
+                emailMsg += "\n\nPrzejdź do http://speedwayfantasy.pl/wybierzDruzyne/"+round+" aby wybrać skład na "+round+" rundę";
                 msg.setText(emailMsg);
                 try{
                     this.mailSender.send(msg);
-                    System.out.println("Falling asleep for 2 seconds");
-                    Thread.sleep(2000);
-                    System.out.println("Back from sleep");
+                    Thread.sleep(1500);
+                    System.out.println("Back from sleep for 1.5 seconds");
                 }
                 catch(MailException ex) {
                     System.err.println(ex.getMessage());
@@ -260,7 +259,6 @@ public class LockManagerController {
 
         uiModel.addAttribute("druzyny", druzyny.findAllDruzynaZuzlowas());
         return "lockManager";
-
     }
 
 
@@ -318,7 +316,6 @@ public class LockManagerController {
 
         uiModel.addAttribute("druzyny", druzyny.findAllDruzynaZuzlowas());
         return "lockManager";
-
     }
 
 }

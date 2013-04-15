@@ -2,7 +2,6 @@ package com.pace.sfl.web;
 
 import com.pace.sfl.IndividualResult;
 import com.pace.sfl.TeamWeekResult;
-import com.pace.sfl.Utils.Utils;
 import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.UserProfile;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
@@ -18,14 +17,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Piotr
  * Date: 2/11/13
- * Time: 9:39 PM
  */
 
 @Controller
@@ -176,22 +173,17 @@ public class TeamManagementController {
 
             List<Integer> sklad = twrTemp.getSklad();
 
-            List<TeamWeekResult> teamWeekResultSet = sflDruzyna.getTeamWeekResultList();
-            if(teamWeekResultSet != null)
-            {
-                TeamWeekResult twr = new TeamWeekResult(twrTemp.getRound());
-                twr.setSklad(sklad);
-                teamWeekResultSet.remove(twr);
-                teamWeekResultSet.add(twr);
-                sflDruzyna.setTeamWeekResultList(teamWeekResultSet);
+            List<TeamWeekResult> teamWeekResultList = sflDruzyna.getTeamWeekResultList();
+            if(teamWeekResultList != null){
+                teamWeekResultList.get(twrTemp.getRound()+2).setSklad(sklad);
             }
             else
             {
-                teamWeekResultSet = new ArrayList<TeamWeekResult>();
+                teamWeekResultList = new ArrayList<TeamWeekResult>();
                 TeamWeekResult twr = new TeamWeekResult(twrTemp.getRound());
                 twr.setSklad(sklad);
-                teamWeekResultSet.add(twr);
-                sflDruzyna.setTeamWeekResultList(teamWeekResultSet);
+                teamWeekResultList.add(twr);
+                sflDruzyna.setTeamWeekResultList(teamWeekResultList);
             }
 
             sflDruzynaService.saveSflDruzyna(sflDruzyna);

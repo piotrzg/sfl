@@ -1,8 +1,6 @@
 /* ------------------
  styling for the tables 
    ------------------   */
-
-
 #box-table-a
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -35,8 +33,6 @@
 	background: #d0dafd;
 	color: #339;
 }
-
-
 #box-table-b
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -66,10 +62,7 @@
 	border-left: 1px solid #aabcfe;
 	color: #669;
 }
-
-
-#hor-zebra
-{
+#hor-zebra{
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
 	margin: 45px;
@@ -77,26 +70,20 @@
 	text-align: left;
 	border-collapse: collapse;
 }
-#hor-zebra th
-{
+#hor-zebra th{
 	font-size: 14px;
 	font-weight: normal;
 	padding: 10px 8px;
 	color: #039;
 }
-#hor-zebra td
-{
+#hor-zebra td{
 	padding: 8px;
 	color: #669;
 }
-#hor-zebra .odd
-{
+#hor-zebra .odd{
 	background: #e8edff; 
 }
-
-
-#ver-zebra
-{
+#ver-zebra{
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
 	margin: 45px;
@@ -104,8 +91,7 @@
 	text-align: left;
 	border-collapse: collapse;
 }
-#ver-zebra th
-{
+#ver-zebra th{
 	font-size: 14px;
 	font-weight: normal;
 	padding: 12px 15px;
@@ -113,19 +99,16 @@
 	border-left: 1px solid #fff;
 	color: #039;
 }
-#ver-zebra td
-{
+#ver-zebra td{
 	padding: 8px 15px;
 	border-right: 1px solid #fff;
 	border-left: 1px solid #fff;
 	color: #669;
 }
-.vzebra-odd
-{
+.vzebra-odd{
 	background: #eff2ff;
 }
-.vzebra-even
-{
+.vzebra-even{
 	background: #e8edff;
 }
 #ver-zebra #vzebra-adventure, #ver-zebra #vzebra-children
@@ -138,8 +121,6 @@
 	background: #dce4ff;
 	border-bottom: 1px solid #d6dfff;
 }
-
-
 #one-column-emphasis
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -173,7 +154,6 @@
 	color: #339;
 	background: #eff2ff;
 }
-
 #newspaper-a
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -202,7 +182,6 @@
 	color: #339;
 	background: #d0dafd;
 }
-
 #newspaper-b
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -235,7 +214,6 @@
 	color: #339;
 	background: #d0dafd;
 }
-
 #newspaper-c
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -264,8 +242,6 @@
 	color: #669;
 	border-right: 1px dashed #6cf;
 }
-
-
 #rounded-corner
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -307,38 +283,6 @@
 #rounded-corner tbody tr:hover td{
 	background: #d0dafd;
 }
-
-#background-image
-{
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;
-	margin: 45px;
-	width: 480px;
-	text-align: left;
-	border-collapse: collapse;
-	background: url('table-images/blurry.jpg') 330px 59px no-repeat;
-}
-#background-image th
-{
-	padding: 12px;
-	font-weight: normal;
-	font-size: 14px;
-	color: #339;
-}
-#background-image td
-{
-	padding: 9px 12px;
-	color: #669;
-	border-top: 1px solid #fff;
-}
-#background-image tfoot td
-{
-	font-size: 11px;
-}
-#background-image tbody td
-{
-	background: url('table-images/back.png');
-}
 * html #background-image tbody td
 {
 	/* 
@@ -356,8 +300,6 @@
 	color: #339;
 	background: none;
 }
-
-
 #gradient-style
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -396,8 +338,6 @@
 	background: #d0dafd url('table-images/gradhover.png') repeat-x;
 	color: #339;
 }
-
-
 #pattern-style-a
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -432,8 +372,6 @@
 	color: #339;
 	background: #fff;
 }
-
-
 #pattern-style-b
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;

@@ -8,19 +8,7 @@
 
 Runda: ${round}
     <br/><br/>
-
-    <c:set var="r" value="${round}" />
-    <c:forEach var="druzyna" items="${druzyny}">
-        ${druzyna.teamWeekResultList[r+2].totalPoints} ${druzyna.name}
-        <br/>
+    <c:forEach items="${druzyny}" var="entry">
+        ${entry.value} ${entry.key.name}<br/>
     </c:forEach>
-    <br/>
-    --------------------------------------------------
-    <br/>
-    <c:forEach var="zawodnik" items="${viewZawodnicy}">
-        ${zawodnik.fname} ${zawodnik.lname}
-        <br/>
-    </c:forEach>
-
-
 </div>
