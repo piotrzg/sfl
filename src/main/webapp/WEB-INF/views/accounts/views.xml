@@ -7,9 +7,6 @@
 <definition extends="default" name="accounts/show">
         <put-attribute name="body" value="/WEB-INF/views/accounts/show.jspx"/>
     </definition>
-<definition extends="default" name="accounts/create">
-        <put-attribute name="body" value="/WEB-INF/views/accounts/create.jspx"/>
-    </definition>
 <definition extends="default" name="accounts/update">
         <put-attribute name="body" value="/WEB-INF/views/accounts/update.jspx"/>
     </definition>

@@ -25,19 +25,6 @@ public class Utils {
         return m.matches();
     }
 
-    public static double getTotalKSM(HashSet<ZawodnikZuzlowy> zawodnicy)
-    {
-        Iterator<ZawodnikZuzlowy> zawodnicyIterator = zawodnicy.iterator();
-
-        double totalKSM = 0.0;
-        while(zawodnicyIterator.hasNext())
-        {
-            totalKSM += zawodnicyIterator.next().getKsm();
-        }
-
-        return totalKSM;
-    }
-
 
     public static boolean isValidBasedOnKSM(HashSet<ZawodnikZuzlowy> zawodnicy)
     {
@@ -155,8 +142,6 @@ public class Utils {
 
     public static Model populateModel(Model uiModel, SflDruzyna sflDruzyna)
     {
-        double totalKSM = getTotalKSM((HashSet)sflDruzyna.getZawodnicy());
-        uiModel.addAttribute("totalKSM", totalKSM);
         boolean isValidTeamBasedOnKSM = isValidBasedOnKSM((HashSet)sflDruzyna.getZawodnicy());
         uiModel.addAttribute("isValidTeamBasedOnKSM",isValidTeamBasedOnKSM);
         int nrJuniors = howManyJuniors((HashSet)sflDruzyna.getZawodnicy());

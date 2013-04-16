@@ -5,8 +5,6 @@
 
     <h3>Najczęsciej wybierani do kadry:</h3><br/>
     <c:forEach items="${zcounts}" var="entry">
-        ${entry.key.fname} ${entry.key.lname} - ${entry.value}<br/>
+        ${entry.value} - ${entry.key.fname} ${entry.key.lname}<br/>
     </c:forEach>
-
-
 </div>

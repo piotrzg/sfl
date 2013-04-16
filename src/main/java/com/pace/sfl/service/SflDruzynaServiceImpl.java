@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.query.Query;
 
 public class SflDruzynaServiceImpl implements SflDruzynaService {
 
-
     @Autowired
     MongoTemplate mongoTemplate;
 
@@ -29,5 +28,4 @@ public class SflDruzynaServiceImpl implements SflDruzynaService {
         else
             return false;
     }
-
 }

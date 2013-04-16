@@ -2,8 +2,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
     <jsp:output omit-xml-declaration="yes" />
 
-
-
 1 Runda - <a href="liga/wyniki/1">Wyniki</a><br/>
 2 Runda - <a href="liga/wyniki/2">Wyniki</a><br/>
 3 Runda - <a href="liga/wyniki/3">Wyniki</a><br/>
@@ -22,5 +20,4 @@
 16 Runda - <a href="liga/wyniki/16">Wyniki</a><br/>
 17 Runda - <a href="liga/wyniki/17">Wyniki</a><br/>
 18 Runda - <a href="liga/wyniki/18">Wyniki</a><br/>
-
 </div>
