@@ -1,6 +1,5 @@
-<div xmlns:spring="http://www.springframework.org/tags"
-     xmlns:c="http://java.sun.com/jsp/jstl/core"
-     xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<div xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0" xmlns:tiles="http://tiles.apache.org/tags-tiles">
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
     <jsp:output omit-xml-declaration="yes" />
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"><jsp:text /></script>
@@ -23,7 +22,7 @@ function foo(zid, round, value)
         // ]]>
     </script>
     <h1>${zawodnik.fname} ${zawodnik.lname}</h1>
-
+    <tiles:getAsString name="tytul" ignore="true"/>
     <c:forEach var="ir" items="${zawodnik.weeklyResults}" varStatus="status">
         <c:if test="${(status.index) > 2}">
             ${ir.round}: <input type="text" id="${ir.round}" name="${ir.round}" value="${ir.biegiStr}" />

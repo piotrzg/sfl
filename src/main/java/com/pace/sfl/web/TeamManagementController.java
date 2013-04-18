@@ -86,14 +86,6 @@ public class TeamManagementController {
             ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowyByPid(pid);
             if(zawodnik == null)
             {
-                List<Integer> tempSklad = new ArrayList<Integer>(sklad);
-                tempSklad.remove(pid);
-                TeamWeekResult twrTemp = new TeamWeekResult(round);
-                twrTemp.setSklad(tempSklad);
-                List<TeamWeekResult> teamWeekResultSet = sflDruzyna.getTeamWeekResultList();
-                teamWeekResultSet.remove(twrTemp);
-                teamWeekResultSet.add(twrTemp);
-                sflDruzyna.setTeamWeekResultList(teamWeekResultSet);
                 System.out.println("Sklad has a pid that does not exist in database. Should never happen");
                 continue;
                 // throw exception - should never happen

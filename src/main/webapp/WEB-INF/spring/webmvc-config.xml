@@ -32,7 +32,6 @@
     <!-- Selects a static view for rendering without the need for an explicit controller -->
     <mvc:view-controller path="/login"/>
     <mvc:view-controller path="/kontakt"/>
-    <mvc:view-controller path="/tabela"/>
     <mvc:view-controller path="/druzynaWyniki"/>
     <mvc:view-controller path="/ligaWyniki"/>
     <mvc:view-controller path="/zasady"/>

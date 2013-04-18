@@ -40,6 +40,7 @@ public class ZawodnikZuzlowyController {
         ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowyByPid(zawodnikId);
         uiModel.addAttribute("zawodnik", zawodnik);
         uiModel.addAttribute("zid", zawodnik.getPid());
+        uiModel.addAttribute("tytul", zawodnik.getFname()+" "+zawodnik.getLname());
         return "zawodnikzuzlowys/zawodnik";
     }
 
@@ -49,11 +50,14 @@ public class ZawodnikZuzlowyController {
         ObjectMapper om = new ObjectMapper();
         try {
             IndividualResult ir = om.readValue(json, IndividualResult.class);
+            int round = ir.getRound();
             double tp = Utils.parseBiegiStr(ir.getBiegiStr());
 
             ZawodnikZuzlowy zawodnik = zawodnicy.findZawodnikZuzlowyByPid(zid);
-            ir.setTotalPoints(tp);
-            zawodnik.getWeeklyResults().set(ir.getRound()+2, ir);
+            IndividualResult individualResult = zawodnik.getWeeklyResults().get(round+2);
+            individualResult.setTotalPoints(tp);
+            individualResult.setBiegiStr(ir.getBiegiStr());
+            zawodnik.getWeeklyResults().set(round+2, individualResult);
             zawodnicy.saveZawodnikZuzlowy(zawodnik);
 
             List<SflDruzyna> sflDruzynaList = sflDruzynaService.findAllSflDruzynas();
@@ -69,9 +73,9 @@ public class ZawodnikZuzlowyController {
                     if(teamWeekResultSet != null)
                     {
                         int weekPts = 0;
-                        List<Integer> sklad = sflDruzyna.getSquadForRound(ir.getRound());
+                        List<Integer> sklad = sflDruzyna.getSquadForRound(round);
                         if(sklad.size() < 6){
-                            teamWeekResultSet.get(ir.getRound()+2).setTotalPoints(0);
+                            teamWeekResultSet.get(round+2).setTotalPoints(0);
                             sflDruzyna.setTeamWeekResultList(teamWeekResultSet);
                             sflDruzynaService.saveSflDruzyna(sflDruzyna);
                             continue;
@@ -83,14 +87,14 @@ public class ZawodnikZuzlowyController {
                             int pid = sklad.get(i);
                             ZawodnikZuzlowy zz = zawodnicy.findZawodnikZuzlowyByPid(pid);
                             skladKSM += zz.getKsm();
-                            weekPts += zz.getWeeklyResults().get(ir.getRound()+2).getTotalPoints();
+                            weekPts += zz.getWeeklyResults().get(round+2).getTotalPoints();
                         }
 
                         if(skladKSM < 33.0){
-                            teamWeekResultSet.get(ir.getRound()+2).setTotalPoints(weekPts/2);
+                            teamWeekResultSet.get(round+2).setTotalPoints(weekPts/2);
                         }
                         else{
-                            teamWeekResultSet.get(ir.getRound()+2).setTotalPoints(weekPts);
+                            teamWeekResultSet.get(round+2).setTotalPoints(weekPts);
                         }
                         sflDruzyna.setTeamWeekResultList(teamWeekResultSet);
                         sflDruzynaService.saveSflDruzyna(sflDruzyna);

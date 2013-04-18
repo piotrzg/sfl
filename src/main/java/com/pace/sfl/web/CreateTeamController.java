@@ -127,14 +127,12 @@ public class CreateTeamController {
 
         UserProfile up = ups.findByUsername(name);
         HashSet<ZawodnikZuzlowy> zawodnicySet = null;
-        if(up != null)
-        {
+        if(up != null){
             SflDruzyna sflDruzyna = up.getSflDruzyna();
             sflDruzyna = sflDruzynaService.findSflDruzyna(sflDruzyna.getId());
             zawodnicySet = (HashSet<ZawodnikZuzlowy>)sflDruzyna.getZawodnicy();
         }
-        else
-        {
+        else{
             //throw exception
         }
 
@@ -161,7 +159,7 @@ public class CreateTeamController {
                 sb.append(",\"<a href='dodajZawodnika?id="+listaZawodnikow.get(i).getId()+"'>Dodaj do składu</a>\"");
             }
             else{
-                sb.append(",\"W skladzie\"");
+                sb.append(",\"W składzie\"");
             }
             sb.append("]");
         }
@@ -270,23 +268,23 @@ public class CreateTeamController {
 
         int nrJuniors = Utils.howManyJuniors(zawodnicySet);
         if(nrJuniors < 2)
-            invalidTeamMsg = "Sklad nie ma wymaganej liczby juniorow";
+            invalidTeamMsg = "Skład nie ma wymaganej liczby juniorów";
 
         int nrPolish = Utils.howManyPolish(zawodnicySet);
         if(nrPolish < 4)
-            invalidTeamMsg = "Sklad nie ma wymaganej liczby Polakow";
+            invalidTeamMsg = "Skład nie ma wymaganej liczby Polaków";
 
 
         if(invalidTeamMsg == null)
         {
-            List<TeamWeekResult> teamWeekResultSet = new ArrayList<TeamWeekResult>();
+            List<TeamWeekResult> teamWeekResultList = new ArrayList<TeamWeekResult>();
             for(int i=-2; i<Constants.NR_ROUNDS+1; i++)
             {
                 TeamWeekResult twr = new TeamWeekResult(i);
-                teamWeekResultSet.add(twr);
+                teamWeekResultList.add(twr);
             }
 
-            sflDruzyna.setTeamWeekResultList(teamWeekResultSet);
+            sflDruzyna.setTeamWeekResultList(teamWeekResultList);
             sflDruzyna.setLocked(true);
             sflDruzynaService.saveSflDruzyna(sflDruzyna);
             return "zarzadzajDruzyna";

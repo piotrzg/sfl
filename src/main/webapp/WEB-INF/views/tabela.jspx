@@ -3,6 +3,52 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
     <jsp:output omit-xml-declaration="yes" />
 
-Strona w przygotowaniu
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/css/jquery.dataTables.css"/>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"><jsp:text /></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.1/jquery.dataTables.min.js"><jsp:text/></script>
+
+    <script type="text/javascript" charset="utf8">
+        // <![CDATA[
+
+        $(document).ready(function() {
+
+            var oTable = $('#teamList').dataTable( {
+                "oLanguage": {
+                    "sSearch": "Szukaj",
+                    "sLengthMenu": "Pokaż _MENU_ zespołów",
+                    "oPaginate": {
+                        "sNext": "Następna",
+                        "sPrevious": "Poprzednia"
+                    }
+                },
+                "iDisplayLength": 50,
+                "aoColumnDefs": [
+                    { "sWidth": "12%", "aTargets": [ 2 ] },
+                    { "sWidth": "12%", "aTargets": [ 1 ] }
+                ],
+                "bProcessing": true,
+                "sAjaxSource": "tabelaData"
+            } );
+
+        } );
+        // ]]>
+    </script>
+
+    <style>
+        #teamList {
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+
+
+    <table id="teamList">
+        <thead>
+        <tr style="color: black">
+            <th>Drużyna</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Suma</th>
+        </tr>
+        </thead>
+        <tbody>         </tbody>
+    </table>
 
 </div>
