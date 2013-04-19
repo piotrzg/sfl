@@ -29,6 +29,7 @@
                 "bProcessing": true,
                 "sAjaxSource": "tabelaData"
             } );
+            oTable.fnSort( [ [5,'desc']] );
 
         } );
         // ]]>
