@@ -83,7 +83,6 @@ public class LockManagerController {
                 try{
                     this.mailSender.send(msg);
                     Thread.sleep(1500);
-                    System.out.println("Back from sleep for 1.5 seconds");
                 }
                 catch(MailException ex) {
                     System.err.println(ex.getMessage());
@@ -139,7 +138,6 @@ public class LockManagerController {
                 try{
                     this.mailSender.send(msg);
                     Thread.sleep(1500);
-                    System.out.println("Back from sleep for 1.5 seconds");
                 }
                 catch(MailException ex) {
                     System.err.println(ex.getMessage());

@@ -10,7 +10,7 @@
   <spring:url var="rejestracja" value="/rejestracja" />
   <spring:url value="/resources/j_spring_security_logout" var="logout"/>
   <spring:message code="button_home" var="home_label" htmlEscape="false" />
-    <div id="headerLinks">
+    <div id="headerLinks" style="font-size: 16px; padding-bottom: 2px">
         <a href="${home}">Strong Główna</a>&#160;
 
         <c:if test="${pageContext['request'].userPrincipal != null}">

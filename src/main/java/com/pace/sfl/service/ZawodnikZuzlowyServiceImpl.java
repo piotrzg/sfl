@@ -7,6 +7,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
+import java.util.Iterator;
+import java.util.List;
+
 
 public class ZawodnikZuzlowyServiceImpl implements ZawodnikZuzlowyService {
 
@@ -18,4 +21,6 @@ public class ZawodnikZuzlowyServiceImpl implements ZawodnikZuzlowyService {
         ZawodnikZuzlowy zawodnik = mongoTemplate.findOne(Query.query(Criteria.where("pid").is(pid)), ZawodnikZuzlowy.class);
         return zawodnik;
     }
+
+
 }

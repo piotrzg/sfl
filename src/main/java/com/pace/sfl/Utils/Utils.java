@@ -1,9 +1,11 @@
 package com.pace.sfl.Utils;
 
 import com.pace.sfl.Constants;
+import com.pace.sfl.IndividualResult;
 import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,6 +25,60 @@ public class Utils {
         Pattern p = Pattern.compile(emailPattern); // Set the email pattern string
         Matcher m = p.matcher(email); // Match the given string with the pattern
         return m.matches();
+    }
+
+    public static double getTotalPointsInSeason(ZawodnikZuzlowy zz)
+    {
+        double totalPts = 0.0;
+        List<IndividualResult> irList = zz.getWeeklyResults();
+        for(int i=0; i<irList.size();i++){
+            totalPts += irList.get(i).getTotalPoints();
+        }
+
+        return totalPts;
+
+    }
+
+
+    public static boolean isValidSquad(List<ZawodnikZuzlowy> squad)
+    {
+        int howManyInSquad = 0;
+        int howManyJuniors = 0;
+        int howManyPolish = 0;
+        BigDecimal totalKSM = new BigDecimal(0.0);
+        BigDecimal minKSM = new BigDecimal(100.0);
+
+        Iterator squadIter = squad.iterator();
+        while(squadIter.hasNext())
+        {
+            ZawodnikZuzlowy zz = (ZawodnikZuzlowy)squadIter.next();
+            if(zz != null)
+            {
+                howManyInSquad++;
+                if(zz.isIsJunior())
+                    howManyJuniors++;
+
+                if(zz.isIsPolish())
+                    howManyPolish++;
+
+                totalKSM.add(BigDecimal.valueOf(zz.getKsm()));
+
+                if(minKSM.compareTo(BigDecimal.valueOf(zz.getKsm()))==1)
+                    minKSM = BigDecimal.valueOf(zz.getKsm());
+            }
+        }
+
+        if(howManyInSquad < 6 || howManyJuniors < 2 || howManyPolish < 4)
+            return false;
+
+        BigDecimal maxKSM = new BigDecimal(40.0);
+        if(minKSM.compareTo(BigDecimal.valueOf(100.0)) == -1 && howManyInSquad == 7)
+            totalKSM = totalKSM.subtract(minKSM);
+
+        if(totalKSM.compareTo(maxKSM) == 1 || totalKSM.compareTo(BigDecimal.valueOf(33.0))==-1)
+            return false;
+
+        return true;
     }
 
 

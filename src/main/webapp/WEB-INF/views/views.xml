@@ -50,6 +50,9 @@
     <definition extends="default" name="ligaStats">
         <put-attribute name="body" value="/WEB-INF/views/ligaStats.jspx"/>
     </definition>
+    <definition extends="default" name="ligaStatsMostFrequentInSquad">
+        <put-attribute name="body" value="/WEB-INF/views/ligaStatsMostFrequentInSquad.jspx"/>
+    </definition>
     <definition extends="default" name="createTeam">
         <put-attribute name="body" value="/WEB-INF/views/createTeam.jspx"/>
     </definition>

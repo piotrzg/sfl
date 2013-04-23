@@ -149,7 +149,7 @@ public class TeamManagementController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/wybierzDruzyne/zapiszDruzyne")
-    public @ResponseBody String saveTeamForWeek(@RequestBody String json, Model uiModel)
+    public @ResponseBody String saveTeamForWeek(@RequestBody String json)
     {
         UserProfile up = ups.findByUsername(getAuthName());
         if(up == null)

@@ -24,13 +24,11 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Piotr
  * Date: 1/26/13
- * Time: 10:13 PM
  */
 @Controller
 public class CreateTeamController {

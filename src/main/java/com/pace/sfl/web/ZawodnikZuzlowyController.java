@@ -44,6 +44,7 @@ public class ZawodnikZuzlowyController {
         return "zawodnikzuzlowys/zawodnik";
     }
 
+
     @RequestMapping(value = "/zawodnik/saveIndividualResults/{zid}", method = RequestMethod.POST)
     public @ResponseBody String saveIndResult(@RequestBody String json, @PathVariable("zid") int zid)
     {

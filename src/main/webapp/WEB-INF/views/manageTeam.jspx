@@ -1,5 +1,4 @@
-<div xmlns:spring="http://www.springframework.org/tags"
-     xmlns:c="http://java.sun.com/jsp/jstl/core"
+<div xmlns:c="http://java.sun.com/jsp/jstl/core"
      xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
     <jsp:output omit-xml-declaration="yes" />
@@ -70,7 +69,7 @@
             var minKsm = 100;
             for(var i=0; i<roster.length; i++)
             {
-                if(roster[i] != null && roster[i] != undefined) // roster[i] can equal 0
+                if(roster[i] != null && roster[i] != undefined)
                 {
                     totalKsm += ksm[roster[i]];
                     totalPlayers++;
@@ -149,6 +148,24 @@
 
             updateKSM();
         });
+
+
+        function seeOptimalSquad(){
+            var jqxhr = $.ajax({
+                        url:"../druzyna/optymalny/sklad/",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8"
+                    })
+                    .done(function(squad) {
+                        var skladHtml = "";
+                        $.each(squad.msg, function(index, value){
+                            skladHtml += value+"<br/>";
+                        });
+                        $("#optimalSquadDiv").html(skladHtml); }
+                    )
+                    .fail(function() { alert("error"); })
+                    .always(function() {  });
+        }
         // ]]>
     </script>
 
@@ -558,4 +575,10 @@
         <c:if test="${not empty slot_6}"><div id="ns${slot_6.pid}"><jsp:text /></div></c:if>
         <c:if test="${not empty slot_7}"><div id="ns${slot_7.pid}"><jsp:text /></div></c:if>
     </div>
+
+    <br/>
+<a href="javascript:void(0)" onclick="seeOptimalSquad();">Wygeneruj optymalny skład</a>
+  <div id="optimalSquadDiv">
+      Opt
+  </div>
 </div>

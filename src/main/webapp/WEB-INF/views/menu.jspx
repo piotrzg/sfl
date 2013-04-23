@@ -33,11 +33,32 @@
                 <td><strong>Drużyna</strong></td>
                 <td><strong>Punkty</strong></td>
             </tr>
-            <tr><td>LKŻ Lublin</td><td>68</td></tr>
+            <tr><td>LKŻ Lublin<img src="/resources/images/gstar.png"/></td><td>68</td></tr>
             <tr><td>Polonia Bydgosz UG</td><td>64</td></tr>
             <tr><td>Falubaz Terror</td><td>63</td></tr>
             <tr><td>Falubaz Pany</td><td>56</td></tr>
             <tr><td>Legionisci</td><td>56</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    <div class="sidestatspart">
+        <table class="indexhead">
+            <tbody>
+            <tr><td>Najczęściej wybierani do 4 rundy</td></tr>
+            </tbody>
+        </table>
+        <table class="indexside">
+            <tbody><tr>
+                <td><strong>Zawodnik</strong></td>
+                <td><strong>Wybierany</strong></td>
+            </tr>
+            <tr><td>J. Hampel</td><td>12</td></tr>
+            <tr><td>T. Gollob</td><td>10</td></tr>
+            <tr><td>E. Pulczyński</td><td>9</td></tr>
+            <tr><td>P. Dudek</td><td>9</td></tr>
+            <tr><td>J. Davidsson</td><td>8</td></tr>
+            <tr><td><a href="/liga/czesto/zawodnik/4">Więcej</a></td><td>-</td></tr>
             </tbody>
         </table>
     </div>
@@ -53,11 +74,11 @@
                 <td><strong>Zawodnik</strong></td>
                 <td><strong>Wybierany</strong></td>
             </tr>
-            <tr><td>T. Gollob</td><td>34</td></tr>
-            <tr><td>J. Hampel</td><td>33</td></tr>
-            <tr><td>K. Gomólski</td><td>19</td></tr>
+            <tr><td>T. Gollob</td><td>35</td></tr>
+            <tr><td>J. Hampel</td><td>34</td></tr>
+            <tr><td>K. Gomólski</td><td>20</td></tr>
             <tr><td>K. Adamczewski</td><td>19</td></tr>
-            <tr><td>B. Zmarzlik</td><td>17</td></tr>
+            <tr><td>P. Dudek</td><td>18</td></tr>
             </tbody>
         </table>
     </div>

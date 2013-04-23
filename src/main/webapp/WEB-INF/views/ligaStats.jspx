@@ -3,8 +3,29 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
     <jsp:output omit-xml-declaration="yes" />
 
-    <h3>Najczęsciej wybierani do kadry:</h3><br/>
+    <h3>Najczęsciej wybierani do kadry:</h3>
     <c:forEach items="${zcounts}" var="entry">
         ${entry.value} - ${entry.key.fname} ${entry.key.lname}<br/>
     </c:forEach>
+
+    <br/>
+    <h3>Najczęsciej wybierani do poszczególnych rund:</h3>
+    <a href="/liga/czesto/zawodnik/1">1 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/2">2 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/3">3 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/4">4 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/5">5 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/6">6 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/7">7 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/8">8 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/9">9 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/10">10 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/11">11 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/12">12 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/13">13 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/14">14 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/15">15 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/16">16 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/17">17 Runda</a><br/>
+    <a href="/liga/czesto/zawodnik/18">18 Runda</a><br/>
 </div>
