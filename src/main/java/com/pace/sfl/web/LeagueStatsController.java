@@ -224,32 +224,29 @@ public class LeagueStatsController {
 
         Map<List<ZawodnikZuzlowy>, Double> sortedValidSquads = Utils.sortByValue(validSquadsVector);
         Iterator<List<ZawodnikZuzlowy>> sortedValidSquadsIter  = sortedValidSquads.keySet().iterator();
-        int i=0;
+
         StringBuilder sb = new StringBuilder();
         sb.append("{\"msg\": [");
+        int i=0;
         while(sortedValidSquadsIter.hasNext())
         {
             List<ZawodnikZuzlowy> zz = sortedValidSquadsIter.next();
-            if(i==0 || i==1)
+            if(i==0)
             {
-                sb.append("\"" + zz.get(0).getFname() + " " + zz.get(0).getLname() + zz.get(0).getWeeklyResults().get(round+2).getTotalPoints()+"\",");
-                sb.append("\"" + zz.get(1).getFname() + " " + zz.get(1).getLname() + zz.get(1).getWeeklyResults().get(round+2).getTotalPoints()+"\",");
-                sb.append("\"" + zz.get(2).getFname() + " " + zz.get(2).getLname() + zz.get(2).getWeeklyResults().get(round+2).getTotalPoints()+"\",");
-                sb.append("\"" + zz.get(3).getFname() + " " + zz.get(3).getLname() + zz.get(3).getWeeklyResults().get(round+2).getTotalPoints()+"\",");
-                sb.append("\""+zz.get(4).getFname()+" "+zz.get(4).getLname()+zz.get(4).getWeeklyResults().get(round+2).getTotalPoints()+"\",");
-                sb.append("\""+zz.get(5).getFname()+" "+zz.get(5).getLname()+zz.get(5).getWeeklyResults().get(round+2).getTotalPoints()+"\",");
-                sb.append("\""+zz.get(6).getFname()+" "+zz.get(6).getLname()+zz.get(6).getWeeklyResults().get(round+2).getTotalPoints()+"\"");
-                System.out.println(sortedValidSquads.get(zz));
-                if(i==1)
-                    break;
-
+                sb.append("\"" + zz.get(0).getFname() + " " + zz.get(0).getLname() + " " + zz.get(0).getWeeklyResults().get(round+2).getTotalPoints()+"\",");
+                sb.append("\"" + zz.get(1).getFname() + " " + zz.get(1).getLname() + " " + zz.get(1).getWeeklyResults().get(round+2).getTotalPoints()+"\",");
+                sb.append("\"" + zz.get(2).getFname() + " " + zz.get(2).getLname() + " " + zz.get(2).getWeeklyResults().get(round+2).getTotalPoints()+"\",");
+                sb.append("\"" + zz.get(3).getFname() + " " + zz.get(3).getLname() + " " + zz.get(3).getWeeklyResults().get(round+2).getTotalPoints()+"\",");
+                sb.append("\"" + zz.get(4).getFname() + " " + zz.get(4).getLname() + " " + zz.get(4).getWeeklyResults().get(round+2).getTotalPoints()+"\",");
+                sb.append("\"" + zz.get(5).getFname() + " " + zz.get(5).getLname() + " " + zz.get(5).getWeeklyResults().get(round+2).getTotalPoints()+"\",");
+                sb.append("\"" + zz.get(6).getFname() + " " + zz.get(6).getLname() + " " + zz.get(6).getWeeklyResults().get(round+2).getTotalPoints()+"\"");
+                break;
             }
             i++;
-
         }
         sb.append("]}");
 
-        System.out.println("Valid squads: "+validSquads);
+//        System.out.println("Valid squads: "+validSquads);
         return sb.toString();
     }
 
@@ -259,32 +256,37 @@ public class LeagueStatsController {
         List<SflDruzyna> sflDruzynaList = sflDruzynaService.findAllSflDruzynas();
         StringBuilder sb = new StringBuilder();
         sb.append("{\"aaData\": [");
+        boolean stringStarted = false;
         for(int i=0; i<sflDruzynaList.size();i++)
         {
             SflDruzyna sflDruzyna = sflDruzynaList.get(i);
             if(sflDruzyna == null || sflDruzyna.getTeamWeekResultList()== null)
                 continue;
 
-            double sumPoints =  sflDruzyna.getTeamWeekResultList().get(3).getTotalPoints()+
-                    sflDruzyna.getTeamWeekResultList().get(4).getTotalPoints()+
-                    sflDruzyna.getTeamWeekResultList().get(5).getTotalPoints()+
-                    sflDruzyna.getTeamWeekResultList().get(6).getTotalPoints();
-            if(i != 0) sb.append(',');
-            sb.append("[");
+            double sumPoints =  0.0;
+            for(int dindx=3; dindx<sflDruzyna.getTeamWeekResultList().size();dindx++){
+                sumPoints += sflDruzyna.getTeamWeekResultList().get(dindx).getTotalPoints();
+            }
 
+            if(stringStarted) sb.append(',');
+
+            sb.append("[");
             sb.append('"'+sflDruzyna.getName()+'"');
             sb.append(',');
             sb.append('"'+String.valueOf(((Double)sflDruzyna.getTeamWeekResultList().get(3).getTotalPoints()).intValue())+'"');
-            sb.append(',');
-            sb.append('"'+String.valueOf(((Double)sflDruzyna.getTeamWeekResultList().get(4).getTotalPoints()).intValue())+'"');
             sb.append(',');
             sb.append('"'+String.valueOf(((Double)sflDruzyna.getTeamWeekResultList().get(5).getTotalPoints()).intValue())+'"');
             sb.append(',');
             sb.append('"'+String.valueOf(((Double)sflDruzyna.getTeamWeekResultList().get(6).getTotalPoints()).intValue())+'"');
             sb.append(',');
+            sb.append('"'+String.valueOf(((Double)sflDruzyna.getTeamWeekResultList().get(7).getTotalPoints()).intValue())+'"');
+            sb.append(',');
+            sb.append('"'+String.valueOf(((Double)sflDruzyna.getTeamWeekResultList().get(8).getTotalPoints()).intValue())+'"');
+            sb.append(',');
             sb.append('"'+String.valueOf(((Double)sumPoints).intValue())+'"');
             sb.append(",\"-\"");
             sb.append("]");
+            stringStarted = true;
         }
         sb.append("]}");
         return sb.toString();

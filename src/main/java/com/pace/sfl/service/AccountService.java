@@ -7,4 +7,5 @@ import org.springframework.roo.addon.layers.service.RooService;
 public interface AccountService {
 
     public Account findByUsername(String username);
+    public Account findByActivationId(String activationId);
 }

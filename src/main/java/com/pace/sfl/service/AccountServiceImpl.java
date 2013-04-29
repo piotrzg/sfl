@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Transactional
 @Service("accountService")
@@ -51,6 +52,12 @@ public class AccountServiceImpl implements AccountService {
         return acc;
     }
 
+    public Account findByActivationId(String activationId)
+    {
+        Account acc = mongoTemplate.findOne(Query.query(Criteria.where("auuid").regex('^'+activationId+'$', "i")), Account.class);
+        return acc;
+    }
+
     public Account updateAccount(Account account) {
         return accountRepository.save(account);
     }
@@ -61,19 +68,21 @@ public class AccountServiceImpl implements AccountService {
         if(errMsg != null)
             return errMsg;
 
-        List authorities = new ArrayList();
-        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-
         if(account.getPassword().equals(account.getRetypePassword()))
         {
             if(Utils.isEmail(account.getEmail()))
             {
+                List authorities = new ArrayList();
+                authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
                 account.setRoles(authorities);
                 PasswordEncoder encoder = new Md5PasswordEncoder();
                 String hashedPass = encoder.encodePassword(account.getPassword(), null);
                 account.setPassword(hashedPass);
                 String emailStr = account.getEmail().toLowerCase();
                 account.setEmail(emailStr);
+                UUID auuid = UUID.randomUUID();
+                account.setAuuid(auuid.toString());
+                account.setActivated(false);
                 accountRepository.save(account);
 
                 UserProfile up = new UserProfile();
@@ -83,7 +92,13 @@ public class AccountServiceImpl implements AccountService {
                 // Create a thread safe "copy" of the template message and customize it
                 SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
                 msg.setTo(account.getEmail());
-                msg.setText("Witamy w serwisie Speedway Fantasy!\nTwój login: "+account.getUsername());
+                StringBuffer emailBodyStr = new StringBuffer();
+                emailBodyStr.append("Witamy w serwisie Speedway Fantasy!");
+                emailBodyStr.append("\n");
+                emailBodyStr.append("Twój login: "+account.getUsername());
+                emailBodyStr.append("\n");
+                emailBodyStr.append("Link aktywacyjny: http://speedwayFantasy.pl/activate/"+auuid.toString());
+                msg.setText(emailBodyStr.toString());
                 try{
                     this.mailSender.send(msg);
                 }

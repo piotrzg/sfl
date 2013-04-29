@@ -13,6 +13,7 @@
                     authentication-failure-url="/login?login_error=t"
                     authentication-success-handler-ref="authenticationSuccessHandler"/>
         <logout logout-url="/resources/j_spring_security_logout" />
+        <remember-me services-ref="rememberMeServices" key="rememberMeKey"></remember-me>
         <!-- Configure these elements to secure URIs in your application -->
         <intercept-url pattern="/lockManager/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/lock/**" access="hasRole('ROLE_ADMIN')" />
@@ -35,6 +36,19 @@
             <password-encoder hash="md5"/>
         </authentication-provider>
     </authentication-manager>
+
+    <beans:bean id="myTokenRepository" class="com.pace.sfl.service.MongoPersistentTokenRepositoryImpl" />
+
+    <beans:bean id="rememberMeServices" class="org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices">
+        <!-- First three with constructor - required elements -->
+        <beans:constructor-arg value="rememberMeKey" />
+        <beans:constructor-arg ref="customMongoSecurityService" />
+        <beans:constructor-arg ref="myTokenRepository" />
+
+        <!-- Last as property -->
+        <beans:property name="alwaysRemember" value="true" />
+    </beans:bean>
+
 
     <beans:bean id="authenticationSuccessHandler" class="com.pace.sfl.CustomAuthenticationSuccessHandler">
     </beans:bean>

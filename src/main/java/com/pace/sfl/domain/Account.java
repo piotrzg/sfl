@@ -32,8 +32,10 @@ public class Account implements Serializable {
     @Transient
     private String retypePassword;
 
-
     private List<Role> roles;
+
+    private String auuid;
+    private boolean activated;
 
     public List<Role> getRoles() {
         return roles;

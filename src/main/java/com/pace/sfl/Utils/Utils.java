@@ -6,6 +6,7 @@ import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -45,8 +46,8 @@ public class Utils {
         int howManyInSquad = 0;
         int howManyJuniors = 0;
         int howManyPolish = 0;
-        BigDecimal totalKSM = new BigDecimal(0.0);
-        BigDecimal minKSM = new BigDecimal(100.0);
+        BigDecimal totalKSM = new BigDecimal(0, new MathContext(2));
+        BigDecimal minKSM = new BigDecimal(100, new MathContext(2));
 
         Iterator squadIter = squad.iterator();
         while(squadIter.hasNext())
@@ -61,19 +62,21 @@ public class Utils {
                 if(zz.isIsPolish())
                     howManyPolish++;
 
-                totalKSM.add(BigDecimal.valueOf(zz.getKsm()));
+                BigDecimal zzKsmBD = new BigDecimal(zz.getKsm(), new MathContext(2));
+                totalKSM = totalKSM.add(zzKsmBD);
 
-                if(minKSM.compareTo(BigDecimal.valueOf(zz.getKsm()))==1)
-                    minKSM = BigDecimal.valueOf(zz.getKsm());
+                if(minKSM.compareTo(zzKsmBD)==1)
+                    minKSM = zzKsmBD;
             }
         }
 
         if(howManyInSquad < 6 || howManyJuniors < 2 || howManyPolish < 4)
             return false;
 
-        BigDecimal maxKSM = new BigDecimal(40.0);
-        if(minKSM.compareTo(BigDecimal.valueOf(100.0)) == -1 && howManyInSquad == 7)
-            totalKSM = totalKSM.subtract(minKSM);
+        BigDecimal maxKSM = new BigDecimal(40.0, new MathContext(2));
+        if(minKSM.compareTo(BigDecimal.valueOf(100.0)) == -1 && howManyInSquad == 7){
+            totalKSM = totalKSM.subtract(minKSM, new MathContext(2));
+        }
 
         if(totalKSM.compareTo(maxKSM) == 1 || totalKSM.compareTo(BigDecimal.valueOf(33.0))==-1)
             return false;

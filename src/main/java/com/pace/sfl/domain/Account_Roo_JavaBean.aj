@@ -31,4 +31,20 @@ privileged aspect Account_Roo_JavaBean {
         this.password = password;
     }
     
+    public String Account.getAuuid() {
+        return this.auuid;
+    }
+    
+    public void Account.setAuuid(String auuid) {
+        this.auuid = auuid;
+    }
+    
+    public boolean Account.isActivated() {
+        return this.activated;
+    }
+    
+    public void Account.setActivated(boolean activated) {
+        this.activated = activated;
+    }
+    
 }

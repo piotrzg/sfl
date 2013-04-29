@@ -129,3 +129,10 @@ exit
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-04-04 22:58:14
 exit
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-04-05 00:34:45
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-04-28 23:12:33
+focus --class ~.domain.Account
+exit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-04-28 23:29:26
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-04-28 23:29:29
+quit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-04-29 00:01:56

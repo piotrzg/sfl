@@ -43,6 +43,7 @@ Runda: ${round}
         <br/>
     </c:forEach>
 
+    <br/><hr/>
     <a href="javascript:void(0)" onclick="seeOptimalSquad();">Zobacz optymalny skład</a>
     <div id="optimalSquadDiv">
         Opt

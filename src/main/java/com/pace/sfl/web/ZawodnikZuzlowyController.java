@@ -8,7 +8,6 @@ import com.pace.sfl.domain.ZawodnikZuzlowy;
 import com.pace.sfl.service.SflDruzynaService;
 import com.pace.sfl.service.ZawodnikZuzlowyService;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.util.JSONWrappedObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
 import org.springframework.stereotype.Controller;

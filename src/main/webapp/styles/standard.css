@@ -259,6 +259,10 @@ fieldset th {
     padding: 5px;
     width: 100%;
 }
+.indexside img{
+    width: 12px;
+    height: 12px;
+}
 .indexhead {
     background: #eaf2e2;
     border-color: black;

@@ -1,9 +1,11 @@
 package com.pace.sfl.web;
 
 import com.pace.sfl.TeamWeekResult;
+import com.pace.sfl.domain.Account;
 import com.pace.sfl.domain.SflDruzyna;
 import com.pace.sfl.domain.UserProfile;
 import com.pace.sfl.domain.ZawodnikZuzlowy;
+import com.pace.sfl.service.AccountService;
 import com.pace.sfl.service.SflDruzynaService;
 import com.pace.sfl.service.UserProfileService;
 import com.pace.sfl.service.ZawodnikZuzlowyService;
@@ -42,6 +44,9 @@ public class CreateTeamController {
     @Autowired
     SflDruzynaService sflDruzynaService;
 
+    @Autowired
+    AccountService accountService;
+
     @RequestMapping(value = "/ct", produces = "text/html")
     public String show(Model uiModel)
     {
@@ -49,6 +54,11 @@ public class CreateTeamController {
         String name = auth.getName(); //get logged in username
 
         UserProfile up = ups.findByUsername(name);
+        Account acc = accountService.findByUsername(name);
+        if(!acc.isActivated()){
+            uiModel.addAttribute("msg", "Musisz najpierw aktywować swoje konto. Sprawdź swój email - tam znajdziesz kod aktywacyjny.");
+            return "activation";
+        }
 
         SflDruzyna sflDruzyna = up.getSflDruzyna();
         if(sflDruzyna == null)

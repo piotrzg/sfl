@@ -2,34 +2,33 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8" />
     <jsp:output omit-xml-declaration="yes" />
 
+
+<h3>6 Runda - <a href="wybierzDruzyne/6">Wybierz sklad</a></h3>
+    <div style="padding-left: 8px">
+        <b>5 maja:</b> PGE Marma Rzeszów - Unia Tarnów<br/>
+        <b>5 maja:</b> Fogo Unia Leszno - składywęgla.pl Polonia Bydgoszcz<br/>
+        <b>5 maja:</b> Betard Sparta Wrocław - Stelmet Falubaz Zielona Góra<br/>
+        <b>5 maja:</b> Stal Gorzów - Lechma Start Gniezno<br/>
+        <b>5 maja:</b> Unibax Toruń - Dospel Włókniarz Częstochowa<br/>
+</div>
+    <hr/>
+    <h4>2 Runda - <a href="wybierzDruzyne/2">Wybierz sklad</a></h4>
+    <div style="padding-left: 8px">
+        <b>30 maja:</b> Stelmet Falubaz Zielona Góra - PGE Marma Rzeszów<br/>
+        <b>6 czerwca:</b> Unia Tarnów - Dospel Włókniarz Częstochowa<br/>
+        <b>6 czerwca:</b> składywęgla.pl Polonia Bydgoszcz - Lechma Start Gniezno<br/>
+        <b>9 czerwca:</b> Betard Sparta Wrocław - Stal Gorzów<br/>
+        <b>9 czerwca:</b> Fogo Unia Leszno - Unibax Toruń<br/>
+    </div>
 <h3>1 Runda - <a href="wybierzDruzyne/1">Wybierz sklad</a></h3>
 <div style="padding-left: 8px">
-    <b>26 kwietnia:</b> Unibax Toruń - Unia Tarnów<br/>
-    <b>27 kwietnia:</b> Stal Gorzów - Fogo Unia Leszno<br/>
     <b>9 czerwca:</b> PGE Marma Rzeszów - składywęgla.pl Polonia Bydgoszcz<br/>
     <b>9 czerwca:</b> Dospel Włókniarz Częstochowa - Stelmet Falubaz Zielona Góra<br/>
+    <b>57:33</b> Unibax Toruń - Unia Tarnów<br/>
+    <b>43:47</b> Stal Gorzów - Fogo Unia Leszno<br/>
     <b>49:41</b> Lechma Start Gniezno - Betard Sparta Wrocław<br/>
 </div>
 <hr/>
-<h4>5 Runda - <a href="wybierzDruzyne/5">Wybierz sklad</a></h4>
-    <div style="padding-left: 8px">
-        <b>28 kwietnia:</b> Unia Tarnów - Stal Gorzów<br/>
-        <b>28 kwietnia:</b> składywęgla.pl Polonia Bydgoszcz - Betard Sparta Wrocław<br/>
-        <b>28 kwietnia:</b> Dospel Włókniarz Częstochowa - Fogo Unia Leszno<br/>
-        <b>28 kwietnia:</b> Stelmet Falubaz Zielona Góra - Unibax Toruń<br/>
-        <b>28 kwietnia:</b> Lechma Start Gniezno - PGE Marma Rzeszów <br/>
-    </div>
-<hr/>
-<h4>2 Runda - <a href="wybierzDruzyne/2">Wybierz sklad</a></h4>
-<div style="padding-left: 8px">
-    <b>30 maja:</b> Stelmet Falubaz Zielona Góra - PGE Marma Rzeszów<br/>
-    <b>6 czerwca:</b> Unia Tarnów - Dospel Włókniarz Częstochowa<br/>
-    <b>6 czerwca:</b> składywęgla.pl Polonia Bydgoszcz - Lechma Start Gniezno<br/>
-    <b>9 czerwca:</b> Betard Sparta Wrocław - Stal Gorzów<br/>
-    <b>9 czerwca:</b> Fogo Unia Leszno - Unibax Toruń<br/>
-</div>
-<hr/>
-6 Runda - <a href="wybierzDruzyne/6">Wybierz sklad</a><br/>
 7 Runda - <a href="wybierzDruzyne/7">Wybierz sklad</a><br/>
 8 Runda - <a href="wybierzDruzyne/8">Wybierz sklad</a><br/>
 9 Runda - <a href="wybierzDruzyne/9">Wybierz sklad</a><br/>
@@ -43,6 +42,15 @@
 17 Runda - <a href="wybierzDruzyne/17">Wybierz sklad</a><br/>
 18 Runda - <a href="wybierzDruzyne/18">Wybierz sklad</a><br/>
 <hr/>
+    <h4>5 Runda - <a href="/liga/wyniki/5">Wyniki</a></h4>
+    <div style="padding-left: 8px">
+        <b>42:47</b> Unia Tarnów - Stal Gorzów<br/>
+        <b>54:36</b> składywęgla.pl Polonia Bydgoszcz - Betard Sparta Wrocław<br/>
+        <b>40:50</b> Dospel Włókniarz Częstochowa - Fogo Unia Leszno<br/>
+        <b>43:46</b> Stelmet Falubaz Zielona Góra - Unibax Toruń<br/>
+        <b>44:46</b> Lechma Start Gniezno - PGE Marma Rzeszów <br/>
+    </div>
+    <hr/>
 <h4>4 Runda - <a href="/liga/wyniki/4">Wyniki</a><br/></h4>
     <div style="padding-left: 8px">
         <b>45:44</b> Betard Sparta Wrocław - Unia Tarnów<br/>

@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,7 +34,7 @@ public class CustomAuthenticationSuccessHandler extends SavedRequestAwareAuthent
 
         UserProfile up = ups.findByUsername(name);
         up.setLastLogin(System.currentTimeMillis());
-        System.out.println("Login IP: "+request.getRemoteAddr());
+        System.out.println(new Date()+" Login IP: "+request.getRemoteAddr());
         ups.saveUserProfile(up);
 
         super.onAuthenticationSuccess(request, response, authentication);

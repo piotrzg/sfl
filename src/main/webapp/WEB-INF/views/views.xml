@@ -17,6 +17,9 @@
     <definition extends="public" name="login">
         <put-attribute name="body" value="/WEB-INF/views/login.jspx"/>
     </definition>
+    <definition extends="public" name="activation">
+        <put-attribute name="body" value="/WEB-INF/views/activation.jspx"/>
+    </definition>
 
     <definition extends="default" name="kontakt">
         <put-attribute name="body" value="/WEB-INF/views/kontakt.jspx"/>

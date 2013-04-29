@@ -4,14 +4,11 @@ package com.pace.sfl.service;
  * Created with IntelliJ IDEA.
  * User: Piotr
  * Date: 1/26/13
- * Time: 9:13 PM
- * To change this template use File | Settings | File Templates.
  */
 
 import com.pace.sfl.Role;
 import com.pace.sfl.domain.Account;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

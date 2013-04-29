@@ -29,7 +29,7 @@
                 "bProcessing": true,
                 "sAjaxSource": "tabelaData"
             } );
-            oTable.fnSort( [ [5,'desc']] );
+            oTable.fnSort( [ [6,'desc']] );
 
         } );
         // ]]>
@@ -46,7 +46,7 @@
     <table id="teamList">
         <thead>
         <tr style="color: black">
-            <th>Drużyna</th><th>1</th><th>2</th><th>3</th><th>4</th><th>Suma</th>
+            <th>Drużyna</th><th>1</th><th>3</th><th>4</th><th>5</th><th>6</th><th>Suma</th>
         </tr>
         </thead>
         <tbody>         </tbody>

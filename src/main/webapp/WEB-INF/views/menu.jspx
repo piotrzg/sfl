@@ -25,7 +25,7 @@
     <div class="sidestatspart">
         <table class="indexhead">
             <tbody>
-            <tr><td>Wyniki 3 Rundy</td></tr>
+            <tr><td>Wyniki 5 Rundy</td></tr>
             </tbody>
         </table>
         <table class="indexside">
@@ -33,11 +33,11 @@
                 <td><strong>Drużyna</strong></td>
                 <td><strong>Punkty</strong></td>
             </tr>
-            <tr><td>LKŻ Lublin<img src="/resources/images/gstar.png"/></td><td>68</td></tr>
-            <tr><td>Polonia Bydgosz UG</td><td>64</td></tr>
-            <tr><td>Falubaz Terror</td><td>63</td></tr>
-            <tr><td>Falubaz Pany</td><td>56</td></tr>
-            <tr><td>Legionisci</td><td>56</td></tr>
+            <tr><td>Gollob`s Angels<img src="/resources/images/goldstar.png"/></td><td>67</td></tr>
+            <tr><td>Polonia Bydgosz UG<img src="/resources/images/silverstar.png"/><img src="/resources/images/silverstar.png"/></td><td>65</td></tr>
+            <tr><td>Aniołki Golloba<img src="/resources/images/goldstar.png"/><img src="/resources/images/bronzestar.png"/></td><td>64</td></tr>
+            <tr><td>JERRY TEAM</td><td>63</td></tr>
+            <tr><td>Motor Lublin</td><td>62</td></tr>
             </tbody>
         </table>
     </div>
@@ -45,7 +45,7 @@
     <div class="sidestatspart">
         <table class="indexhead">
             <tbody>
-            <tr><td>Najczęściej wybierani do 4 rundy</td></tr>
+            <tr><td>Najczęściej wybierani do 6 rundy</td></tr>
             </tbody>
         </table>
         <table class="indexside">
@@ -53,12 +53,12 @@
                 <td><strong>Zawodnik</strong></td>
                 <td><strong>Wybierany</strong></td>
             </tr>
-            <tr><td>J. Hampel</td><td>12</td></tr>
-            <tr><td>T. Gollob</td><td>10</td></tr>
-            <tr><td>E. Pulczyński</td><td>9</td></tr>
-            <tr><td>P. Dudek</td><td>9</td></tr>
-            <tr><td>J. Davidsson</td><td>8</td></tr>
-            <tr><td><a href="/liga/czesto/zawodnik/4">Więcej</a></td><td>-</td></tr>
+            <tr><td>T. Gollob</td><td>8</td></tr>
+            <tr><td>J. Hampel</td><td>8</td></tr>
+            <tr><td>P. Dudek</td><td>6</td></tr>
+            <tr><td>P. Pawlicki</td><td>5</td></tr>
+            <tr><td>A. Łaguta</td><td>5</td></tr>
+            <tr><td><a href="/liga/czesto/zawodnik/6">Więcej</a></td><td>-</td></tr>
             </tbody>
         </table>
     </div>
@@ -74,11 +74,11 @@
                 <td><strong>Zawodnik</strong></td>
                 <td><strong>Wybierany</strong></td>
             </tr>
-            <tr><td>T. Gollob</td><td>35</td></tr>
-            <tr><td>J. Hampel</td><td>34</td></tr>
-            <tr><td>K. Gomólski</td><td>20</td></tr>
-            <tr><td>K. Adamczewski</td><td>19</td></tr>
-            <tr><td>P. Dudek</td><td>18</td></tr>
+            <tr><td>T. Gollob</td><td>37</td></tr>
+            <tr><td>J. Hampel</td><td>36</td></tr>
+            <tr><td>K. Gomólski</td><td>21</td></tr>
+            <tr><td>P. Dudek</td><td>21</td></tr>
+            <tr><td>K. Adamczewski</td><td>20</td></tr>
             </tbody>
         </table>
     </div>
